@@ -28,17 +28,17 @@ $z-index-panel: $z-index-snackbar + 1;
 $z-index-modal: $z-index-panel + 1;
 
 // Top bar
-$top-bar-height: rem-calc(20px);
-$top-bar-height-computer: rem-calc(36px);
+$top-bar-height: rem-calc(44px);
+$top-bar-height-computer: rem-calc(44px);
 
 // Search
 $search-height: rem-calc(50px);
 $search-input-height: rem-calc(40px);
 
 // Header
-$header-bar-height: rem-calc(50px);
+$header-bar-height: rem-calc(60px);
 $header-bar-height-computer: rem-calc(80px);
-$header-navigation-height-computer: rem-calc(50px);
+$header-navigation-height-computer: rem-calc(0);
 
 $header-height: $top-bar-height + $header-bar-height + $search-height;
 $header-height-computer: $top-bar-height-computer + $header-bar-height-computer +
@@ -55,7 +55,7 @@ $text-and-icon-spacing: 0.4em;
 // List column count
 $list-column-count: 2;
 $list-column-count-tablet: 3;
-$list-column-count-laptop: 5;
+$list-column-count-laptop: 4;
 
 // Text widget max width
 $text-widget-max-width: rem-calc(650px);

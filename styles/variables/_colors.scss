@@ -1,17 +1,18 @@
 // Theme colors
 $c-white: #ffffff;
-$c-lightest-gray: #f8f8f8;
-$c-light-gray: #ececec;
-$c-medium-gray: #d8d8d8;
-$c-dark-gray: #adadad;
-$c-darkest-gray: #363636;
+$c-lightest-gray: #fafafa;
+$c-light-gray: #fafafa;
+$c-medium-gray: #ededed;
+$c-dark-gray: #7e7e7e;
+$c-darkest-gray: #131313;
 
-$c-accent-color: $c-darkest-gray;
+$c-accent-color: #ffb802;
+$c-accent-color-secondary: #9baea5;
 
 // Theme text colors
-$c-text-primary: #222222;
-$c-text-secondary: #878787;
-$c-text-inverse: #ffffff;
+$c-text-primary: $c-dark-gray;
+$c-text-secondary: $c-darkest-gray;
+$c-text-inverse: $c-white;
 
 // Overlay
 $c-overlay: rgba(0, 0, 0, 0.3);
@@ -37,13 +38,13 @@ $c-border-dark: $c-medium-gray;
 $c-main-bg: $c-white;
 
 // Header
-$c-topbar-bg: $c-medium-gray;
+$c-topbar-bg: $c-darkest-gray;
 $c-header-bg: $c-light-gray;
 $c-search-bg: $c-medium-gray;
 $c-cart-color: $c-text-primary;
 
 // Price
-$c-sale: rgb(177, 0, 29);
+$c-sale: $c-text-secondary;
 
 // Buttons
 $c-button-primary-bg: $c-darkest-gray;

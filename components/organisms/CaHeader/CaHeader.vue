@@ -23,15 +23,20 @@
           aria-label="Show search"
           @clicked="() => (searchOpened = !searchOpened)"
         />
-        <CaSearch class="only-computer" />
         <NuxtLink to="/">
           <CaLogo class="ca-header__logo" :alt="$t('LOGO_ALT_TEXT')" />
         </NuxtLink>
+        <CaHeaderNavigation
+          class="only-computer"
+          menu-location-id="main-desktop"
+        />
+        <CaSearch class="ca-header__search only-computer" />
+
         <CaFavorites class="ca-header__favorites" />
         <CaMiniCart class="ca-header__cart" />
       </CaContainer>
     </div>
-    <CaHeaderNavigation class="only-computer" menu-location-id="main-desktop" />
+
     <CaSearch class="only-mobile" :opened="searchOpened" />
   </header>
 </template>
@@ -79,7 +84,6 @@ export default {
     justify-content: space-between;
 
     @include bp(laptop) {
-      justify-content: flex-end;
       height: $header-bar-height-computer;
     }
   }
@@ -97,7 +101,6 @@ export default {
   }
 
   &__logo {
-    @include calign;
     width: 120px;
   }
 

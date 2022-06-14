@@ -393,7 +393,7 @@ export default async () => {
           link: 'https://www.instagram.com'
         }
       ],
-      customerTypesToggle: true,
+      customerTypesToggle: false,
       customerTypes: [
         {
           type: 'PERSON',
@@ -408,10 +408,10 @@ export default async () => {
       /* ****************** */
       /* **** WIDGETS ***** */
       /* ****************** */
-      bannerWidgetPrimaryColor: '#000000',
+      bannerWidgetPrimaryColor: '#131313',
       bannerWidgetSecondaryColor: '#FFFFFF',
       productListWidgetArrowIconName: 'chevron',
-      productListRowSize: 5,
+      productListRowSize: 4,
       widgetImageSizes: {
         full: '(min-width: 1360px) 1320px, 96vw',
         half: '(min-width: 1360px) 650px, (min-width: 768px) 47vw, 96vw',
@@ -432,8 +432,8 @@ export default async () => {
       productListScrollSize: {
         phone: 2,
         tablet: 3,
-        laptop: 5,
-        desktop: 5
+        laptop: 4,
+        desktop: 4
       },
       /* ****************** */
       /* **** PRODUCT ***** */
@@ -478,7 +478,7 @@ export default async () => {
       user: {
         gender: false, // If set to true, gender must be added to user.graphql
         country: false,
-        priceLists: true // Set to true if using different price lists for different users
+        priceLists: false // Set to true if using different price lists for different users
       }
     },
     privateRuntimeConfig: {},

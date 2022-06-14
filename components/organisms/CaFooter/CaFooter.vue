@@ -1,30 +1,5 @@
 <template>
   <footer class="ca-footer">
-    <section class="ca-footer__section ca-footer__section--usps">
-      <CaContainer class="ca-footer__usps">
-        <CaIconAndText
-          class="ca-footer__usp"
-          icon-name="check-circle"
-          :icon-position="uspLogoPlacement"
-        >
-          {{ $t('USP_1') }}
-        </CaIconAndText>
-        <CaIconAndText
-          class="ca-footer__usp"
-          icon-name="check-circle"
-          :icon-position="uspLogoPlacement"
-        >
-          {{ $t('USP_2') }}
-        </CaIconAndText>
-        <CaIconAndText
-          class="ca-footer__usp"
-          icon-name="check-circle"
-          :icon-position="uspLogoPlacement"
-        >
-          {{ $t('USP_3') }}
-        </CaIconAndText>
-      </CaContainer>
-    </section>
     <section class="ca-footer__section ca-footer__section--newsletter">
       <CaContainer>
         <div class="ca-footer__newsletter">
@@ -177,24 +152,25 @@ export default {
 .ca-footer {
   margin-top: $default-spacing;
   &__section {
+    color: $c-text-inverse;
     &--usps {
-      background: $c-light-gray;
+      background: $c-darkest-gray;
       padding: $px8 0;
     }
     &--newsletter {
-      background: $c-lightest-gray;
+      background: $c-darkest-gray;
       padding: $px20 0;
       @include bp(tablet) {
         padding: $px32 0;
       }
     }
     &--content {
-      background: $c-light-gray;
+      background: $c-darkest-gray;
       padding: $px24 0 $px32;
     }
 
     &--bottom {
-      background: $c-medium-gray;
+      background: $c-darkest-gray;
     }
   }
 
@@ -226,7 +202,6 @@ export default {
     max-width: 500px;
     margin: 0 auto;
     @include bp(tablet) {
-      background: $c-light-gray;
       padding: $px20 $px48 $px24;
     }
   }

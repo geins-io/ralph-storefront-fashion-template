@@ -49,9 +49,9 @@ export default {
 .ca-layout-default {
   $block: &;
   &__main {
-    padding-top: $header-height + $px12;
+    padding-top: $header-height;
     @include bp(laptop) {
-      padding-top: $header-height-computer + $default-spacing;
+      padding-top: $header-height-computer;
     }
   }
   &__loading {
@@ -65,7 +65,7 @@ export default {
     height: rem-calc(36px);
     border-radius: 50%;
     @include bp(laptop) {
-      top: $header-height-computer + $default-spacing;
+      top: $header-height-computer;
     }
   }
   &--loading {
