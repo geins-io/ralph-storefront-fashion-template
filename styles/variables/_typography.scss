@@ -2,13 +2,14 @@
 
 // Font family
 $body-font: 'Roboto', sans-serif;
-$heading-font: 'Roboto', sans-serif;
+$heading-font: 'Tinos', serif;
 
 // Font weight
 $font-weight-normal: 400;
 $font-weight-bold: 500;
 
 // Font size
+$font-size-xxs: rem-calc(12px);
 $font-size-xs: rem-calc(12px);
 $font-size-s: rem-calc(14px);
 $font-size-m: rem-calc(16px);
@@ -20,3 +21,4 @@ $body-font-size: $font-size-s;
 
 // Line height
 $body-line-height: 1.4;
+$heading-line-height: 1.4;

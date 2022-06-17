@@ -9,7 +9,6 @@
   }
   @include bp(laptop) {
     position: relative;
-    margin-top: calc(-#{$search-input-height}/ 2);
     left: 0;
     z-index: $z-index-search-computer;
   }
@@ -24,8 +23,8 @@
     position: relative;
     height: $search-input-height;
     width: calc(100% - #{$default-spacing});
-    border: $border-light;
-    background: $c-white;
+    border-bottom: 1px solid var(--header-text, #{$c-text-primary});
+    border-radius: $default-radius;
     @include flex-valign;
     @include bp(laptop) {
       width: $search-width;
@@ -36,11 +35,15 @@
     height: 100%;
     padding: 0 $px16;
     outline: none;
+    color: var(--header-text, #{$c-text-primary});
     @include bp(phone-only) {
       font-size: $font-size-m;
     }
     &:focus-visible {
       box-shadow: none;
+    }
+    &::placeholder {
+      color: var(--header-text, #{$c-text-primary});
     }
   }
   &__button {
@@ -48,6 +51,7 @@
     width: 40px;
     @include flex-calign;
     font-size: 20px;
+    color: var(--header-text, #{$c-text-primary});
   }
 
   &__remove {
@@ -57,13 +61,11 @@
     @include flex-calign;
     font-size: 15px;
     right: 40px;
-    background: $c-white;
+    background-color: transparent;
+    color: var(--header-text, #{$c-text-primary});
   }
 
   &__title {
-    text-transform: uppercase;
-    font-weight: $font-weight-bold;
-
     &--suggestion {
       margin: 0 0 $px8;
     }
@@ -71,10 +73,11 @@
 
   &__suggestions {
     position: fixed;
-    background-color: $c-white;
+    background-color: var(--header-bg, #{$c-white});
     width: 100%;
     padding: $px16 $px20;
     line-height: 1.6;
+    border-radius: $default-radius;
     @include bp(laptop) {
       margin: rem-calc(6px) 0 0;
       width: $search-width;
@@ -83,6 +86,10 @@
   &__no-suggestions {
     font-size: $font-size-xs;
     color: $c-text-secondary;
+  }
+
+  &__suggestion-link {
+    color: var(--header-text, #{$c-text-primary});
   }
 
   &__spinner.ca-spinner {
@@ -105,8 +112,9 @@
   &__results {
     $vh: calc(var(--vh, 1vh) * 100);
     position: relative;
-    background: $c-white;
-
+    background-color: var(--header-bg, #{$c-white});
+    color: var(--header-text, #{$c-text-primary});
+    border-radius: $default-radius;
     height: calc(
       100vh - #{$top-bar-height + $header-bar-height + $search-height}
     );
@@ -258,7 +266,7 @@
     &--tag {
       background: $c-light-gray;
       padding: rem-calc(6px) rem-calc(10px);
-
+      color: $c-text-primary;
       @include ellipsis;
       display: inline-block;
       width: auto;

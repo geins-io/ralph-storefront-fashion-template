@@ -47,7 +47,8 @@ export default {
   transition: all 150ms ease;
   &--active {
     color: $c-white;
-    background: $c-sale;
+    background: var(--accentColor, $c-accent-color);
+    border-color: var(--accentColor, $c-accent-color);
   }
 }
 </style>

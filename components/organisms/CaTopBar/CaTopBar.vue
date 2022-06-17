@@ -1,6 +1,6 @@
 <template>
   <div class="ca-top-bar" :class="{ 'ca-top-bar--undistracted': undistracted }">
-    <CaContainer class="ca-top-bar__container">
+    <CaContainer class="ca-top-bar__container" design="none">
       <CaTopBarNavigation
         v-show="!undistracted"
         class="only-computer ca-top-bar__nav"
@@ -63,7 +63,10 @@ export default {
     }
   }
   &__usp {
-    margin: 0 auto 0 0;
+    margin: 0 auto;
+    @include bp(laptop) {
+      margin: 0 auto 0 0;
+    }
   }
   &__lang-switcher {
     margin: 0 $px20 0 auto;

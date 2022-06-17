@@ -98,7 +98,7 @@ export default {
       font-size: $font-size-l;
     }
     &--current {
-      border: 1px solid $c-accent-color;
+      border: 1px solid var(--accentColor, $c-accent-color);
       background: $c-light-gray;
       position: relative;
       font-weight: $font-weight-bold;
@@ -109,7 +109,7 @@ export default {
         height: 0;
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
-        border-top: 8px solid $c-accent-color;
+        border-top: 8px solid var(--accentColor, $c-accent-color);
         position: absolute;
         bottom: 0;
         left: 50%;

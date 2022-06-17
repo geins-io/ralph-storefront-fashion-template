@@ -20,3 +20,10 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Tinos';
+  src: url('@/assets/fonts/Tinos-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}

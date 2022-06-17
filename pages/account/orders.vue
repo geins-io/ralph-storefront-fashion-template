@@ -99,7 +99,7 @@ export default {
   },
   meta: {
     pageType: 'Orders Page'
-  },
+  }
 };
 </script>
 
@@ -117,7 +117,7 @@ export default {
     margin: 48px auto;
     width: 40px;
     height: 40px;
-    border-color: $c-accent-color;
+    border-color: var(--accentColor, $c-accent-color);
   }
   &__empty {
     font-size: $font-size-l;

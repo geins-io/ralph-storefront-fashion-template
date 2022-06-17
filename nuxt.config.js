@@ -10,6 +10,10 @@ import {
 import fetch from 'cross-fetch';
 import DirectoryNamedWebpackPlugin from './static/directory-named-webpack-resolve';
 import channelSettings from './static/channel-settings';
+const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
+const currentChannelSettings = channelSettings.find(
+  i => i.channelId === fallbackChannelId
+);
 
 const routePaths = {
   category: '/c',
@@ -60,10 +64,11 @@ async function getImageSizes() {
 }
 export default async () => {
   const imageSizes = await getImageSizes();
+
   const defaultMetaQuery = await apolloClient.query({
     query: gql`
       query listPageInfo {
-        listPageInfo(alias: "frontpage") {
+        listPageInfo(alias: "frontpage", channelId: "${fallbackChannelId}") {
           meta {
             description
             title
@@ -82,7 +87,7 @@ export default async () => {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: '#353797', height: '5px' },
+    loading: { color: currentChannelSettings.accentColor, height: '5px' },
     /*
      ** Global CSS
      */
@@ -114,6 +119,7 @@ export default async () => {
      */
     plugins: [
       { src: '~/plugins/persistedState.js', mode: 'client' },
+      { src: '~/plugins/set-css-variables.js', mode: 'client' },
       {
         src: '~/node_modules/@ralph/ralph-ui/plugins/broadcastChannel.js',
         mode: 'client'
@@ -267,7 +273,7 @@ export default async () => {
         name: 'Ralph',
         short_name: 'Ralph',
         description: defaultMeta.description,
-        theme_color: '#363636'
+        theme_color: currentChannelSettings.accentColor
       },
       icon: {
         purpose: 'any'
@@ -364,6 +370,7 @@ export default async () => {
       /* ***************** */
       /* **** GLOBAL ***** */
       /* ***************** */
+      channelSettings,
       baseUrl: process.env.BASE_URL,
       imageServer: process.env.IMAGE_SERVER,
       authEndpoint: process.env.AUTH_ENDPOINT,
@@ -408,8 +415,8 @@ export default async () => {
       /* ****************** */
       /* **** WIDGETS ***** */
       /* ****************** */
-      bannerWidgetPrimaryColor: '#131313',
-      bannerWidgetSecondaryColor: '#FFFFFF',
+      bannerWidgetPrimaryColor: currentChannelSettings.primaryTextColor,
+      bannerWidgetSecondaryColor: currentChannelSettings.inverseTextColor,
       productListWidgetArrowIconName: 'chevron',
       productListRowSize: 4,
       widgetImageSizes: {
@@ -470,7 +477,7 @@ export default async () => {
       /* ******************** */
       cart: {
         hiddenSkuValues: ['-', 'One size'],
-        quantityChangerType: 'default'
+        quantityChangerType: 'default' // default, stacked or rounded
       },
       /* ******************** */
       /* ******* USER ******* */

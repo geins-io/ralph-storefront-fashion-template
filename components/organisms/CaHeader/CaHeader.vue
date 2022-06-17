@@ -5,7 +5,7 @@
     </CaGlobalMessage>
     <CaTopBar />
     <div class="ca-header__bar">
-      <CaContainer class="ca-header__container">
+      <CaContainer class="ca-header__container" design="none">
         <CaIconButton
           class="ca-header__nav-toggle only-mobile"
           icon-name="menu"
@@ -24,15 +24,41 @@
           @clicked="() => (searchOpened = !searchOpened)"
         />
         <NuxtLink to="/">
-          <CaLogo class="ca-header__logo" :alt="$t('LOGO_ALT_TEXT')" />
+          <CaLogo
+            class="ca-header__logo"
+            :theme="theme"
+            :alt="$t('LOGO_ALT_TEXT')"
+          />
         </NuxtLink>
         <CaHeaderNavigation
-          class="only-computer"
+          class="ca-header__main-nav only-computer"
           menu-location-id="main-desktop"
         />
         <CaSearch class="ca-header__search only-computer" />
+        <CaFavorites
+          class="ca-header__favorites only-computer"
+          :show-text="false"
+        />
+        <CaIconButton
+          v-if="!$store.getters['auth/authenticated']"
+          class="ca-header__user-button"
+          icon-name="user"
+          :aria-label="$t('ACCOUNT_TITLE')"
+          @clicked="
+            $store.commit('contentpanel/open', {
+              name: 'account',
+              frame: 'login'
+            })
+          "
+        />
+        <CaIconButton
+          v-else
+          class="ca-header__user-button"
+          icon-name="user"
+          :aria-label="$t('ACCOUNT_TITLE')"
+          :href="localePath('account-orders')"
+        />
 
-        <CaFavorites class="ca-header__favorites" />
         <CaMiniCart class="ca-header__cart" />
       </CaContainer>
     </div>
@@ -44,14 +70,20 @@
 export default {
   name: 'CaHeader',
   mixins: [],
-  props: {},
+  props: {
+    theme: {
+      type: String,
+      default: 'light'
+    }
+  },
   data: () => ({
     searchOpened: false
   }),
   computed: {
     modifiers() {
       return {
-        'ca-header--scrolled': !this.$store.getters.siteIsAtTop
+        'ca-header--scrolled': !this.$store.getters.siteIsAtTop,
+        'ca-header--dark': this.theme === 'dark'
       };
     },
     availableLocales() {
@@ -65,13 +97,17 @@ export default {
 </script>
 <style lang="scss">
 .ca-header {
+  --header-bg: #{$c-white};
+  --header-text: #{$c-text-primary};
+
   position: fixed;
   width: 100%;
   left: 0;
   top: 0;
   z-index: $z-index-header;
   &__bar {
-    background: $c-header-bg;
+    background: var(--header-bg, #{$c-header-bg});
+    color: var(--header-text, #{$c-text-primary});
     z-index: $z-index-header;
     position: relative;
     body[style='overflow: hidden;'] & {
@@ -89,19 +125,49 @@ export default {
   }
 
   &__nav-toggle {
-    margin-right: auto;
     @include flex-valign;
-    font-size: 28px;
+    font-size: rem-calc(24);
+    color: var(--header-text, #{$c-text-primary});
   }
 
   &__search-toggle {
     margin-right: auto;
-    font-size: 23px;
+    font-size: rem-calc(24);
+    color: var(--header-text, #{$c-text-primary});
     @include flex-valign;
   }
 
   &__logo {
     width: 120px;
+  }
+
+  &__main-nav {
+    margin: 0 0 0 rem-calc(60);
+  }
+
+  &__search {
+    margin: 0 auto;
+  }
+
+  &__user-button {
+    font-size: rem-calc(24);
+    line-height: 1;
+    margin: 0 rem-calc(20) 0 auto;
+    color: var(--header-text, #{$c-text-primary});
+    @include bp(laptop) {
+      margin: 0 rem-calc(40) 0 rem-calc(10);
+    }
+  }
+
+  &__favorites.ca-favorites {
+    @include bp(laptop) {
+      margin: 0 0 0 auto;
+    }
+  }
+
+  &__nav-and-search {
+    display: flex;
+    align-items: center;
   }
 
   &--scrolled & {
@@ -110,8 +176,13 @@ export default {
     }
   }
 
+  &--dark {
+    --header-bg: #{$c-darkest-gray};
+    --header-text: #{$c-text-inverse};
+  }
+
   .ca-notification-badge {
-    border: 1px solid $c-header-bg;
+    border: 1px solid var(--header-bg, #{$c-header-bg});
   }
 }
 </style>

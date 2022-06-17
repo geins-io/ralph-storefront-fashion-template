@@ -8,8 +8,7 @@ $button-secondary-border: 1px solid $c-button-secondary-border;
 $input-border: $border-dark;
 
 $default-radius: 0;
-$input-border-radius: 0;
-$textarea-border-radius: $default-radius;
+$input-border-radius: $default-radius;
 $focus-border: 3px $c-ok;
 
 // Box shadow
@@ -38,11 +37,10 @@ $search-input-height: rem-calc(40px);
 // Header
 $header-bar-height: rem-calc(60px);
 $header-bar-height-computer: rem-calc(80px);
-$header-navigation-height-computer: rem-calc(0);
+$header-navigation-height-computer: rem-calc(80);
 
 $header-height: $top-bar-height + $header-bar-height + $search-height;
-$header-height-computer: $top-bar-height-computer + $header-bar-height-computer +
-  $header-navigation-height-computer;
+$header-height-computer: $top-bar-height-computer + $header-bar-height-computer;
 
 // Checkout
 $checkout-width: rem-calc(700px);
