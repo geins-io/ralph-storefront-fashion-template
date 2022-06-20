@@ -18,6 +18,7 @@ export default {
 </script>
 <style lang="scss">
 .ca-price {
+  @include title;
   &__selling {
     font-size: 1.2em;
     font-weight: $font-weight-bold;

@@ -4,9 +4,7 @@
   height: $header-navigation-height-computer;
   background: var(--header-bg, #{$c-header-bg});
   color: var(--header-text, #{$c-text-primary});
-  body[style='overflow: hidden;'] & {
-    padding-right: var(--scrollbar-width);
-  }
+
   &__items {
     @include flex-calign;
     height: $header-navigation-height-computer;

@@ -21,11 +21,12 @@ html {
 }
 
 body {
-  font-size: $body-font-size;
-  font-family: $body-font;
-  font-weight: $font-weight-normal;
-  line-height: $body-line-height;
-  background-color: $c-main-bg;
+  font-size: var(--body-font-size, $body-font-size);
+  font-family: var(--body-font, $body-font);
+  color: var(--body-text-color, $c-text-primary);
+  font-weight: var(--body-font-weight, $font-weight-normal);
+  line-height: var(--body-line-height, $body-line-height);
+  background-color: var(--main-background, $c-main-bg);
 }
 
 body,
@@ -45,9 +46,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: $heading-font;
+  @include title;
 }
 
 b,

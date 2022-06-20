@@ -12,7 +12,8 @@
     "lint": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest",
     "create-component": "node ./scripts/create-component.cjs",
-    "stats": "set NODE_ENV=development && yarn nuxt build --modern=server --analyze"
+    "stats": "set NODE_ENV=development && yarn nuxt build --modern=server --analyze",
+    "link-ralph": "npm link @ralph/ralph-ui"
   },
   "lint-staged": {
     "*.{js,vue}": "npm run lint",

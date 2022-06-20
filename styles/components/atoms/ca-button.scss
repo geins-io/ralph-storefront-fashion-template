@@ -2,9 +2,8 @@ $default-radius: 0 !default;
 .ca-button {
   display: inline-block;
   font-size: $font-size-m;
-  font-weight: $font-weight-bold;
   text-transform: uppercase;
-  padding: 0.65em 2em;
+  padding: 0.9em 3.6em;
   white-space: nowrap;
   position: relative;
   transition: background 150ms ease;
@@ -56,7 +55,7 @@ $default-radius: 0 !default;
 
   // Sizes
   &--s {
-    padding: 0.6em 0.9em;
+    padding: 0.7em 2.5em;
     font-size: $font-size-s;
   }
   &--l {

@@ -1,12 +1,12 @@
 <template>
   <div class="ca-layout-default" :class="modifiers">
-    <CaHeader />
+    <CaHeader :theme="themes.header" />
     <main class="ca-layout-default__main">
       <Nuxt />
     </main>
     <div>
       <LazyHydrate when-visible>
-        <CaFooter />
+        <CaFooter :theme="themes.footer" />
       </LazyHydrate>
       <client-only>
         <transition name="fade">
@@ -39,6 +39,15 @@ export default {
     modifiers() {
       return {
         'ca-layout-default--loading': this.$store.state.loading.loading
+      };
+    },
+    themes() {
+      const themeSettings = this.$config.channelSettings.find(
+        i => i.channelId === this.$store.state.channelId
+      ).themeSettings;
+      return {
+        header: themeSettings['header-theme'],
+        footer: themeSettings['footer-theme']
       };
     }
   },

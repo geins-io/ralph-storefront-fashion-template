@@ -64,7 +64,7 @@ export default {
     margin: 48px auto;
     width: 40px;
     height: 40px;
-    border-color: var(--accentColor, $c-accent-color);
+    border-color: var(--accent-color, $c-accent-color);
   }
 }
 </style>

@@ -13,7 +13,7 @@ import channelSettings from './static/channel-settings';
 const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
 const currentChannelSettings = channelSettings.find(
   i => i.channelId === fallbackChannelId
-);
+).themeSettings;
 
 const routePaths = {
   category: '/c',
@@ -87,7 +87,7 @@ export default async () => {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: currentChannelSettings.accentColor, height: '5px' },
+    loading: { color: currentChannelSettings['accent-color'], height: '5px' },
     /*
      ** Global CSS
      */
@@ -176,16 +176,14 @@ export default async () => {
               iso: 'en-US',
               file: 'en-US.js',
               name: 'English',
-              flag: 'gb',
-              domain: channelSettings.find(i => i.locale === 'en').domain
+              flag: 'gb'
             },
             {
               code: 'sv',
               iso: 'sv-SE',
               file: 'sv-SE.js',
               name: 'Svenska',
-              flag: 'se',
-              domain: channelSettings.find(i => i.locale === 'sv').domain
+              flag: 'se'
             }
           ],
           langDir: 'languages/',
@@ -195,7 +193,6 @@ export default async () => {
             fallbackLocale: 'sv'
           },
           detectBrowserLanguage: false,
-          differentDomains: process.env.NODE_ENV === 'production',
           parsePages: false,
           pages: {
             'checkout/index': {
@@ -273,7 +270,7 @@ export default async () => {
         name: 'Ralph',
         short_name: 'Ralph',
         description: defaultMeta.description,
-        theme_color: currentChannelSettings.accentColor
+        theme_color: currentChannelSettings['accent-color']
       },
       icon: {
         purpose: 'any'
@@ -415,8 +412,8 @@ export default async () => {
       /* ****************** */
       /* **** WIDGETS ***** */
       /* ****************** */
-      bannerWidgetPrimaryColor: currentChannelSettings.primaryTextColor,
-      bannerWidgetSecondaryColor: currentChannelSettings.inverseTextColor,
+      bannerWidgetPrimaryColor: currentChannelSettings['primary-text-color'],
+      bannerWidgetSecondaryColor: currentChannelSettings['inverse-text-color'],
       productListWidgetArrowIconName: 'chevron',
       productListRowSize: 4,
       widgetImageSizes: {

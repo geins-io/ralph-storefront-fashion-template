@@ -9,7 +9,10 @@
           <p class="ca-footer__newsletter-text">
             {{ $t('NEWSLETTER_TEXT') }}
           </p>
-          <CaNewsletter class="ca-footer__newsletter-form" />
+          <CaNewsletter
+            class="ca-footer__newsletter-form"
+            button-color="light"
+          />
         </div>
       </CaContainer>
     </section>
@@ -118,7 +121,7 @@
             <CaSvgAsset
               class="ca-footer__carismar"
               folder="logos"
-              filename="carismar-black"
+              :filename="theme === 'dark' ? 'carismar-white' : 'carismar-black'"
               alt="Carismar logo"
             />
           </a>
@@ -136,7 +139,12 @@ export default {
     return 'CaFooter';
   },
   mixins: [],
-  props: {},
+  props: {
+    theme: {
+      type: String,
+      default: 'dark'
+    }
+  },
   data: () => ({}),
   computed: {
     uspLogoPlacement() {
@@ -151,26 +159,23 @@ export default {
 <style lang="scss">
 .ca-footer {
   margin-top: $default-spacing;
+  background: var(--footer-background, $c-darkest-gray);
+  color: var(--footer-color, $c-text-inverse);
   &__section {
-    color: $c-text-inverse;
     &--usps {
-      background: $c-darkest-gray;
       padding: $px8 0;
     }
     &--newsletter {
-      background: $c-darkest-gray;
       padding: $px20 0;
       @include bp(tablet) {
         padding: $px32 0;
       }
     }
     &--content {
-      background: $c-darkest-gray;
       padding: $px24 0 $px32;
     }
 
     &--bottom {
-      background: $c-darkest-gray;
     }
   }
 
@@ -291,7 +296,6 @@ export default {
       border-top: $border-light;
       text-align: center;
       font-size: $font-size-xs;
-      color: $c-text-secondary;
       @include bp(tablet) {
         border: none;
         text-align: right;

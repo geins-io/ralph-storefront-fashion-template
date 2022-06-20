@@ -48,10 +48,13 @@ export default {
 </script>
 <style lang="scss">
 .ca-brand-and-name {
+  font-size: rem-calc(11);
   &__brand {
-    font-weight: $font-weight-bold;
     text-transform: uppercase;
     margin-bottom: $px4;
+  }
+  &__name {
+    font-size: 1.5em;
   }
 }
 </style>

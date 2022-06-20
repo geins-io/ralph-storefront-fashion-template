@@ -217,7 +217,7 @@ export default {
       }
       &--active {
         &::before {
-          background: var(--accentColor, $c-accent-color);
+          background: var(--accent-color, $c-accent-color);
         }
       }
     }

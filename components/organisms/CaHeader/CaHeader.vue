@@ -97,7 +97,7 @@ export default {
 </script>
 <style lang="scss">
 .ca-header {
-  --header-bg: #{$c-white};
+  --header-bg: #{$c-lightest-gray};
   --header-text: #{$c-text-primary};
 
   position: fixed;
@@ -173,6 +173,9 @@ export default {
   &--scrolled & {
     &__nav-toggle {
       margin-right: $px20;
+    }
+    &__bar {
+      box-shadow: $box-shadow;
     }
   }
 

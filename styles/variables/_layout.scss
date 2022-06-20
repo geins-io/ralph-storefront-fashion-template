@@ -12,7 +12,7 @@ $input-border-radius: $default-radius;
 $focus-border: 3px $c-ok;
 
 // Box shadow
-$box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.4);
+$box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.2);
 
 // Z-index
 $z-index-cookie-consent: 100;
@@ -54,6 +54,8 @@ $text-and-icon-spacing: 0.4em;
 $list-column-count: 2;
 $list-column-count-tablet: 3;
 $list-column-count-laptop: 4;
+$list-column-count-desktop: 4;
+$list-column-count-desktop-big: 5;
 
 // Text widget max width
 $text-widget-max-width: rem-calc(650px);

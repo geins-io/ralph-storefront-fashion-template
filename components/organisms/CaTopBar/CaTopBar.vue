@@ -1,6 +1,6 @@
 <template>
   <div class="ca-top-bar" :class="{ 'ca-top-bar--undistracted': undistracted }">
-    <CaContainer class="ca-top-bar__container" design="none">
+    <CaContainer class="ca-top-bar__container" design="none" :class="modifiers">
       <CaTopBarNavigation
         v-show="!undistracted"
         class="only-computer ca-top-bar__nav"
@@ -22,8 +22,10 @@ export default {
   },
   data: () => ({}),
   computed: {
-    availableLocales() {
-      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale);
+    modifiers() {
+      return {
+        'ca-top-bar__container--scrolled': !this.$store.getters.siteIsAtTop
+      };
     }
   },
   watch: {},
@@ -33,11 +35,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .ca-top-bar {
-  background: $c-topbar-bg;
+  $block: &;
+  background: var(--top-bar-background, $c-topbar-bg);
+  color: var(--top-bar-color, $c-text-inverse);
   font-size: $font-size-xs;
   z-index: $z-index-header;
   position: relative;
-  color: $c-text-inverse;
   body[style='overflow: hidden;'] &:not(.ca-top-bar--undistracted) {
     padding-right: var(--scrollbar-width);
   }
@@ -45,13 +48,24 @@ export default {
     height: $top-bar-height;
     line-height: $top-bar-height;
     @include flex-halign;
+    transition: height 200ms ease;
     @include bp(laptop) {
       height: $top-bar-height-computer;
       line-height: $top-bar-height-computer;
     }
+    &--scrolled {
+      height: 5px;
+      @include bp(laptop) {
+        height: 6px;
+      }
+      #{$block}__usp {
+        font-size: 0;
+      }
+    }
   }
   &__nav {
     margin: 0 auto 0 0;
+    transition: font-size 200ms ease;
   }
   &__flag {
     margin-right: $px4;
@@ -63,6 +77,7 @@ export default {
     }
   }
   &__usp {
+    transition: font-size 200ms ease;
     margin: 0 auto;
     @include bp(laptop) {
       margin: 0 auto 0 0;

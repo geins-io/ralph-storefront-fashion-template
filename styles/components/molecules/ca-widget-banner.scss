@@ -1,0 +1,173 @@
+.ca-widget-banner {
+  $block: &;
+  font-size: 1rem;
+  &__content {
+    text-align: center;
+    max-width: rem-calc(500);
+  }
+  &__text1 {
+    @include title(2.8em);
+    & + #{$block}__button {
+      margin-top: 3em;
+    }
+    & + #{$block}__text2 {
+      margin-top: 2em;
+    }
+  }
+
+  &__text2 {
+    font-size: 0.85em;
+    text-align: left;
+    & + #{$block}__button {
+      margin-top: 2em;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+
+  &__button {
+    line-height: 1.4;
+  }
+
+  &__video {
+    position: absolute;
+    &--playing {
+      position: static;
+    }
+  }
+
+  &__image {
+    transform: scale(1);
+    transition: transform 300ms ease;
+  }
+
+  &__image-wrap {
+    overflow: hidden;
+  }
+
+  &--link {
+    #{$block}__inner {
+      @include bp(laptop) {
+        &:hover {
+          #{$block}__image {
+            transform: scale(1.015);
+          }
+        }
+      }
+    }
+  }
+
+  &--full {
+    #{$block}__content {
+      @include calign;
+      width: 92%;
+      padding: 0 2%;
+      @include bp(tablet) {
+        width: 50%;
+      }
+    }
+    @include bp(tablet) {
+      font-size: 1.7vw;
+    }
+
+    @include bp(desktop) {
+      font-size: 1.2rem;
+    }
+  }
+
+  &--left {
+    #{$block}__content {
+      @include bp(tablet) {
+        left: 25%;
+        padding-left: 5%;
+      }
+    }
+  }
+
+  &--right {
+    #{$block}__content {
+      @include bp(tablet) {
+        left: 75%;
+        padding-right: 5%;
+      }
+    }
+  }
+
+  &--on-image {
+    #{$block}__content {
+      @include calign;
+      width: 92%;
+      padding: 0 2%;
+
+      @include bp(tablet) {
+        width: 80%;
+      }
+    }
+    &#{$block}--half {
+      @include bp(tablet) {
+        font-size: 1.6vw;
+      }
+      @include bp(desktop) {
+        font-size: 1.2rem;
+      }
+    }
+    &#{$block}--third {
+      @include bp(tablet) {
+        font-size: 1.5vw;
+      }
+      @include bp(desktop) {
+        font-size: 1.1rem;
+      }
+    }
+    &#{$block}--quarter {
+      @include bp(tablet) {
+        font-size: 1.4vw;
+      }
+      @include bp(desktop) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &--below-image {
+    #{$block}__content {
+      margin: 1.33em 0;
+      text-align: left;
+    }
+    &#{$block}--half {
+      @include bp(tablet) {
+        font-size: 0.9rem;
+      }
+
+      @include bp(laptop) {
+        font-size: 1.2rem;
+      }
+    }
+    &#{$block}--third {
+      @include bp(tablet) {
+        font-size: 0.8rem;
+      }
+
+      @include bp(laptop) {
+        font-size: 1rem;
+      }
+    }
+    &#{$block}--quarter {
+      @include bp(tablet) {
+        font-size: 0.75rem;
+      }
+
+      @include bp(laptop) {
+        font-size: 0.85rem;
+      }
+
+      @include bp(desktop) {
+        font-size: 1rem;
+      }
+    }
+  }
+}

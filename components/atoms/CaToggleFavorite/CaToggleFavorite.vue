@@ -36,19 +36,16 @@ export default {
 </script>
 <style lang="scss">
 .ca-toggle-favorite {
-  @include iconCircle;
   width: rem-calc(40px);
   height: rem-calc(40px);
   position: absolute;
   right: 0;
   top: 0;
-  font-size: rem-calc(18px);
+  font-size: rem-calc(22px);
   color: $c-text-secondary;
   transition: all 150ms ease;
   &--active {
-    color: $c-white;
-    background: var(--accentColor, $c-accent-color);
-    border-color: var(--accentColor, $c-accent-color);
+    color: var(--accent-color, $c-accent-color);
   }
 }
 </style>

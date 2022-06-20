@@ -94,7 +94,7 @@ export default {
   &__spinner.ca-spinner {
     width: 60px;
     height: 60px;
-    border-color: var(--accentColor, $c-accent-color);
+    border-color: var(--accent-color, $c-accent-color);
   }
 }
 </style>
