@@ -10,6 +10,9 @@
         <CaImage
           v-if="product.images !== null && product.images.length > 0"
           class="ca-product-card__image"
+          :class="{
+            'ca-product-card__image--has-second': product.images.length > 1
+          }"
           type="product"
           :size-array="
             $config.imageSizes.product.filter(
@@ -66,22 +69,30 @@
 
     <div class="ca-product-card__info">
       <NuxtLink v-if="productPopulated" :to="product.canonicalUrl">
-        <CaBrandAndName
-          :brand="product.brand.name"
-          :name="product.name"
-          name-tag="h2"
-        />
+        <div class="ca-product-card__info-top">
+          <CaBrandAndName
+            :brand="product.brand.name"
+            :name="product.name"
+            name-tag="h2"
+          />
 
-        <CaPrice class="ca-product-card__price" :price="product.unitPrice" />
+          <CaPrice class="ca-product-card__price" :price="product.unitPrice" />
+        </div>
+
         <CaStockDisplay
           class="ca-product-card__stock-display"
           :stock="product.totalStock"
         />
       </NuxtLink>
       <div v-else>
-        <CaSkeleton width="30%" />
-        <CaSkeleton width="70%" />
-        <CaSkeleton width="50%" />
+        <div class="ca-product-card__info-top">
+          <div>
+            <CaSkeleton width="30%" />
+            <CaSkeleton width="70%" />
+          </div>
+
+          <CaSkeleton class="ca-product-card__price" width="20%" />
+        </div>
       </div>
     </div>
   </component>
@@ -113,9 +124,12 @@ export default {
   &__image {
     transition: opacity 250ms ease;
     opacity: 1;
-    &:hover {
-      opacity: 0;
+    &--has-second {
+      &:hover {
+        opacity: 0;
+      }
     }
+
     &--second-image {
       position: absolute;
       top: 0;
@@ -139,6 +153,11 @@ export default {
   &__info {
     padding-top: $px12;
     display: block;
+  }
+  &__info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
   &__price {
     margin-top: $px4;
