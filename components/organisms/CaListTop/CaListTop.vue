@@ -1,39 +1,29 @@
 <template>
   <div class="ca-list-top">
-    <div v-if="type === 'search' || type === 'all'" class="ca-list-top__text">
-      <h1 class="ca-list-top__title">{{ listInfo.name }}</h1>
-    </div>
-    <div v-else class="ca-list-top__text">
-      <h1 v-if="listInfo && !listInfo.hideTitle" class="ca-list-top__title">
-        {{ listInfo.name }}
-      </h1>
-      <CaSkeleton
-        v-else-if="!listInfo"
-        class="ca-list-top__title ca-list-top__title--skeleton"
-        width="30%"
-      />
-      <CaReadMore
-        v-if="
-          listInfo && !!listInfo.primaryDescription && !listInfo.hideDescription
-        "
-        class="ca-list-top__description"
-      >
-        <CaHtml :content="listInfo.primaryDescription" />
-      </CaReadMore>
-      <div
-        v-else-if="!listInfo"
-        class="ca-list-top__description ca-list-top__description--skeleton"
-      >
-        <CaSkeleton width="70%" />
-        <CaSkeleton />
-        <CaSkeleton width="60%" />
-      </div>
-    </div>
-    <CaCategoryDisplay
-      v-if="listInfo && listInfo.subCategories"
-      class="ca-list-top__subcategories"
-      :categories="listInfo.subCategories"
+    <CaWidgetArea
+      class="ca-list-top__widget-area"
+      family="Productlist"
+      area-name="Product list hero"
+      :filters="widgetAreaFilters"
     />
+    <CaContainer class="ca-list-top__container">
+      <CaBreadcrumbs v-if="listInfo" :current="breadcrumbsCurrent" />
+      <div class="ca-list-top__text">
+        <h1 v-if="listInfo && !listInfo.hideTitle" class="ca-list-top__title">
+          {{ listInfo.name }}
+        </h1>
+        <CaReadMore
+          v-if="
+            listInfo &&
+              !!listInfo.primaryDescription &&
+              !listInfo.hideDescription
+          "
+          class="ca-list-top__description"
+        >
+          <CaHtml :content="listInfo.primaryDescription" />
+        </CaReadMore>
+      </div>
+    </CaContainer>
   </div>
 </template>
 <script>
@@ -50,6 +40,14 @@ export default {
     listInfo: {
       type: Object,
       default: () => {}
+    },
+    breadcrumbsCurrent: {
+      type: Object,
+      required: true
+    },
+    widgetAreaFilters: {
+      type: Array,
+      required: true
     }
   },
   data: () => ({}),
@@ -61,30 +59,43 @@ export default {
 </script>
 <style lang="scss" scoped>
 .ca-list-top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 0 0 $px32;
-  @include bp(laptop) {
-    text-align: left;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+  --title-text-color: #{$c-text-inverse};
+  --body-text-color: #{$c-text-inverse};
+  --primary-text-color: #{$c-text-inverse};
+  --secondary-text-color: #{$c-text-inverse};
+
+  min-height: 80vh;
+  background: $c-darkest-gray;
+  position: relative;
+
+  @include bp(tablet) {
+    min-height: 50vh;
+  }
+
+  &__widget-area {
+  }
+
+  &__container {
+    @include halign;
+    bottom: rem-calc(80);
+    @include bp(tablet) {
+      bottom: auto;
+      @include calign;
+    }
   }
   &__text {
     width: 100%;
-    @include bp(laptop) {
-      width: 50%;
+    @include bp(tablet) {
+      width: 60%;
       max-width: 700px;
     }
   }
   &__title {
-    font-size: $font-size-l;
+    font-size: rem-calc(36);
     font-weight: $font-weight-bold;
     margin: 0 0 $px4;
     @include bp(tablet) {
-      font-size: $font-size-xxl;
+      font-size: rem-calc(82);
       margin: 0 0 $px8;
     }
     &--skeleton {

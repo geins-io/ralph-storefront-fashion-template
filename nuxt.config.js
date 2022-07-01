@@ -382,7 +382,8 @@ export default async () => {
       breakpoints: {
         tablet: 768,
         laptop: 1024,
-        desktop: 1200
+        desktop: 1300,
+        desktopBig: 1500
       },
       siteTopThreshold: 10,
       socialMediaLinks: [
@@ -415,7 +416,7 @@ export default async () => {
       bannerWidgetPrimaryColor: currentChannelSettings['primary-text-color'],
       bannerWidgetSecondaryColor: currentChannelSettings['inverse-text-color'],
       productListWidgetArrowIconName: 'chevron',
-      productListRowSize: 4,
+      productListRowSize: 5,
       widgetImageSizes: {
         full: '(min-width: 1360px) 1320px, 96vw',
         half: '(min-width: 1360px) 650px, (min-width: 768px) 47vw, 96vw',
@@ -437,12 +438,13 @@ export default async () => {
         phone: 2,
         tablet: 3,
         laptop: 4,
-        desktop: 4
+        desktop: 4,
+        desktopBig: 5
       },
       /* ****************** */
       /* **** PRODUCT ***** */
       /* ****************** */
-      productStockFewLeftLimit: 6,
+      productStockFewLeftLimit: 5,
       productSchemaOptions: {
         productSkuLabelIsSize: false,
         productDescriptionField: 'text1',
@@ -455,7 +457,7 @@ export default async () => {
       /* ****************** */
       /* ***** IMAGES ***** */
       /* ****************** */
-      productImageRatio: 1 / 1,
+      productImageRatio: 400 / 325,
       imageSizes,
       /* ******************** */
       /* ***** CHECKOUT ***** */

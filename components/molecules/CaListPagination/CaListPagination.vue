@@ -14,6 +14,7 @@
       class="ca-list-pagination__button ca-list-pagination__button--next"
       :disabled="allProductsLoaded"
       :loading="loading"
+      color="ghost"
       @clicked="$emit('loadmore')"
     >
       {{ $t('LOAD_MORE') }}
@@ -22,6 +23,7 @@
       v-else
       class="ca-list-pagination__button ca-list-pagination__button--prev"
       :loading="loading"
+      color="ghost"
       @clicked="$emit('loadprev')"
     >
       {{ $t('LOAD_PREVIOUS') }}

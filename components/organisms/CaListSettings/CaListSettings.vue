@@ -1,7 +1,7 @@
 <template>
   <div class="ca-list-settings">
     <CaClickable
-      class="ca-list-settings__filter-toggle only-mobile"
+      class="ca-list-settings__filter-toggle"
       @clicked="
         $store.commit('contentpanel/open', {
           name: 'filters'
@@ -10,34 +10,24 @@
     >
       <CaIconAndText
         class="ca-list-settings__icon-text"
-        icon-name="chevron-right"
+        icon-name="filter"
         icon-position="right"
         base-element="div"
       >
-        <div class="ca-list-settings__filter-button-wrap">
-          {{ $t('FILTERS') }}
-          <CaNotificationBadge
-            :number="activeFilters"
-            :positioned="false"
-            class="ca-list-settings__active-filters"
-          />
-        </div>
+        {{ $t('FILTERS') }}
       </CaIconAndText>
     </CaClickable>
     <div class="ca-list-settings__sort">
-      <span class="ca-list-settings__title only-computer">
-        {{ $t('SORT_TITLE') }}:
+      <span class="ca-list-settings__title">
+        {{ $t('SORT_TITLE') }}
       </span>
       <CaInputSelect
         v-if="sort"
         v-model="sort"
         class="ca-list-settings__sort-select"
         :options="sortOptions"
+        icon-name="triangle"
       />
-    </div>
-    <div class="ca-list-settings__active-products">
-      <strong>{{ activeProducts }}</strong>
-      {{ $tc('PRODUCT_LOWERCASE', activeProducts) }}
     </div>
   </div>
 </template>
@@ -105,19 +95,20 @@ export default {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin: 0 -#{$default-spacing/2} $default-spacing;
+  margin: 0 0 $default-spacing;
   margin-top: $px20;
+  border-bottom: $border-light;
   @include bp(laptop) {
-    margin: 0 0 $default-spacing;
+    margin: $px40 0 $px10;
   }
   &__filter-toggle {
-    width: 50%;
-    height: 46px;
-    border: $border-light;
-    background: $c-lightest-gray;
-    padding: 0 $px16;
     display: flex;
     align-items: center;
+    font-size: $font-size-m;
+    .ca-icon {
+      color: $c-text-primary;
+      font-size: rem-calc(20);
+    }
   }
   &__icon-text {
     width: 100%;
@@ -130,34 +121,29 @@ export default {
     margin: 0 0 0 rem-calc(6px);
   }
   &__title {
-    text-transform: uppercase;
-    font-weight: $font-weight-bold;
-    margin-right: $px16;
   }
   &__sort {
     display: flex;
     align-items: center;
-    width: 50%;
-    @include bp(laptop) {
-      order: 2;
-      width: auto;
-    }
+    white-space: nowrap;
   }
 
   &__sort-select.ca-input-select {
     width: 100%;
+    min-width: rem-calc(130);
+    .ca-input-select__selected,
+    .ca-input-select__select {
+      border: none;
+      color: $c-text-primary;
+      padding: 0 rem-calc(17) 0 rem-calc(5);
+    }
     .ca-input-select__select-wrap {
-      height: 46px;
+      border: none;
     }
-    @include bp(laptop) {
-      width: 165px;
-    }
-  }
-  &__active-products {
-    margin-left: $default-spacing/2;
-    margin-top: $px12;
-    @include bp(laptop) {
-      order: 1;
+    .ca-input-select__arrow {
+      font-size: rem-calc(10);
+      right: rem-calc(5);
+      padding-bottom: rem-calc(3);
     }
   }
 }

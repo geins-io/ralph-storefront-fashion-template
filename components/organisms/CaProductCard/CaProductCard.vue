@@ -78,7 +78,9 @@
 
           <CaPrice class="ca-product-card__price" :price="product.unitPrice" />
         </div>
-
+        <div v-if="hasColorVariants" class="ca-product-card__colors">
+          Fler färger
+        </div>
         <CaStockDisplay
           class="ca-product-card__stock-display"
           :stock="product.totalStock"
@@ -107,7 +109,13 @@ export default {
   mixins: [MixProductCard],
   props: {},
   data: () => ({}),
-  computed: {},
+  computed: {
+    hasColorVariants() {
+      return !!this.product?.variantDimensions?.find(
+        i => i.dimension === 'Color'
+      );
+    }
+  },
   watch: {},
   created() {},
   methods: {}
@@ -164,13 +172,12 @@ export default {
   }
   &__campaigns {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    top: rem-calc(10);
+    left: rem-calc(10);
     z-index: 2;
-    border: 1px solid $c-text-secondary;
-    @include title($px12);
-    ::v-deep .ca-campaigns__item {
-      margin: $px8 0 0;
+    @include bp(tablet) {
+      top: rem-calc(20);
+      left: rem-calc(20);
     }
   }
   &__stock-display {
@@ -179,11 +186,18 @@ export default {
   }
 
   ::v-deep .ca-toggle-favorite {
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
     top: auto;
-    right: $px12;
-    bottom: $px12;
+    right: rem-calc(8);
+    bottom: rem-calc(8);
+    @include bp(tablet) {
+      width: 36px;
+      height: 36px;
+      top: auto;
+      right: $px12;
+      bottom: $px12;
+    }
   }
 }
 </style>
