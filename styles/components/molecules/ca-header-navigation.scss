@@ -28,12 +28,15 @@
   }
 
   &__link {
-    font-size: $font-size-m;
+    font-size: $font-size-s;
     padding: 0 $px10;
     height: $header-navigation-height-computer;
     display: flex;
     align-items: center;
     line-height: 1;
+    @include bp(desktop) {
+      font-size: $font-size-m;
+    }
   }
 
   &__children {

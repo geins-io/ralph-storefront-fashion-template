@@ -66,23 +66,26 @@ export default {
 <style lang="scss">
 .ca-product-accordion {
   border-top: $border-light;
+  margin: $px32 0 $default-spacing;
+
   @include bp(laptop) {
-    border-left: $border-light;
-    border-right: $border-light;
+    margin: rem-calc(60) 0 0;
     .ca-accordion-item__toggle {
-      font-size: $font-size-l;
+      font-size: $font-size-xxl;
+      padding: $px16 0;
     }
   }
   @include bp(tablet-down) {
     .ca-accordion-item__toggle {
-      padding: 1rem ($default-spacing / 2);
+      padding: 1rem 0;
+      font-size: $font-size-xl;
     }
   }
 
   &__item-content {
-    padding: $default-spacing / 2;
+    padding: $default-spacing / 2 0;
     @include bp(laptop) {
-      padding: $px16;
+      padding: $px16 0;
     }
   }
 }

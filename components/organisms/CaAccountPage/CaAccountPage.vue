@@ -77,6 +77,7 @@ export default {
 </script>
 <style lang="scss">
 .ca-account-page {
+  margin: $px32 0;
   &__body {
     @include bp(laptop) {
       display: flex;

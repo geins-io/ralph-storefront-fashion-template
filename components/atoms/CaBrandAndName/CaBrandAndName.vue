@@ -49,12 +49,29 @@ export default {
 <style lang="scss">
 .ca-brand-and-name {
   font-size: rem-calc(11);
+  position: relative;
+  margin: 0 3% 0 0;
   &__brand {
     text-transform: uppercase;
-    margin-bottom: $px4;
+    position: absolute;
+    top: -1.7em;
   }
   &__name {
     font-size: 1.5em;
+  }
+  .ca-product-page__main & {
+    &__brand {
+      font-size: rem-calc(12);
+      @include bp(tablet) {
+        font-size: rem-calc(14);
+      }
+    }
+    &__name {
+      font-size: rem-calc(24);
+      @include bp(tablet) {
+        font-size: rem-calc(32);
+      }
+    }
   }
 }
 </style>

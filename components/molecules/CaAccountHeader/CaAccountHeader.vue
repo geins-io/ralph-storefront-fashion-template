@@ -65,9 +65,9 @@ export default {
   align-items: center;
   &__title {
     font-weight: $font-weight-bold;
-    font-size: $font-size-l;
+    font-size: $font-size-xl;
     @include bp(tablet) {
-      font-size: $font-size-xl;
+      font-size: $font-size-xxl;
     }
   }
   &__log-out {

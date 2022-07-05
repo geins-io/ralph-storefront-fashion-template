@@ -15,7 +15,7 @@ export default [
     locale: 'sv',
     domain: process.env.DOMAIN_SV,
     themeSettings: {
-      'header-theme': 'light',
+      'header-theme': 'dark',
       'footer-theme': 'dark',
       'accent-color': baseColors.primaryAccent,
       'secondary-accent-color': baseColors.secondaryAccent,

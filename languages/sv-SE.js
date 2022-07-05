@@ -228,10 +228,9 @@ export default {
   PROMO_CODE_ERROR_INVALID: 'Koden är ej giltig',
   PROMO_CODE_ACTIVE: 'Koden {0} är aktiverad. {1}',
   PROMO_CODE_REMOVE: 'Ta bort',
-  NEWSLETTER_TITLE: 'Nyhetsbrev',
-  NEWSLETTER_TEXT:
-    'Registrera dig för att få vårt nyhetsbrev och hålla dig uppdaterad om senaste nytt.',
-  NEWSLETTER_PLACEHOLDER: 'din@email.com',
+  NEWSLETTER_TITLE: 'Missa aldrig erbjudanden',
+  NEWSLETTER_TEXT: 'Skriv upp dig på listan och få 30% på nästa köp',
+  NEWSLETTER_PLACEHOLDER: 'Din email här',
   NEWSLETTER_LABEL: '',
   NEWSLETTER_BUTTON: 'Registrera',
   NEWSLETTER_FEEDBACK_SUCCESS: 'Tack! Du är nu registrerad',

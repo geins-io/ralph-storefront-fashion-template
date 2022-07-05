@@ -19,48 +19,20 @@
     <section class="ca-footer__section ca-footer__section--content">
       <CaContainer class="ca-footer__content-holder">
         <section class="ca-footer__column">
-          <h2 class="ca-footer__title">Kundtjänst</h2>
-          <div class="ca-footer__contact">
-            <span class="ca-footer__contact-title">Mail:</span>
-            <a
-              class="ca-footer__contact-info"
-              :href="'mailto:' + $config.customerServiceEmail"
-            >
-              {{ $config.customerServiceEmail }}
-            </a>
-          </div>
-          <div class="ca-footer__contact">
-            <span class="ca-footer__contact-title">Telefon:</span>
-            <a
-              class="ca-footer__contact-info"
-              :href="'tel:' + $config.customerServicePhone"
-            >
-              {{ $config.customerServicePhone }}
-            </a>
-          </div>
-        </section>
-        <section class="ca-footer__column">
           <CaFooterNavigation menu-location-id="footer-first" />
         </section>
         <section class="ca-footer__column">
           <CaFooterNavigation menu-location-id="footer-second" />
         </section>
         <section class="ca-footer__column">
-          <h2 class="ca-footer__title">Följ oss</h2>
-          <ul class="ca-footer__social">
-            <li
-              v-for="(link, index) in $config.socialMediaLinks"
-              :key="index"
-              class="ca-footer__social-item"
-            >
-              <CaIconButton
-                class="ca-footer__social-link"
-                :href="link.link"
-                :icon-name="link.icon"
-                :aria-label="link.title"
-              />
-            </li>
-          </ul>
+          <CaFooterNavigation menu-location-id="footer-third" />
+        </section>
+        <section class="ca-footer__column ca-footer__column--logo">
+          <CaLogo
+            class="ca-footer__main-logo"
+            theme="dark"
+            :alt="$t('LOGO_ALT_TEXT')"
+          />
         </section>
       </CaContainer>
     </section>
@@ -158,17 +130,19 @@ export default {
 </script>
 <style lang="scss">
 .ca-footer {
+  --title-text-color: $c-text-inverse;
   margin-top: $default-spacing;
   background: var(--footer-background, $c-darkest-gray);
   color: var(--footer-color, $c-text-inverse);
+
   &__section {
     &--usps {
       padding: $px8 0;
     }
     &--newsletter {
-      padding: $px20 0;
+      padding: $px40 0;
       @include bp(tablet) {
-        padding: $px32 0;
+        padding: rem-calc(70) 0;
       }
     }
     &--content {
@@ -202,23 +176,22 @@ export default {
   }
 
   &__newsletter {
-    padding: $px16 $px12;
-    text-align: center;
-    max-width: 500px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: rem-calc(460);
     @include bp(tablet) {
-      padding: $px20 $px48 $px24;
     }
   }
 
   &__newsletter-title {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-xl;
-    margin: 0 0 $px8;
+    font-family: $body-font;
+    text-transform: uppercase;
+    font-size: $font-size-m;
+    margin: 0 0 $px20;
   }
 
   &__newsletter-text {
-    margin: 0 0 $px16;
+    @include title(rem-calc(46));
+    margin: 0 0 $px40;
   }
 
   &__content-holder {
@@ -231,7 +204,10 @@ export default {
     margin-bottom: $px20;
     line-height: 1.6;
     @include bp(tablet) {
-      width: 25%;
+      width: 15%;
+    }
+    &--logo {
+      width: 55%;
     }
   }
 
@@ -272,6 +248,11 @@ export default {
     &:not(:last-child) {
       margin-right: $px20;
     }
+  }
+
+  &__main-logo {
+    width: rem-calc(250);
+    margin-left: auto;
   }
 
   &__bottom {

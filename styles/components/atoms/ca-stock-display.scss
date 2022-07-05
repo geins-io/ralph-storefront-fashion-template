@@ -5,7 +5,7 @@ $c-few-left: $c-oversellable !default;
 $c-static-stock: $c-in-stock !default;
 .ca-stock-display {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   column-gap: 0.6em;
   &::before {
     content: '';
@@ -17,7 +17,8 @@ $c-static-stock: $c-in-stock !default;
 
   &__delivery-time {
     font-weight: $font-weight-normal;
-    font-size: 0.9em;
+    font-size: 0.8em;
+    color: $c-text-primary;
   }
   &--in-stock {
     &::before {

@@ -18,8 +18,9 @@ $px80: rem-calc(80px);
 
 $default-spacing: $px20;
 $default-site-width-spacing: $px20;
-$default-site-width-spacing-tablet: $px40;
-$default-site-width-spacing-laptop: rem-calc(80px);
+$default-site-width-spacing-tablet: $px32;
+$default-site-width-spacing-laptop: $px40;
+$default-site-width-spacing-desktop: rem-calc(80);
 
 // List spacing
 $list-column-spacing: $px10;

@@ -1,4 +1,7 @@
 .ca-campaigns {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: $px10;
   &__item {
     @include title($px10);
     padding: rem-calc(4) $px16;

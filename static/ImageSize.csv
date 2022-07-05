@@ -27,7 +27,7 @@ pagewidget,PageWidget.900w,2020-03-23T10:46:53.362Z,900w,Edm.String,0,Edm.Int32,
 pagewidget,PageWidget.936w,2020-03-23T10:46:52.988Z,936w,Edm.String,0,Edm.Int32,26,Edm.Int32,false,Edm.Boolean,80,Edm.Int32,false,Edm.Boolean,936,Edm.Int32
 pagewidget,PageWidget.950w,2020-03-23T10:46:52.598Z,950w,Edm.String,0,Edm.Int32,26,Edm.Int32,false,Edm.Boolean,80,Edm.Int32,false,Edm.Boolean,950,Edm.Int32
 product,Product.90f111,2020-03-23T10:47:02.464Z,90f111,Edm.String,111,Edm.Int32,3,Edm.Int32,false,Edm.Boolean,80,Edm.Int32,false,Edm.Boolean,90,Edm.Int32
-product,Product.100f123,2020-03-23T10:47:00.560Z,100f123,Edm.String,123,Edm.Int32,3,Edm.Int32,false,Edm.Boolean,80,Edm.Int32,false,Edm.Boolean,170,Edm.Int32
+product,Product.100f123,2020-03-23T10:47:00.560Z,100f123,Edm.String,123,Edm.Int32,3,Edm.Int32,false,Edm.Boolean,80,Edm.Int32,false,Edm.Boolean,100,Edm.Int32
 product,Product.200f247,2020-03-23T10:47:00.076Z,200f247,Edm.String,247,Edm.Int32,3,Edm.Int32,false,Edm.Boolean,80,Edm.Int32,false,Edm.Boolean,200,Edm.Int32
 product,Product.300f371,2020-03-23T10:46:58.972Z,300f371,Edm.String,371,Edm.Int32,3,Edm.Int32,false,Edm.Boolean,80,Edm.Int32,false,Edm.Boolean,300,Edm.Int32
 product,Product.325f400,2020-03-23T10:46:58.972Z,325f400,Edm.String,400,Edm.Int32,3,Edm.Int32,false,Edm.Boolean,80,Edm.Int32,false,Edm.Boolean,325,Edm.Int32

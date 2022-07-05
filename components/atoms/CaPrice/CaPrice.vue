@@ -19,14 +19,17 @@ export default {
 <style lang="scss">
 .ca-price {
   @include title;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   &__selling {
-    font-size: 1.2em;
-    font-weight: $font-weight-bold;
+    white-space: nowrap;
   }
   &__regular {
     text-decoration: line-through;
     color: $c-text-secondary;
-    margin-left: $px4;
+    margin-top: $px4;
+    font-size: 0.9em;
   }
   &__ex-vat {
     margin-left: $px4;

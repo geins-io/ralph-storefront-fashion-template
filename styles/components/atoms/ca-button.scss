@@ -59,10 +59,10 @@ $default-radius: 0 !default;
     font-size: $font-size-s;
   }
   &--l {
-    font-size: $font-size-l;
-    padding: 0.65em 4.2em;
+    font-size: $font-size-m;
+    padding: 1em 4.2em;
     @include bp(tablet) {
-      padding: 0.65em 5em;
+      padding: 1.3em 5em;
     }
   }
   // Types

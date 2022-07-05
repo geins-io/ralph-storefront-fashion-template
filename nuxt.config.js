@@ -11,7 +11,7 @@ import fetch from 'cross-fetch';
 import DirectoryNamedWebpackPlugin from './static/directory-named-webpack-resolve';
 import channelSettings from './static/channel-settings';
 const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
-const currentChannelSettings = channelSettings.find(
+const currentThemeSettings = channelSettings.find(
   i => i.channelId === fallbackChannelId
 ).themeSettings;
 
@@ -87,7 +87,7 @@ export default async () => {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: currentChannelSettings['accent-color'], height: '5px' },
+    loading: { color: currentThemeSettings['accent-color'], height: '5px' },
     /*
      ** Global CSS
      */
@@ -270,7 +270,7 @@ export default async () => {
         name: 'Ralph',
         short_name: 'Ralph',
         description: defaultMeta.description,
-        theme_color: currentChannelSettings['accent-color']
+        theme_color: currentThemeSettings['accent-color']
       },
       icon: {
         purpose: 'any'
@@ -368,6 +368,7 @@ export default async () => {
       /* **** GLOBAL ***** */
       /* ***************** */
       channelSettings,
+      currentThemeSettings,
       baseUrl: process.env.BASE_URL,
       imageServer: process.env.IMAGE_SERVER,
       authEndpoint: process.env.AUTH_ENDPOINT,
@@ -413,8 +414,8 @@ export default async () => {
       /* ****************** */
       /* **** WIDGETS ***** */
       /* ****************** */
-      bannerWidgetPrimaryColor: currentChannelSettings['primary-text-color'],
-      bannerWidgetSecondaryColor: currentChannelSettings['inverse-text-color'],
+      bannerWidgetPrimaryColor: currentThemeSettings['primary-text-color'],
+      bannerWidgetSecondaryColor: currentThemeSettings['inverse-text-color'],
       productListWidgetArrowIconName: 'chevron',
       productListRowSize: 5,
       widgetImageSizes: {

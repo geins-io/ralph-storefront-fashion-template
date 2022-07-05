@@ -1,0 +1,40 @@
+.ca-widget-text {
+  $block: &;
+  text-align: center;
+  padding: $px12 0;
+  &__title {
+    max-width: $text-widget-max-width;
+    margin: 0 auto;
+    @include title($font-size-xxxl);
+    & + #{$block}__subtitle {
+      margin: $px10 auto 0;
+    }
+    & + #{$block}__body {
+      margin: $px16 auto 0;
+    }
+  }
+  &__subtitle {
+    max-width: $text-widget-max-width;
+    margin: 0 auto;
+    @include title($font-size-l);
+    & + #{$block}__body {
+      margin: $px16 auto 0;
+    }
+  }
+  &__body {
+    max-width: $text-widget-max-width;
+    margin: 0 auto;
+  }
+  &--left {
+    text-align: left;
+  }
+  &--center {
+    text-align: center;
+  }
+  &--right {
+    text-align: right;
+  }
+  &--justify {
+    text-align: justify;
+  }
+}

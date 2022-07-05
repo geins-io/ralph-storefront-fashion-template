@@ -17,8 +17,7 @@
           "
         />
         <CaIconButton
-          v-if="!$store.getters.siteIsAtTop && !$store.getters.viewportComputer"
-          class="ca-header__search-toggle"
+          class="ca-header__search-toggle only-mobile"
           icon-name="search"
           aria-label="Show search"
           @clicked="() => (searchOpened = !searchOpened)"
@@ -63,7 +62,11 @@
       </CaContainer>
     </div>
 
-    <CaSearch class="only-mobile" :opened="searchOpened" />
+    <CaSearch
+      class="only-mobile"
+      :opened="searchOpened"
+      :visible-when-site-is-at-top="false"
+    />
   </header>
 </template>
 <script>
@@ -128,6 +131,7 @@ export default {
     @include flex-valign;
     font-size: rem-calc(24);
     color: var(--header-text, #{$c-text-primary});
+    margin: 0 $px20 0 0;
   }
 
   &__search-toggle {
@@ -138,11 +142,14 @@ export default {
   }
 
   &__logo {
-    width: 120px;
+    width: rem-calc(120px);
   }
 
   &__main-nav {
-    margin: 0 0 0 rem-calc(60);
+    margin: 0 0 0 2%;
+    @include bp(desktop) {
+      margin: 0 0 0 rem-calc(60);
+    }
   }
 
   &__search {
@@ -171,9 +178,6 @@ export default {
   }
 
   &--scrolled & {
-    &__nav-toggle {
-      margin-right: $px20;
-    }
     &__bar {
       box-shadow: $box-shadow;
     }

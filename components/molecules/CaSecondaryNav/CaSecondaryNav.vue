@@ -22,20 +22,6 @@
         {{ $t('FAVORITES_LABEL') }} ({{ $store.state.favorites.length }})
       </NuxtLink>
     </CaSecondaryNavItem>
-    <CaSecondaryNavItem>
-      <NuxtLink
-        v-for="locale in availableLocales"
-        :key="locale.code"
-        :to="switchLocalePath(locale.code)"
-      >
-        <CaFlag
-          class="ca-top-bar__flag"
-          :country="locale.flag"
-          shape="circle"
-        />
-        {{ locale.name }}
-      </NuxtLink>
-    </CaSecondaryNavItem>
   </ul>
 </template>
 <script>

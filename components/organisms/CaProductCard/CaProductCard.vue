@@ -78,13 +78,14 @@
 
           <CaPrice class="ca-product-card__price" :price="product.unitPrice" />
         </div>
-        <div v-if="hasColorVariants" class="ca-product-card__colors">
-          Fler färger
-        </div>
+
         <CaStockDisplay
           class="ca-product-card__stock-display"
           :stock="product.totalStock"
         />
+        <div v-if="hasColorVariants" class="ca-product-card__colors">
+          Fler färger
+        </div>
       </NuxtLink>
       <div v-else>
         <div class="ca-product-card__info-top">
@@ -165,10 +166,11 @@ export default {
   &__info-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    padding: 0 0 $px12;
+    margin: 1.6em 0 0;
   }
   &__price {
-    margin-top: $px4;
+    font-size: $font-size-m;
   }
   &__campaigns {
     position: absolute;
@@ -180,9 +182,13 @@ export default {
       left: rem-calc(20);
     }
   }
+  &__colors {
+    text-transform: uppercase;
+    font-size: $font-size-xs;
+    margin: $px4 0 0;
+  }
   &__stock-display {
     font-size: $font-size-xs;
-    margin: $px10 0 0;
   }
 
   ::v-deep .ca-toggle-favorite {

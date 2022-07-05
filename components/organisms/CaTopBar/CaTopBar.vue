@@ -24,12 +24,16 @@ export default {
   computed: {
     modifiers() {
       return {
-        'ca-top-bar__container--scrolled': !this.$store.getters.siteIsAtTop
+        'ca-top-bar__container--scrolled': !this.$store.getters.siteIsAtTop,
+        'ca-top-bar__container--header-dark':
+          this.$config?.currentThemeSettings['header-theme'] === 'dark'
       };
     }
   },
   watch: {},
-  mounted() {},
+  mounted() {
+    console.log(this.$config?.currentThemeSettings['header-theme']);
+  },
   methods: {}
 };
 </script>
@@ -58,6 +62,10 @@ export default {
       @include bp(laptop) {
         height: 6px;
       }
+      &#{$block}__container--header-dark {
+        height: 0;
+      }
+
       #{$block}__usp {
         font-size: 0;
       }

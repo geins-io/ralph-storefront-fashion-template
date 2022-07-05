@@ -1,0 +1,14 @@
+.ca-variant-picker {
+  margin: 0 0 $px32;
+  font-size: $font-size-s;
+  @include bp(tablet) {
+    font-size: $font-size-m;
+  }
+  &__title {
+    margin-bottom: $px8;
+  }
+  &__current {
+    color: $c-text-primary;
+    margin: 0 0 0 $px4;
+  }
+}

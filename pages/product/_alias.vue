@@ -14,6 +14,7 @@
           class="ca-product-page__gallery"
           :images="productImages"
           :alt="product.brand.name + ' ' + product.name"
+          :campaigns="product.discountCampaigns"
         />
         <div v-else class="ca-product-page__gallery ca-product-gallery">
           <div class="ca-product-gallery__slider">
@@ -29,24 +30,24 @@
           </div>
         </div>
         <div v-if="product" class="ca-product-page__main">
-          <CaToggleFavorite :prod-alias="prodAlias" />
-          <CaBrandAndName
-            :brand="product.brand.name"
-            :brand-alias="product.brand.canonicalUrl"
-            :name="product.name"
-            name-tag="h1"
-          />
-          <CaPrice class="ca-product-page__price" :price="product.unitPrice" />
+          <div class="ca-product-page__main-top">
+            <!-- <CaToggleFavorite :prod-alias="prodAlias" /> -->
+            <CaBrandAndName
+              :brand="product.brand.name"
+              :brand-alias="product.brand.canonicalUrl"
+              :name="product.name"
+              name-tag="h1"
+            />
+            <CaPrice
+              class="ca-product-page__price"
+              :price="product.unitPrice"
+            />
+          </div>
 
           <CaHtml
             v-if="product && product.texts.text1"
             class="ca-product-page__product-summary"
             :content="product.texts.text1"
-          />
-          <CaCampaigns
-            v-if="product.discountCampaigns"
-            class="ca-product-page__campaigns"
-            :campaigns="product.discountCampaigns"
           />
           <CaVariantPicker
             v-if="hasVariants"
@@ -58,7 +59,20 @@
             :type="baseVariantType === 'Color' ? 'color' : 'panel'"
             @replaceProduct="replaceProduct"
             @notify="notifyHandler"
-          />
+          >
+            <template v-slot:title>
+              <p class="ca-variant-picker__title">
+                {{
+                  baseVariantType === 'Color'
+                    ? $t('PICK_COLOR')
+                    : 'Välj variant'
+                }}
+                <span class="ca-variant-picker__current">
+                  {{ baseVariantLabel }}
+                </span>
+              </p>
+            </template>
+          </CaVariantPicker>
 
           <CaVariantPicker
             v-if="hasMultipleDimensions"
@@ -74,24 +88,26 @@
             v-if="hasSkuVariants"
             :variants="skuVariants"
             :variants-data="variantPickerData"
-            title="Med logga"
+            :title="$t('SKU_LABEL')"
             type="display"
             @changeSku="sizeChangeHandler"
             @notify="notifyHandler"
-          />
+          >
+            <template v-slot:title>
+              <p class="ca-variant-picker__title">
+                {{ $t('PICK_SIZE') }}
+                <span class="ca-variant-picker__current">
+                  {{ chosenSkuLabel }}
+                </span>
+              </p>
+            </template>
+          </CaVariantPicker>
 
-          <LazyCaNotifyPanel
-            :product="product"
-            :variant="currentNotifyVariant"
-          />
-
-          <CaProductQuantity
-            class="ca-product-page__quantity"
-            :quantity="quantity"
-            :max-quantity="currentStock.totalStock"
-            :threshold="stockThreshold"
-            @changed="onQuantityChange"
-            @thresholdReached="quantityThresholdHandler"
+          <CaStockDisplay
+            class="ca-product-page__stock-display"
+            :stock="currentStock"
+            :product-quantity="quantity"
+            :show-delivery-time="true"
           />
 
           <CaButton
@@ -107,43 +123,38 @@
             v-else
             class="ca-product-page__buy-button"
             type="full-width"
+            size="l"
             :loading="addToCartLoading"
             :disabled="outOfStock"
             @clicked="addToCartClick"
           >
             {{ $t('ADD_TO_CART') }}
           </CaButton>
-          <div class="ca-product-page__actions">
-            <CaStockDisplay
-              class="ca-product-page__stock-display"
-              :stock="currentStock"
-              :product-quantity="quantity"
-              :show-delivery-time="true"
-            />
-          </div>
           <div class="ca-product-page__usps">
             <CaIconAndText
               class="ca-product-page__usp"
               icon-name="check-circle"
-              icon-position="top"
             >
               {{ $t('USP_1') }}
             </CaIconAndText>
             <CaIconAndText
               class="ca-product-page__usp"
               icon-name="check-circle"
-              icon-position="top"
             >
               {{ $t('USP_2') }}
             </CaIconAndText>
             <CaIconAndText
               class="ca-product-page__usp"
               icon-name="check-circle"
-              icon-position="top"
             >
               {{ $t('USP_3') }}
             </CaIconAndText>
           </div>
+          <CaProductAccordion
+            v-if="product"
+            class="ca-product-page__accordion"
+            :product="product"
+          />
           <div
             v-if="$config.productShowRelated && relatedProductsRelated.length"
             class="ca-product-page__related"
@@ -172,25 +183,6 @@
           />
         </div>
       </section>
-      <section class="ca-product-page__section">
-        <CaProductAccordion
-          v-if="product"
-          class="ca-product-page__accordion"
-          :product="product"
-        />
-        <div class="ca-product-page__specifications-box only-computer">
-          <h2 class="ca-product-page__specifications-title">
-            {{ $t('PRODUCT_SPECIFICATION') }}
-          </h2>
-          <CaSpecifications
-            v-if="product && product.parameterGroups !== null"
-            :specification-groups="product.parameterGroups"
-          />
-          <p v-else>
-            {{ $t('NO_PRODUCT_SPECIFICATION') }}
-          </p>
-        </div>
-      </section>
     </CaContainer>
     <section class="ca-product-page__widget-section">
       <CaWidgetArea
@@ -201,6 +193,11 @@
         :filters="widgetAreaFilters"
       />
     </section>
+    <LazyCaNotifyPanel
+      v-if="product"
+      :product="product"
+      :variant="currentNotifyVariant"
+    />
   </div>
 </template>
 
@@ -223,7 +220,7 @@ export default {
 </script>
 
 <style lang="scss">
-$column-width: 48.2%;
+$column-width: 48%;
 .ca-product-page {
   &__section {
     margin-bottom: $px20;
@@ -236,17 +233,25 @@ $column-width: 48.2%;
   }
   &__main {
     position: relative;
-    max-width: 500px;
-    margin: $px16 auto 0;
+    max-width: rem-calc(540);
+    margin: rem-calc(50) auto 0;
     @include bp(laptop) {
-      width: 40%;
-      margin: $px32 auto 0;
+      width: 44%;
+      position: sticky;
+      top: $header-height-computer;
     }
+    @include bp(desktop) {
+      margin: rem-calc(60) auto 0;
+    }
+  }
+  &__main-top {
+    display: flex;
+    justify-content: space-between;
   }
   &__gallery.ca-product-gallery {
     @include bp(laptop) {
       width: $column-width;
-      margin-right: $px48;
+      margin-right: 3%;
     }
   }
   &__skeleton-main-slide {
@@ -256,10 +261,17 @@ $column-width: 48.2%;
     }
   }
   &__price {
-    margin: $px4 0 $px8;
+    font-size: rem-calc(24);
+
+    .ca-price__regular {
+      font-size: $font-size-m;
+    }
+    @include bp(tablet) {
+      font-size: rem-calc(32);
+    }
   }
   &__product-summary {
-    margin-bottom: $px16;
+    margin: $px20 0 $px32;
   }
   &__campaigns {
     margin: 0 0 rem-calc(16);
@@ -277,10 +289,10 @@ $column-width: 48.2%;
   }
   &__buy-button.ca-button {
     margin-bottom: $px20;
-    padding: 0.9em 2.15em;
   }
   &__stock-display {
     font-size: $font-size-m;
+    margin: 0 0 $px20;
   }
   &__actions {
     margin-bottom: $px24;
@@ -288,21 +300,15 @@ $column-width: 48.2%;
   &__usps {
     display: flex;
     justify-content: space-between;
-    border-top: $border-light;
-    padding: $px16 0 0;
   }
-  &__usp {
+  &__usp.ca-icon-and-text {
     padding: 0 $px4;
-    text-align: center;
+    align-items: flex-start;
     .ca-icon {
-      margin-bottom: $px4;
-    }
-  }
-  &__accordion {
-    margin: 0 -#{$default-spacing/2} $default-spacing;
-    @include bp(laptop) {
-      margin: 0;
-      width: $column-width;
+      margin-top: 4px;
+      @include bp(tablet) {
+        margin-top: 2px;
+      }
     }
   }
   &__specifications-box {
