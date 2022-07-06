@@ -1,0 +1,14 @@
+.ca-widget-product-list {
+  &__title {
+    font-size: $font-size-m;
+    margin: 0 0 $px24;
+    border-bottom: $border-dark;
+    font-family: $body-font;
+    color: $c-text-secondary;
+    padding: 0 0 $px10;
+    @include bp(phone-only) {
+      padding: 0 $px10 $px10;
+      font-size: $font-size-s;
+    }
+  }
+}

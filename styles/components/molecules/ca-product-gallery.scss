@@ -1,10 +1,11 @@
 .ca-product-gallery {
   $block: &;
+  $grid-gap: rem-calc(15);
   --slider-item-width: 100%;
-  margin: 0 -#{$default-spacing/2};
+  margin: 0 -#{$default-site-width-spacing/2};
   @include bp(tablet) {
     --slider-item-width: 66%;
-    margin: 0 -#{$widget-container-spacing-tablet};
+    margin: 0 -#{$default-site-width-spacing-tablet/2};
   }
   @include bp(laptop) {
     --slider-item-width: 100%;
@@ -86,6 +87,19 @@
         border: 2px solid $c-border-light;
       }
     }
+  }
+  &__thumbnails {
+    margin-top: $grid-gap;
+
+    &--grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: $grid-gap;
+    }
+  }
+
+  &__thumbnail-container {
+    width: 100%;
   }
   &__campaigns {
     left: rem-calc(15);

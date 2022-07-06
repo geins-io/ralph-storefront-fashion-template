@@ -15,6 +15,8 @@
           :images="productImages"
           :alt="product.brand.name + ' ' + product.name"
           :campaigns="product.discountCampaigns"
+          thumbnail-mode="grid"
+          gallery-mode="plain"
         />
         <div v-else class="ca-product-page__gallery ca-product-gallery">
           <div class="ca-product-gallery__slider">
@@ -49,6 +51,14 @@
             class="ca-product-page__product-summary"
             :content="product.texts.text1"
           />
+          <!-- <a
+            v-if="product && product.texts.text1"
+            class="ca-product-page__read-more only-computer"
+            href="#description-accordion-anchor"
+            @click.prevent="readMoreInAccordion"
+          >
+            {{ $t('READ_MORE') }}
+          </a> -->
           <CaVariantPicker
             v-if="hasVariants"
             :variants="baseVariants"
@@ -74,7 +84,7 @@
             </template>
           </CaVariantPicker>
 
-          <CaVariantPicker
+          <!-- <CaVariantPicker
             v-if="hasMultipleDimensions"
             :variants="secondDimensionVariants"
             :variants-data="variantPickerData"
@@ -82,7 +92,7 @@
             type="panel"
             @replaceProduct="replaceProduct"
             @notify="notifyHandler"
-          />
+          /> -->
 
           <CaVariantPicker
             v-if="hasSkuVariants"
@@ -152,6 +162,7 @@
           </div>
           <CaProductAccordion
             v-if="product"
+            ref="accordion"
             class="ca-product-page__accordion"
             :product="product"
           />
@@ -212,7 +223,11 @@ export default {
   data: () => ({}),
   computed: {},
   watch: {},
-  methods: {},
+  methods: {
+    readMoreInAccordion() {
+      this.$refs.accordion.openAccordion('description');
+    }
+  },
   meta: {
     pageType: 'Product Page'
   }

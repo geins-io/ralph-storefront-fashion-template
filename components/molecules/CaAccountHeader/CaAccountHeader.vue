@@ -98,10 +98,11 @@ export default {
       font-size: $font-size-l;
     }
     &--current {
-      border: 1px solid var(--accent-color, $c-accent-color);
+      border-bottom: 1px solid $c-darkest-gray;
       background: $c-light-gray;
       position: relative;
       font-weight: $font-weight-bold;
+      color: $c-text-primary;
       &::after {
         content: '';
         display: block;
@@ -109,7 +110,7 @@ export default {
         height: 0;
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
-        border-top: 8px solid var(--accent-color, $c-accent-color);
+        border-top: 8px solid $c-darkest-gray;
         position: absolute;
         bottom: 0;
         left: 50%;

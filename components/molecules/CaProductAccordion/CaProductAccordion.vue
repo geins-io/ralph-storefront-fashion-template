@@ -1,6 +1,11 @@
 <template>
   <div class="ca-product-accordion">
+    <div
+      id="description-accordion-anchor"
+      class="ca-product-accordion__anchor"
+    ></div>
     <CaAccordionItem
+      ref="description"
       class="ca-product-accordion__item"
       base-tag="section"
       :open-on-init="true"
@@ -19,6 +24,7 @@
     </CaAccordionItem>
     <CaAccordionItem
       v-if="product.parameterGroups !== null"
+      ref="specification"
       class="ca-product-accordion__item only-mobile"
       base-tag="section"
     >
@@ -31,6 +37,7 @@
     </CaAccordionItem>
     <CaAccordionItem
       v-if="product.texts.text3"
+      ref="ingredients"
       class="ca-product-accordion__item"
       base-tag="section"
     >
@@ -60,7 +67,16 @@ export default {
   computed: {},
   watch: {},
   mounted() {},
-  methods: {}
+  methods: {
+    openAccordion(name) {
+      this.$refs[name].open = true;
+      const anchor = document.getElementById(name + '-accordion-anchor');
+
+      if (anchor) {
+        anchor.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
 };
 </script>
 <style lang="scss">

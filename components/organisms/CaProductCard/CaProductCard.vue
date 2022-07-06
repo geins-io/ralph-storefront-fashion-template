@@ -160,8 +160,11 @@ export default {
     display: block;
   }
   &__info {
-    padding-top: $px12;
+    padding: $px12 $px10 0;
     display: block;
+    @include bp(tablet) {
+      padding: $px12 0 0;
+    }
   }
   &__info-top {
     display: flex;

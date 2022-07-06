@@ -34,6 +34,7 @@
           menu-location-id="main-desktop"
         />
         <CaSearch class="ca-header__search only-computer" />
+
         <CaFavorites
           class="ca-header__favorites only-computer"
           :show-text="false"

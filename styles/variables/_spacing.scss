@@ -42,6 +42,6 @@ $widget-row-spacing-tablet: $px16;
 $widget-column-spacing-laptop: $px20;
 $widget-row-spacing-laptop: $px20;
 
-$widget-container-spacing: $px20;
-$widget-container-spacing-tablet: $px20;
-$widget-container-spacing-laptop: $px20;
+$widget-container-spacing: rem-calc(40);
+$widget-container-spacing-tablet: rem-calc(60);
+$widget-container-spacing-laptop: rem-calc(80);

@@ -11,9 +11,10 @@ import fetch from 'cross-fetch';
 import DirectoryNamedWebpackPlugin from './static/directory-named-webpack-resolve';
 import channelSettings from './static/channel-settings';
 const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
-const currentThemeSettings = channelSettings.find(
+const currentChannelSettings = channelSettings.find(
   i => i.channelId === fallbackChannelId
-).themeSettings;
+);
+const currentThemeSettings = currentChannelSettings.themeSettings;
 
 const routePaths = {
   category: '/c',
@@ -267,8 +268,8 @@ export default async () => {
         author: null
       },
       manifest: {
-        name: 'Ralph',
-        short_name: 'Ralph',
+        name: currentChannelSettings.siteName,
+        short_name: currentChannelSettings.siteName,
         description: defaultMeta.description,
         theme_color: currentThemeSettings['accent-color']
       },
@@ -368,6 +369,7 @@ export default async () => {
       /* **** GLOBAL ***** */
       /* ***************** */
       channelSettings,
+      currentChannelSettings,
       currentThemeSettings,
       baseUrl: process.env.BASE_URL,
       imageServer: process.env.IMAGE_SERVER,

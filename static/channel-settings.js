@@ -14,6 +14,7 @@ export default [
     channelId: '1|se',
     locale: 'sv',
     domain: process.env.DOMAIN_SV,
+    siteName: 'Ralph Fashion',
     themeSettings: {
       'header-theme': 'dark',
       'footer-theme': 'dark',

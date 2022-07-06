@@ -137,6 +137,9 @@
     #{$block}__content {
       margin: 1.33em 0;
       text-align: left;
+      @include bp(phone-only) {
+        margin: 1.33em $px10;
+      }
     }
     &#{$block}--half {
       @include bp(tablet) {
