@@ -31,9 +31,7 @@ export default {
     }
   },
   watch: {},
-  mounted() {
-    console.log(this.$config?.currentThemeSettings['header-theme']);
-  },
+  mounted() {},
   methods: {}
 };
 </script>
@@ -79,17 +77,10 @@ export default {
     margin-right: $px4;
     font-size: 15px;
   }
-  &__usps {
-    @include bp(desktop) {
-      @include calign;
-    }
-  }
   &__usp {
     transition: font-size 200ms ease;
-    margin: 0 auto;
-    @include bp(laptop) {
-      margin: 0 auto 0 0;
-    }
+
+    @include calign;
   }
   &__lang-switcher {
     margin: 0 $px20 0 auto;
