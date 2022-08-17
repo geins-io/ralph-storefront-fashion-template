@@ -22,6 +22,7 @@ const routePaths = {
   product: '/p',
   search: '/s',
   discountCampaign: '/dc',
+  list: '/l',
   all: '/allt'
 };
 
@@ -211,6 +212,10 @@ export default async () => {
             'favorites/index': {
               sv: '/favoriter',
               en: '/favorites'
+            },
+            'brands/index': {
+              sv: '/varumarken',
+              en: '/brands'
             }
           }
         }
@@ -310,6 +315,11 @@ export default async () => {
           name: 'pdp-sub-level',
           path: routePaths.product + '/(.*)/(.*)/:alias',
           component: resolve(__dirname, 'pages/product/_alias.vue')
+        });
+        routes.push({
+          name: 'plp',
+          path: routePaths.list + '/*',
+          component: resolve(__dirname, 'pages/list/_list.vue')
         });
         routes.push({
           name: 'plp-all',
@@ -444,6 +454,10 @@ export default async () => {
         desktop: 4,
         desktopBig: 5
       },
+      showCategoryFilter: true,
+      showBrandsFilter: true,
+      showSkuFilter: true,
+      showPricefilter: true,
       /* ****************** */
       /* **** PRODUCT ***** */
       /* ****************** */
