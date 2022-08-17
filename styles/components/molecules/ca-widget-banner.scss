@@ -135,10 +135,10 @@
 
   &--below-image {
     #{$block}__content {
-      margin: 1.33em 0;
+      padding: 1.33em 0;
       text-align: left;
       @include bp(phone-only) {
-        margin: 1.33em $px10;
+        padding: 1.33em $px10;
       }
     }
     &#{$block}--half {
@@ -170,6 +170,13 @@
 
       @include bp(desktop) {
         font-size: 1rem;
+      }
+    }
+    &#{$block}--color-secondary {
+      #{$block}__content {
+        background: $c-darkest-gray;
+        max-width: 100%;
+        padding: 1.33em $px20;
       }
     }
   }

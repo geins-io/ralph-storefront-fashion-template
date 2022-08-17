@@ -16,16 +16,38 @@
         </div>
       </CaContainer>
     </section>
+    <section class="ca-footer__section ca-footer__section--about">
+      <CaContainer>
+        <div class="ca-footer__about">
+          <h2 class="ca-footer__about-title">{{ $t('FOOTER_ABOUT_TITLE') }}</h2>
+          <p class="ca-footer__about-text">
+            {{ $t('FOOTER_ABOUT_TEXT') }}
+          </p>
+        </div>
+      </CaContainer>
+    </section>
     <section class="ca-footer__section ca-footer__section--content">
       <CaContainer class="ca-footer__content-holder">
-        <section class="ca-footer__column">
-          <CaFooterNavigation menu-location-id="footer-first" />
+        <section class="ca-footer__column ca-footer__column--menu">
+          <CaFooterNavigationAccordion
+            v-if="$store.getters.viewport === 'phone'"
+            menu-location-id="footer-first"
+          />
+          <CaFooterNavigation v-else menu-location-id="footer-first" />
         </section>
-        <section class="ca-footer__column">
-          <CaFooterNavigation menu-location-id="footer-second" />
+        <section class="ca-footer__column ca-footer__column--menu">
+          <CaFooterNavigationAccordion
+            v-if="$store.getters.viewport === 'phone'"
+            menu-location-id="footer-second"
+          />
+          <CaFooterNavigation v-else menu-location-id="footer-second" />
         </section>
-        <section class="ca-footer__column">
-          <CaFooterNavigation menu-location-id="footer-third" />
+        <section class="ca-footer__column ca-footer__column--menu">
+          <CaFooterNavigationAccordion
+            v-if="$store.getters.viewport === 'phone'"
+            menu-location-id="footer-third"
+          />
+          <CaFooterNavigation v-else menu-location-id="footer-third" />
         </section>
         <section class="ca-footer__column ca-footer__column--logo">
           <CaLogo
@@ -57,8 +79,6 @@
             filename="mastercard"
             alt="Mastercard logo"
           />
-        </div>
-        <div class="ca-footer__bottom-column ca-footer__bottom-column--logos">
           <CaSvgAsset
             class="ca-footer__logo"
             folder="logos"
@@ -78,6 +98,7 @@
             alt="DHL logo"
           />
         </div>
+
         <div
           class="ca-footer__bottom-column ca-footer__bottom-column--copyright"
         >
@@ -178,8 +199,6 @@ export default {
   &__newsletter {
     width: 100%;
     max-width: rem-calc(460);
-    @include bp(tablet) {
-    }
   }
 
   &__newsletter-title {
@@ -190,8 +209,34 @@ export default {
   }
 
   &__newsletter-text {
-    @include title(rem-calc(46));
+    @include title(rem-calc(36));
     margin: 0 0 $px40;
+    @include bp(tablet) {
+      font-size: rem-calc(46);
+    }
+  }
+
+  &__about {
+    margin: rem-calc(50) 0 rem-calc(75);
+    @include bp(tablet) {
+      margin: rem-calc(100) 0 rem-calc(150);
+      width: 80%;
+      max-width: 1000px;
+    }
+    @include bp(laptop) {
+      width: 60%;
+    }
+  }
+
+  &__about-title {
+    @include title(rem-calc(36));
+    margin: 0 0 $px40;
+  }
+
+  &__about-text {
+    @include bp(tablet) {
+      column-count: 2;
+    }
   }
 
   &__content-holder {
@@ -207,7 +252,18 @@ export default {
       width: 15%;
     }
     &--logo {
-      width: 55%;
+      margin: rem-calc(60) auto 0;
+      @include bp(tablet) {
+        width: 55%;
+      }
+    }
+    &--menu {
+      @include bp(phone-only) {
+        margin: 0 rem-calc(-10);
+        &:first-child {
+          border-top: 1px solid var(--footer-color, $c-text-inverse);
+        }
+      }
     }
   }
 
@@ -252,13 +308,14 @@ export default {
 
   &__main-logo {
     width: rem-calc(250);
-    margin-left: auto;
+    @include bp(tablet) {
+      margin-left: auto;
+    }
   }
 
   &__bottom {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     @include bp(tablet) {
       justify-content: space-between;
     }
@@ -271,11 +328,10 @@ export default {
       margin: $px20 0;
     }
     &--copyright {
+      opacity: 0.8;
       width: 74%;
       padding: $px12 0;
-      margin: 0 auto;
       border-top: $border-light;
-      text-align: center;
       font-size: $font-size-xs;
       @include bp(tablet) {
         border: none;
@@ -307,7 +363,6 @@ export default {
   &__powered-by {
     display: flex;
     align-items: center;
-    justify-content: center;
     white-space: nowrap;
     padding: rem-calc(2) 0 0;
   }

@@ -298,5 +298,8 @@ export default {
   ALL_PAGE_TITLE: 'Alla produkter',
   NAVIGATION_ALL_IN: 'Visa allt inom',
   NAVIGATION_GO_TO: 'Gå till',
-  RELATED_PRODUCTS: 'Relaterad produkter'
+  RELATED_PRODUCTS: 'Relaterad produkter',
+  FOOTER_ABOUT_TITLE: 'Om verksamheten',
+  FOOTER_ABOUT_TEXT:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbiphasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsumultricies eget pretium. Tincidunt metus, scelerisque leo ornareconsectetur mauris. Massa in id laoreet donec. Lorem ipsum dolor sitamet, consectetur adipiscing elit. Morbi phasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsum ultricies eget pretium. Tincidunt metus, scelerisque leo ornare consectetur mauris. Massa inid laoreet donec.'
 };

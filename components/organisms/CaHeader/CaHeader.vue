@@ -87,7 +87,8 @@ export default {
     modifiers() {
       return {
         'ca-header--scrolled': !this.$store.getters.siteIsAtTop,
-        'ca-header--dark': this.theme === 'dark'
+        'ca-header--dark': this.theme === 'dark',
+        'ca-header--is-hidden': this.$store.state.headerHidden
       };
     },
     availableLocales() {
@@ -109,6 +110,10 @@ export default {
   left: 0;
   top: 0;
   z-index: $z-index-header;
+  transform: translateY(0);
+  transition: transform 450ms ease, background-color 200ms ease 450ms,
+    mix-blend-mode 200ms ease 450ms;
+
   &__bar {
     background: var(--header-bg, #{$c-header-bg});
     color: var(--header-text, #{$c-text-primary});
@@ -177,7 +182,14 @@ export default {
     display: flex;
     align-items: center;
   }
-
+  &--is-hidden {
+    transform: translateY(-100%);
+    @include bp(tablet-down) {
+      .ca-search--visible {
+        transform: translateY(-100%);
+      }
+    }
+  }
   &--scrolled & {
     &__bar {
       box-shadow: $box-shadow;

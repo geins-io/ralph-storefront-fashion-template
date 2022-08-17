@@ -50,12 +50,15 @@
             direction="prev"
             :showing="showing"
             :total-count="totalCount"
+            :min-count="currentMinCount"
+            :max-count="currentMaxCount"
             :all-products-loaded="allProductsLoaded"
             :loading="$apollo.queries.products.loading"
             @loadprev="loadPrev"
           />
 
           <CaProductList
+            class="ca-list-page__list"
             :skip="currentMinCount - 1"
             :page-size="pageSize"
             :products="productList"
@@ -67,6 +70,8 @@
             direction="next"
             :showing="showing"
             :total-count="totalCount"
+            :min-count="currentMinCount"
+            :max-count="currentMaxCount"
             :all-products-loaded="allProductsLoaded"
             :loading="$apollo.queries.products.loading"
             @loadmore="loadMore"
@@ -125,6 +130,11 @@ export default {
   }
   &__widget-area {
     margin: 0 0 $px32 0;
+  }
+  &__list {
+    @include bp(phone-only) {
+      margin: 0 rem-calc(-10);
+    }
   }
 }
 </style>

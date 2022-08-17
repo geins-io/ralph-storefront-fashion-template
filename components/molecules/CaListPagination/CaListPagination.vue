@@ -9,12 +9,17 @@
       }}
       {{ $tc('PRODUCT_LOWERCASE', totalCount) }}
     </div>
+    <CaListCountBar
+      :min-count="minCount"
+      :max-count="maxCount"
+      :total-count="totalCount"
+    />
     <CaButton
       v-if="direction === 'next'"
       class="ca-list-pagination__button ca-list-pagination__button--next"
       :disabled="allProductsLoaded"
-      :loading="loading"
       color="ghost"
+      :loading="loading"
       @clicked="$emit('loadmore')"
     >
       {{ $t('LOAD_MORE') }}
@@ -59,6 +64,14 @@ export default {
     loading: {
       type: Boolean,
       required: true
+    },
+    minCount: {
+      type: Number,
+      required: true
+    },
+    maxCount: {
+      type: Number,
+      required: true
     }
   },
   data: () => ({}),
@@ -74,6 +87,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  --count-bar-active-color: #{$c-darkest-gray};
+  --count-bar-background-color: #{$c-medium-gray};
+
   &__button {
     overflow-anchor: none;
   }

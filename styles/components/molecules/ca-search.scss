@@ -15,7 +15,7 @@
   &__bar {
     @include bp(tablet-down) {
       height: $search-height;
-      background-color: $c-search-bg;
+      background-color: var(--header-bg, #{$c-white});
       @include flex-calign;
     }
   }
@@ -68,7 +68,7 @@
 
   &__title {
     color: var(--header-text, #{$c-text-primary});
-    font-size: $font-size-l;
+    font-size: $font-size-xxl;
     &--suggestion {
       margin: 0 0 $px8;
     }
@@ -137,6 +137,7 @@
       &--no-results {
         width: $search-width;
         max-width: $search-width;
+        left: auto;
       }
     }
     &--loading:not(&--loading-empty) {
@@ -180,7 +181,8 @@
 
   &__close-button {
     height: 50px;
-    background-color: $c-white;
+    background-color: var(--header-bg, #{$c-white});
+    color: var(--header-text, #{$c-text-primary});
     width: 100%;
     text-transform: uppercase;
     border-top: $border-light;
@@ -304,9 +306,15 @@
   }
 
   &__item-price.ca-price {
-    font-size: 0.8em;
+    margin: $px4 0 0;
+    font-size: 1.1em;
     @include ellipsis;
     color: var(--header-text, #{$c-text-primary});
+    &.ca-price--sale {
+      .ca-price__selling {
+        color: var(--header-text, #{$c-text-primary});
+      }
+    }
   }
 
   &__overlay.ca-overlay {

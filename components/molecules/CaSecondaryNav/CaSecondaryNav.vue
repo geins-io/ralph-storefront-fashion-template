@@ -1,9 +1,10 @@
 <template>
   <ul class="ca-secondary-nav">
-    <CaSecondaryNavItem>
+    <CaSecondaryNavItem class="ca-secondary-nav__item">
       <button
         v-if="!$store.getters['auth/authenticated']"
         type="button"
+        class="ca-secondary-nav__link"
         @click="
           $store.commit('contentpanel/open', {
             name: 'account',
@@ -13,12 +14,16 @@
       >
         {{ $t('LOG_IN') }}/{{ $t('CREATE_ACCOUNT') }}
       </button>
-      <NuxtLink v-else :to="localePath('account-orders')">
+      <NuxtLink
+        v-else
+        class="ca-secondary-nav__link"
+        :to="localePath('account-orders')"
+      >
         {{ $t('ACCOUNT_TITLE') }}
       </NuxtLink>
     </CaSecondaryNavItem>
     <CaSecondaryNavItem>
-      <NuxtLink :to="localePath('favorites')">
+      <NuxtLink class="ca-secondary-nav__link" :to="localePath('favorites')">
         {{ $t('FAVORITES_LABEL') }} ({{ $store.state.favorites.length }})
       </NuxtLink>
     </CaSecondaryNavItem>
@@ -44,5 +49,8 @@ export default {
 </script>
 <style lang="scss">
 .ca-secondary-nav {
+  &__link {
+    color: $c-text-primary;
+  }
 }
 </style>

@@ -4,22 +4,6 @@
     overflow: hidden;
     position: relative;
     color: var(--body-text-color, $c-text-primary);
-    &::after {
-      content: '';
-      display: block;
-      height: 50%;
-      width: 100%;
-      background-image: linear-gradient(
-        hexToRgba($c-darkest-gray, 0),
-        $c-darkest-gray
-      );
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      opacity: 1;
-      transition: opacity 200ms ease;
-    }
   }
   &__button {
     font-weight: $font-weight-bold;

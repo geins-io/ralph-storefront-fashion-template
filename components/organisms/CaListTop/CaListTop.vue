@@ -19,6 +19,7 @@
               !listInfo.hideDescription
           "
           class="ca-list-top__description"
+          :max-height="$store.getters.viewportComputer ? 90 : 50"
         >
           <CaHtml :content="listInfo.primaryDescription" />
         </CaReadMore>
@@ -70,6 +71,9 @@ export default {
   margin: 0 0 rem-calc(50);
 
   @include bp(tablet) {
+    min-height: 30vh;
+  }
+  @include bp(laptop) {
     min-height: 50vh;
   }
 
@@ -96,8 +100,11 @@ export default {
     font-weight: $font-weight-bold;
     margin: 0 0 $px4;
     @include bp(tablet) {
-      font-size: rem-calc(82);
+      font-size: rem-calc(62);
       margin: 0 0 $px8;
+    }
+    @include bp(laptop) {
+      font-size: rem-calc(82);
     }
     &--skeleton {
       margin: 0 auto $px8;

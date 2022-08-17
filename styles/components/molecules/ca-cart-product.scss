@@ -29,9 +29,11 @@
     background: $c-border-light;
     margin: 0 $px16;
   }
-  &__price-group-price {
+  &__price-group-price.ca-price {
     flex-shrink: 0;
-    font-size: $font-size-xs;
+    font-size: $font-size-s;
+    flex-direction: row;
+    column-gap: $px4;
   }
   &__price.ca-price {
     margin: rem-calc(8px) 0 0;
@@ -58,8 +60,12 @@
     cursor: pointer;
   }
 
-  &__campaigns {
-    margin: $px4 0 0;
+  &__campaigns.ca-campaigns {
+    margin: $px4 0 $px8;
+    display: block;
+    .ca-campaigns__item {
+      display: inline-block;
+    }
   }
 
   &__stock-display {

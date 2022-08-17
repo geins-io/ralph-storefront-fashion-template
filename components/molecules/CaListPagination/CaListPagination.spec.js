@@ -7,3 +7,4 @@ describe('CaListPagination.vue', () => {
     expect(component.contains('.ca-list-pagination')).toBe(true);
   });
 });
+
