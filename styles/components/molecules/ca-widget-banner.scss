@@ -131,6 +131,17 @@
         font-size: 1rem;
       }
     }
+    .ca-widget-container--design-default & {
+      #{$block}__content {
+        top: auto;
+        left: 0;
+        bottom: 0;
+        transform: translate(0, 0);
+        padding: 5%;
+        text-align: left;
+        max-width: 80%;
+      }
+    }
   }
 
   &--below-image {
