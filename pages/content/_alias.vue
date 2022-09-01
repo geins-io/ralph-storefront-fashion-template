@@ -37,7 +37,7 @@ export default {
         this.$store.dispatch('redirect404');
       }
       this.meta = data?.widgetArea?.meta;
-      this.hasMenu = data?.widgetArea?.tags.includes('menu');
+      this.hasMenu = data?.widgetArea?.tags?.includes('menu');
       this.$store.dispatch('loading/end');
     }
   },
