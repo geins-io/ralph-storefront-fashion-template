@@ -86,6 +86,21 @@ export default async () => {
   });
   const defaultMeta = await defaultMetaQuery.data.listPageInfo.meta;
   return {
+    // Leaving this here for reference when building a store front for a client that requires Nosto
+    // head: {
+    //   script: (process.env.NOSTO_ACCOUNT_ID && process.env.NOSTO_ACCOUNT_ID.length) && [
+    //     {
+    //       src: '/js/nosto.js',
+    //       async: true
+    //       ssr: false
+    //     },
+    //     {
+    //       src: `//connect.nosto.com/include/${process.env.NOSTO_ACCOUNT_ID}`,
+    //       async: true,
+    //       ssr: false
+    //     }
+    //   ]
+    // },
     /*
      ** Customize the progress-bar color
      */
@@ -151,21 +166,12 @@ export default async () => {
       // Doc: https://html-validator.nuxtjs.org/
       // '@nuxtjs/html-validator'
     ],
-
-    workbox: {
-      runtimeCaching: [
-        {
-          urlPattern: process.env.IMAGE_SERVER + '/.*'
-        }
-      ]
-    },
     /*
      ** Nuxt.js modules
      */
     modules: [
       // Doc: https://github.com/nuxt-community/pwa-module
       '@nuxtjs/pwa',
-      'nuxt-multi-cache',
       [
         // Doc: https://github.com/nuxt-community/i18n-module
         '@nuxtjs/i18n',
@@ -209,6 +215,10 @@ export default async () => {
               sv: '/mina-sidor/installningar',
               en: '/my-account/settings'
             },
+            'account/balance': {
+              sv: '/mina-sidor/saldo',
+              en: '/my-account/balance'
+            },
             'favorites/index': {
               sv: '/favoriter',
               en: '/favorites'
@@ -228,10 +238,6 @@ export default async () => {
       'cookie-universal-nuxt',
       // Doc: https://www.npmjs.com/package/nuxt-user-agent
       'nuxt-user-agent',
-      // Doc: https://www.npmjs.com/package/@nuxtjs/component-cache
-      ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
-      // Doc: https://www.npmjs.com/package/nuxt-polyfill
-      'nuxt-polyfill',
       // Doc: https://www.npmjs.com/package/@nuxtjs/gtm
       '@nuxtjs/gtm',
       // Doc: https://www.npmjs.com/package/@nuxtjs/applicationinsights
@@ -246,25 +252,6 @@ export default async () => {
     //     }
     //   }
     // },
-    multiCache: {
-      enabled: process.env.NODE_ENV === 'production',
-      outputDir: '~/cache',
-      server: {
-        auth: {
-          username: 'admin',
-          password: 'hunter2'
-        }
-      },
-      pageCache: {
-        enabled: false
-      },
-      componentCache: {
-        enabled: true
-      },
-      dataCache: {
-        enabled: false
-      }
-    },
     pwa: {
       // Default metadata. Doc: https://pwa.nuxtjs.org/meta/
       meta: {
@@ -455,6 +442,7 @@ export default async () => {
         desktopBig: 5
       },
       showCategoryFilter: true,
+      showCategoryTreeViewFilter: false,
       showBrandsFilter: true,
       showSkuFilter: true,
       showPricefilter: true,
@@ -534,12 +522,25 @@ export default async () => {
       transpile: ['@ralph/ralph-ui'],
       optimization: {
         splitChunks: {
-          chunks: 'all',
           automaticNameDelimiter: 'ca.',
-          name: undefined,
-          cacheGroups: {},
-          minSize: 15000,
-          maxSize: 260000
+          chunks: 'async',
+          minSize: 20000,
+          minChunks: 1,
+          maxAsyncRequests: 30,
+          maxInitialRequests: 30,
+          enforceSizeThreshold: 50000,
+          cacheGroups: {
+            defaultVendors: {
+              test: /[\\/]node_modules[\\/]/,
+              priority: -10,
+              reuseExistingChunk: true
+            },
+            default: {
+              minChunks: 2,
+              priority: -20,
+              reuseExistingChunk: true
+            }
+          }
         }
       },
       loaders: {

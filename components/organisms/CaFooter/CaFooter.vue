@@ -128,9 +128,6 @@
 // @vuese
 export default {
   name: 'CaFooter',
-  serverCacheKey() {
-    return 'CaFooter';
-  },
   mixins: [],
   props: {
     theme: {

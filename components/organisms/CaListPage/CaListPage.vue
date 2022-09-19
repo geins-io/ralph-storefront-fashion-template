@@ -89,15 +89,11 @@
 </template>
 <script>
 import MixListPage from 'MixListPage';
-import LazyHydrate from 'vue-lazy-hydration';
 
 // @group Organisms
 // @vuese
 export default {
   name: 'CaListPage',
-  components: {
-    LazyHydrate
-  },
   mixins: [MixListPage],
   props: {},
   data: () => ({ isWidgetSmartQuery: false }),
