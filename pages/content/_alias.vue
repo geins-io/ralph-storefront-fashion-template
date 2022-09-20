@@ -3,7 +3,7 @@
     <CaContainer
       class="ca-content-page__container"
       :class="{ 'ca-content-page__container--has-menu': hasMenu }"
-      :design="hasMenu ? 'default' : 'full-width'"
+      :design="hasMenu ? 'narrow' : 'full-width'"
     >
       <CaInfoPageMenu
         v-if="hasMenu"
@@ -78,6 +78,7 @@ export default {
 .ca-content-page {
   &__container {
     &--has-menu {
+      padding: rem-calc(15) 0;
       .ca-container {
         width: 100%;
       }
@@ -85,6 +86,7 @@ export default {
       @include bp(tablet) {
         display: flex;
         column-gap: $px32;
+        padding: rem-calc(30) 0;
       }
     }
   }
