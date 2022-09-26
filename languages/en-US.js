@@ -75,6 +75,7 @@ export default {
   GO_BACK: 'Go back',
   PICK_COLOR: 'Pick color',
   PICK_SIZE: 'Pick size',
+  PICK_VARIANT: 'Choose variant',
   STOCK_STATUS_IN_STOCK: 'In stock',
   STOCK_STATUS_OUT_OF_STOCK: 'Out of stock',
   STOCK_STATUS_FEW_LEFT: 'Only {quantity} left',
@@ -303,5 +304,6 @@ export default {
   ALL_PAGE_TITLE: 'All products',
   NAVIGATION_ALL_IN: 'Show all in',
   NAVIGATION_GO_TO: 'Go to',
-  RELATED_PRODUCTS: 'Related products'
+  RELATED_PRODUCTS: 'Related products',
+  MULTIPLE_COLOURS: 'Available in more colours'
 };

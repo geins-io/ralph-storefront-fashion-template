@@ -84,7 +84,7 @@
           :stock="product.totalStock"
         />
         <div v-if="hasColorVariants" class="ca-product-card__colors">
-          Fler färger
+          {{ $t('MULTIPLE_COLOURS') }}
         </div>
       </NuxtLink>
       <div v-else>

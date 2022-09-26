@@ -75,6 +75,7 @@ export default {
   GO_BACK: 'Gå tillbaka',
   PICK_COLOR: 'Välj färg',
   PICK_SIZE: 'Välj storlek',
+  PICK_VARIANT: 'Välj variant',
   STOCK_STATUS_IN_STOCK: '+5 i lager',
   STOCK_STATUS_OUT_OF_STOCK: 'Slut i lager',
   STOCK_STATUS_FEW_LEFT: 'Bara {quantity} kvar',
@@ -301,6 +302,7 @@ export default {
   NAVIGATION_ALL_IN: 'Visa allt inom',
   NAVIGATION_GO_TO: 'Gå till',
   RELATED_PRODUCTS: 'Relaterad produkter',
+  MULTIPLE_COLOURS: 'Fler färger',
   FOOTER_ABOUT_TITLE: 'Om verksamheten',
   FOOTER_ABOUT_TEXT:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbiphasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsumultricies eget pretium. Tincidunt metus, scelerisque leo ornareconsectetur mauris. Massa in id laoreet donec. Lorem ipsum dolor sitamet, consectetur adipiscing elit. Morbi phasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsum ultricies eget pretium. Tincidunt metus, scelerisque leo ornare consectetur mauris. Massa inid laoreet donec.'
