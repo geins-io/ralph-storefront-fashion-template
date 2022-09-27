@@ -75,11 +75,8 @@
                 {{
                   baseVariantType === 'Color'
                     ? $t('PICK_COLOR')
-                    : 'Välj variant'
+                    : $t('PICK_VARIANT')
                 }}
-                <span class="ca-variant-picker__current">
-                  {{ baseVariantLabel }}
-                </span>
               </p>
             </template>
           </CaVariantPicker>
@@ -240,20 +237,21 @@ $column-width: 48%;
   &__section {
     margin-bottom: $px20;
     @include bp(laptop) {
+      align-items: flex-start;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
       margin-bottom: $px56;
     }
   }
   &__main {
-    position: relative;
-    max-width: rem-calc(540);
     margin: rem-calc(50) auto 0;
+    max-width: rem-calc(540);
+    position: relative;
     @include bp(laptop) {
-      width: 44%;
       position: sticky;
       top: $header-height-computer;
+      width: 44%;
+      z-index: 1;
     }
     @include bp(desktop) {
       margin: rem-calc(60) auto 0;
