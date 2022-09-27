@@ -59,7 +59,7 @@ export default {
   &__name {
     font-size: 1.5em;
   }
-  .ca-product-page__main {
+  .ca-product-page__main & {
     &__brand {
       font-size: rem-calc(12);
       @include bp(tablet) {
