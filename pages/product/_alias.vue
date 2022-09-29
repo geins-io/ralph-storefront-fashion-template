@@ -77,6 +77,12 @@
                     ? $t('PICK_COLOR')
                     : $t('PICK_VARIANT')
                 }}
+                <span
+                  v-if="baseVariantType === 'Color'"
+                  class="ca-variant-picker__current"
+                >
+                  {{ baseVariantLabel }}
+                </span>
               </p>
             </template>
           </CaVariantPicker>

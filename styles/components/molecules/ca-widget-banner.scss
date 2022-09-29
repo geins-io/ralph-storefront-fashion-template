@@ -17,7 +17,6 @@
 
   &__text2 {
     font-size: 0.85em;
-    text-align: left;
     & + #{$block}__button {
       margin-top: 2em;
     }
