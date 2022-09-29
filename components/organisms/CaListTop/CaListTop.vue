@@ -65,13 +65,15 @@ export default {
   --primary-text-color: #{$c-text-inverse};
   --secondary-text-color: #{$c-text-inverse};
 
-  min-height: 60vh;
   background: $c-darkest-gray;
-  position: relative;
   margin: 0 0 rem-calc(50);
+  max-height: 35vh;
+  overflow: hidden;
+  position: relative;
 
   @include bp(tablet) {
     min-height: 30vh;
+    overflow: visible;
   }
   @include bp(laptop) {
     min-height: 50vh;
