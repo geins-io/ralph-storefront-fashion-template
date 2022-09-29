@@ -72,8 +72,9 @@ export default {
   position: relative;
 
   @include bp(tablet) {
-    overflow: visible;
+    max-height: unset;
     min-height: 30vh;
+    overflow: visible;
   }
   @include bp(laptop) {
     min-height: 50vh;
