@@ -11,4 +11,14 @@
     color: $c-text-primary;
     margin: 0 0 0 $px4;
   }
+  .header-site-at-top {
+    @include bp(laptop) {
+      margin-top: rem-calc(124px);
+    }
+  }
+  .header-visible {
+    @include bp(laptop) {
+      margin-top: rem-calc(80px);
+    }
+  }
 }
