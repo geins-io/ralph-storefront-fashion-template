@@ -16,71 +16,69 @@
       :loaded-data="widgetData.widgetArea_0"
       @variables-change="isWidgetSmartQuery = true"
     />
-    <div>
-      <CaContainer>
-        <CaListSettings
-          v-if="showControls"
-          :active-products="totalCount"
-          :active-filters="totalFiltersActive"
-          :current-sort="selection.sort"
-          @sortchange="sortChangeHandler"
-        />
-        <CaActiveFilters
-          v-if="showControls && selection"
-          :selection="selection"
-          :selection-active="filterSelectionActive"
-          @selectionchange="filterChangeHandler"
-          @reset="resetFilters"
-        />
-        <LazyCaFilterPanel
-          :filters="filters"
-          :selection="selection"
-          :selection-active="filterSelectionActive"
-          :total-products="totalCount"
-          :total-filters-active="totalFiltersActive"
-          @selectionchange="filterChangeHandler"
-          @reset="resetFilters"
-        />
-
-        <CaListPagination
-          v-show="currentMinCount > 1"
-          direction="prev"
-          :showing="showing"
-          :total-count="totalCount"
-          :min-count="currentMinCount"
-          :max-count="currentMaxCount"
-          :all-products-loaded="allProductsLoaded"
-          :loading="$apollo.queries.products.loading"
-          @loadprev="loadPrev"
-        />
-
-        <CaProductList
-          class="ca-list-page__list"
-          :skip="currentMinCount - 1"
-          :page-size="pageSize"
-          :products="productList"
-          :products-fetched="productsFetched"
-        />
-
-        <CaListPagination
-          v-if="showControls"
-          direction="next"
-          :showing="showing"
-          :total-count="totalCount"
-          :min-count="currentMinCount"
-          :max-count="currentMaxCount"
-          :all-products-loaded="allProductsLoaded"
-          :loading="$apollo.queries.products.loading"
-          @loadmore="loadMore"
-        />
-      </CaContainer>
-      <CaWidgetArea
-        class="ca-list-page__widget-area"
-        family="Productlist"
-        area-name="Below the product list"
-        :filters="widgetAreaFilters"
+    <CaContainer>
+      <CaListSettings
+        v-if="showControls"
+        :active-products="totalCount"
+        :active-filters="totalFiltersActive"
+        :current-sort="selection.sort"
+        @sortchange="sortChangeHandler"
       />
-    </div>
+      <CaActiveFilters
+        v-if="showControls && selection"
+        :selection="selection"
+        :selection-active="filterSelectionActive"
+        @selectionchange="filterChangeHandler"
+        @reset="resetFilters"
+      />
+      <LazyCaFilterPanel
+        :filters="filters"
+        :selection="selection"
+        :selection-active="filterSelectionActive"
+        :total-products="totalCount"
+        :total-filters-active="totalFiltersActive"
+        @selectionchange="filterChangeHandler"
+        @reset="resetFilters"
+      />
+
+      <CaListPagination
+        v-show="currentMinCount > 1"
+        direction="prev"
+        :showing="showing"
+        :total-count="totalCount"
+        :min-count="currentMinCount"
+        :max-count="currentMaxCount"
+        :all-products-loaded="allProductsLoaded"
+        :loading="$apollo.queries.products.loading"
+        @loadprev="loadPrev"
+      />
+
+      <CaProductList
+        class="ca-list-page__list"
+        :skip="currentMinCount - 1"
+        :page-size="pageSize"
+        :products="productList"
+        :products-fetched="productsFetched"
+      />
+
+      <CaListPagination
+        v-if="showControls"
+        direction="next"
+        :showing="showing"
+        :total-count="totalCount"
+        :min-count="currentMinCount"
+        :max-count="currentMaxCount"
+        :all-products-loaded="allProductsLoaded"
+        :loading="$apollo.queries.products.loading"
+        @loadmore="loadMore"
+      />
+    </CaContainer>
+    <CaWidgetArea
+      class="ca-list-page__widget-area"
+      family="Productlist"
+      area-name="Below the product list"
+      :filters="widgetAreaFilters"
+    />
   </div>
 </template>
 <script>

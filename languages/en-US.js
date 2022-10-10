@@ -99,6 +99,7 @@ export default {
   PRODUCT_SPECIFICATION: 'Specification',
   NO_PRODUCT_SPECIFICATION:
     'Unfortunately there are no specifications available for this product.',
+  EXTRA_INFORMATION: 'Additional information',
   SEARCH_RESULTS_TITLE: 'Search result',
   SEARCH_RESULTS_SEE_ALL: 'See all search results',
   YOUR_RECENT_SEARCHES: 'Your recent searches',
