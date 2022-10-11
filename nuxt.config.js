@@ -184,14 +184,16 @@ export default async () => {
               iso: 'en-US',
               file: 'en-US.js',
               name: 'English',
-              flag: 'gb'
+              flag: 'gb',
+              channelId: '2|en'
             },
             {
               code: 'sv',
               iso: 'sv-SE',
               file: 'sv-SE.js',
               name: 'Svenska',
-              flag: 'se'
+              flag: 'se',
+              channelId: '1|se'
             }
           ],
           langDir: 'languages/',
@@ -476,6 +478,7 @@ export default async () => {
         defaultPaymentId: 23,
         defaultShippingId: null
       },
+      showMultipleMarkets: true,
       /* ******************** */
       /* ******* CART ******* */
       /* ******************** */

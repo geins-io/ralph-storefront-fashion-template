@@ -273,6 +273,7 @@ export default {
   CHECKOUT_INVOICE_INFORMATION:
     'We will send an invoice by email to the email address provided above',
   CHECKOUT_CHOOSE_SHIPPING: 'Choose shipping',
+  CHECKOUT_CHOOSE_COUNTRY: 'Choose your country',
   CHECKOUT_SHOW_SHIPPING_OPTIONS: 'Show options',
   CHECKOUT_PAYMENT_GUARD:
     'Enter your postal code above and see to that no fields are empty before you can continue.',
@@ -305,5 +306,6 @@ export default {
   NAVIGATION_ALL_IN: 'Show all in',
   NAVIGATION_GO_TO: 'Go to',
   RELATED_PRODUCTS: 'Related products',
-  MULTIPLE_COLOURS: 'Available in more colours'
+  MULTIPLE_COLOURS: 'Available in more colours',
+  CHOOSE: 'Choose'
 };

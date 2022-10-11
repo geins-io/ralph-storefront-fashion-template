@@ -269,6 +269,7 @@ export default {
   CHECKOUT_INVOICE_INFORMATION:
     'Vi skickar en faktura digitalt till den email du angivit ovan.',
   CHECKOUT_CHOOSE_SHIPPING: 'Välj fraktsätt',
+  CHECKOUT_CHOOSE_COUNTRY: 'Välj ditt land',
   CHECKOUT_SHOW_SHIPPING_OPTIONS: 'Visa fraktsätt',
   CHECKOUT_PAYMENT_GUARD:
     'Fyll i ditt postnummer ovan och välj fraktsätt, samt se till att alla fält är ifyllda innan du kan slutföra köpet.',
@@ -305,5 +306,6 @@ export default {
   MULTIPLE_COLOURS: 'Fler färger',
   FOOTER_ABOUT_TITLE: 'Om verksamheten',
   FOOTER_ABOUT_TEXT:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbiphasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsumultricies eget pretium. Tincidunt metus, scelerisque leo ornareconsectetur mauris. Massa in id laoreet donec. Lorem ipsum dolor sitamet, consectetur adipiscing elit. Morbi phasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsum ultricies eget pretium. Tincidunt metus, scelerisque leo ornare consectetur mauris. Massa inid laoreet donec.'
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbiphasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsumultricies eget pretium. Tincidunt metus, scelerisque leo ornareconsectetur mauris. Massa in id laoreet donec. Lorem ipsum dolor sitamet, consectetur adipiscing elit. Morbi phasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsum ultricies eget pretium. Tincidunt metus, scelerisque leo ornare consectetur mauris. Massa inid laoreet donec.',
+  CHOOSE: 'Välj'
 };
