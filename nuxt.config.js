@@ -197,12 +197,13 @@ export default async () => {
             }
           ],
           langDir: 'languages/',
-          defaultLocale: 'sv',
+          defaultLocale: process.env.DEFAULT_LOCALE,
           lazy: true,
           vueI18n: {
-            fallbackLocale: 'sv'
+            fallbackLocale: process.env.DEFAULT_LOCALE
           },
           detectBrowserLanguage: false,
+          differentDomains: false,
           parsePages: false,
           pages: {
             'checkout/index': {
@@ -447,7 +448,8 @@ export default async () => {
       showCategoryTreeViewFilter: false,
       showBrandsFilter: true,
       showSkuFilter: true,
-      showPricefilter: true,
+      showPriceFilter: true,
+      showDiscountFilter: true,
       /* ****************** */
       /* **** PRODUCT ***** */
       /* ****************** */
@@ -581,19 +583,6 @@ export default async () => {
         ];
         if (isDev) {
           config.devtool = 'source-map';
-        }
-      }
-    },
-    hooks: {
-      render: {
-        errorMiddleware(app) {
-          // eslint-disable-next-line
-          app.use((error, req, res, next) => {
-            res.writeHead(307, {
-              Location: '/'
-            });
-            res.end();
-          });
         }
       }
     },
