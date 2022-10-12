@@ -48,7 +48,13 @@
     </CaCheckoutSection>
 
     <CaCheckoutSection
-      v-if="this.$config.showMultipleMarkets || (markets && markets.length)"
+      v-if="
+        $store.getters['cart/totalQuantity'] &&
+          this.$config.showMultipleMarkets &&
+          markets &&
+          markets.length > 1
+      "
+      :loading="cartLoading"
     >
       <template #title>{{ $t('CHECKOUT_CHOOSE_COUNTRY') }}</template>
       <CaCountrySelector :data="markets" @input="setMarketId($event)" />
@@ -63,9 +69,13 @@
     <CaCheckoutSection
       v-if="$store.getters['cart/totalQuantity'] > 0"
       :loading="shippingLoading"
+      :blocked="this.$config.showMultipleMarkets && !marketId"
     >
       <template #title>
         {{ $t('CHECKOUT_CHOOSE_SHIPPING') }}
+      </template>
+      <template #guard>
+        {{ $t('CHECKOUT_LOCATION_GUARD') }}
       </template>
       <CaUdc
         ref="udc"
