@@ -1,18 +1,13 @@
 <template>
   <div class="ca-price" :class="modifiers">
-    <template v-if="price.isDiscounted">
-      <span class="ca-price__regular">
-        {{ price.sellingPriceIncVatFormatted }}
-      </span>
-      <span class="ca-price__selling">
-        {{ price.regularPriceIncVatFormatted }}
-      </span>
-    </template>
-
-    <span v-else class="ca-price__regular">
-      {{ price.regularPriceIncVatFormatted }}
+    <span class="ca-price__selling">{{ sellingPrice }}</span>
+    <span
+      v-if="price.isDiscounted"
+      :class="{ sale: price.isDiscounted }"
+      class="ca-price__regular"
+    >
+      {{ regularPrice }}
     </span>
-
     <span v-if="!vatIncluded" class="ca-price__ex-vat">
       {{ $t('EX_VAT') }}
     </span>
@@ -31,22 +26,24 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  &__regular {
-    white-space: nowrap;
-    font-size: 2rem;
-  }
   &__selling {
+    white-space: nowrap;
+  }
+  &__regular {
     text-decoration: line-through;
     color: $c-text-secondary;
     margin-top: $px4;
-    font-size: 0.9rem;
+    font-size: 0.9em;
+    &.sale {
+      font-size: 1rem;
+    }
   }
   &__ex-vat {
     margin-left: $px4;
     color: $c-text-secondary;
   }
   &--sale & {
-    &__regular {
+    &__selling {
       color: $c-sale;
     }
   }
