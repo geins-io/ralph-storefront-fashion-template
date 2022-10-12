@@ -25,7 +25,7 @@
     <CaAccordionItem
       v-if="product.parameterGroups !== null"
       ref="specification"
-      class="ca-product-accordion__item only-mobile"
+      class="ca-product-accordion__item"
       base-tag="section"
     >
       <template #toggle-text>
@@ -42,7 +42,7 @@
       base-tag="section"
     >
       <template #toggle-text>
-        <h2>Ingredienser</h2>
+        <h2>{{ $t('EXTRA_INFORMATION') }}</h2>
       </template>
       <CaHtml
         class="ca-product-accordion__item-content"

@@ -99,6 +99,7 @@ export default {
   PRODUCT_SPECIFICATION: 'Specifikation',
   NO_PRODUCT_SPECIFICATION:
     'Det finns tyvärr inga specifikationer att visa för denna produkt.',
+  EXTRA_INFORMATION: 'Extra information',
   SEARCH_RESULTS_TITLE: 'Sökresultat',
   SEARCH_RESULTS_SEE_ALL: 'Se alla sökresultat',
   YOUR_RECENT_SEARCHES: 'Dina senaste sökningar',

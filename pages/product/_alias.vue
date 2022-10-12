@@ -59,12 +59,15 @@
           >
             {{ $t('READ_MORE') }}
           </a> -->
+
           <CaVariantPicker
             v-if="hasVariants"
             :variants="baseVariants"
             :variants-data="variantPickerData"
             :title="
-              baseVariantType === 'Color' ? $t('PICK_COLOR') : 'Välj lådstorlek'
+              baseVariantType === 'Color'
+                ? $t('PICK_COLOR')
+                : $t('PICK_VARIANT')
             "
             :type="baseVariantType === 'Color' ? 'color' : 'panel'"
             @replaceProduct="replaceProduct"
@@ -87,15 +90,15 @@
             </template>
           </CaVariantPicker>
 
-          <!-- <CaVariantPicker
+          <CaVariantPicker
             v-if="hasMultipleDimensions"
             :variants="secondDimensionVariants"
             :variants-data="variantPickerData"
-            title="Välj lådstorlek"
+            :title="$t('PICK_SIZE')"
             type="panel"
             @replaceProduct="replaceProduct"
             @notify="notifyHandler"
-          /> -->
+          />
 
           <CaVariantPicker
             v-if="hasSkuVariants"
@@ -249,6 +252,9 @@ $column-width: 48%;
       margin-bottom: $px56;
     }
   }
+  &__widget-section {
+    padding-bottom: $px56;
+  }
   &__main {
     margin: rem-calc(50) auto 0;
     max-width: rem-calc(540);
@@ -282,9 +288,6 @@ $column-width: 48%;
   &__price {
     font-size: rem-calc(24);
 
-    .ca-price__regular {
-      font-size: $font-size-m;
-    }
     @include bp(tablet) {
       font-size: rem-calc(32);
     }
