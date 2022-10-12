@@ -59,6 +59,7 @@
           >
             {{ $t('READ_MORE') }}
           </a> -->
+
           <CaVariantPicker
             v-if="hasVariants"
             :variants="baseVariants"
@@ -89,15 +90,15 @@
             </template>
           </CaVariantPicker>
 
-          <!-- <CaVariantPicker
+          <CaVariantPicker
             v-if="hasMultipleDimensions"
             :variants="secondDimensionVariants"
             :variants-data="variantPickerData"
-            title="Välj lådstorlek"
+            :title="$t('PICK_SIZE')"
             type="panel"
             @replaceProduct="replaceProduct"
             @notify="notifyHandler"
-          /> -->
+          />
 
           <CaVariantPicker
             v-if="hasSkuVariants"
