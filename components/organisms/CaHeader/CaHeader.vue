@@ -10,11 +10,7 @@
           class="ca-header__nav-toggle only-mobile"
           icon-name="menu"
           aria-label="Show menu"
-          @clicked="
-            $store.commit('contentpanel/open', {
-              name: 'menu-panel'
-            })
-          "
+          @clicked="$store.commit('contentpanel/open', { name: 'menu-panel' })"
         />
         <CaIconButton
           class="ca-header__search-toggle only-mobile"
@@ -44,13 +40,9 @@
           class="ca-header__user-button"
           icon-name="user"
           :aria-label="$t('ACCOUNT_TITLE')"
-          @clicked="
-            $store.commit('contentpanel/open', {
-              name: 'account',
-              frame: 'login'
-            })
-          "
+          @clicked="$store.commit('contentpanel/open', accountInfo)"
         />
+
         <CaIconButton
           v-else
           class="ca-header__user-button"
@@ -81,7 +73,11 @@ export default {
     }
   },
   data: () => ({
-    searchOpened: false
+    searchOpened: false,
+    accountInfo: {
+      name: 'account',
+      frame: 'login'
+    }
   }),
   computed: {
     modifiers() {
