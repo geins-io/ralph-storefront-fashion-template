@@ -74,9 +74,6 @@
       <template #title>
         {{ $t('CHECKOUT_CHOOSE_SHIPPING') }}
       </template>
-      <template #guard>
-        {{ $t('CHECKOUT_LOCATION_GUARD') }}
-      </template>
       <CaUdc
         ref="udc"
         :shipping-data="checkout.shippingData"
@@ -93,6 +90,9 @@
         :options="checkout.shippingOptions"
         @selection="shippingSelectionHandler"
       /> -->
+      <template #guard>
+        {{ $t('CHECKOUT_LOCATION_GUARD') }}
+      </template>
     </CaCheckoutSection>
     <CaCheckoutSection
       v-if="$store.getters['cart/totalQuantity'] > 0"
