@@ -68,6 +68,7 @@ export default {
   background: $c-darkest-gray;
   margin: 0 0 rem-calc(50);
   max-height: 35vh;
+  min-height: 35vh;
   overflow: hidden;
   position: relative;
 
