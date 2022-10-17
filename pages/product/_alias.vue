@@ -289,7 +289,7 @@ $column-width: 48%;
     font-size: rem-calc(24);
 
     @include bp(tablet) {
-      font-size: rem-calc(32);
+      font-size: rem-calc(32) !important;
     }
   }
   &__product-summary {
