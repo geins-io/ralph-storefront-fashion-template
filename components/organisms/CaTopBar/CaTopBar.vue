@@ -81,6 +81,10 @@ export default {
     transition: font-size 200ms ease;
 
     @include calign;
+    @include bp(phone-only) {
+      text-align: center;
+      width: 100%;
+    }
   }
   &__lang-switcher {
     margin: 0 $px20 0 auto;
