@@ -9,12 +9,19 @@ import {
 } from '@apollo/client/core';
 import fetch from 'cross-fetch';
 import DirectoryNamedWebpackPlugin from './static/directory-named-webpack-resolve';
+import localeSettings from './static/locales';
 import channelSettings from './static/channel-settings';
 const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
+const defaultLocale = process.env.DEFAULT_LOCALE
 const currentChannelSettings = channelSettings.find(
   i => i.channelId === fallbackChannelId
 );
 const currentThemeSettings = currentChannelSettings.themeSettings;
+
+const currentLocaleSettings = localeSettings.find(
+  i => i.code === defaultLocale
+);
+
 
 const routePaths = {
   category: '/c',
@@ -188,12 +195,12 @@ export default async () => {
               channelId: '2|en'
             },
             {
-              code: 'sv',
-              iso: 'sv-SE',
-              file: 'sv-SE.js',
-              name: 'Svenska',
-              flag: 'se',
-              channelId: '1|se'
+              code: currentLocaleSettings.code,
+              iso: currentLocaleSettings.iso,
+              file: currentLocaleSettings.file,
+              name: currentLocaleSettings.name,
+              flag: currentLocaleSettings.flag,
+              channelId: fallbackChannelId
             }
           ],
           langDir: 'languages/',

@@ -11,9 +11,9 @@ const baseColors = {
 };
 export default [
   {
-    channelId: '1|se',
-    locale: 'sv',
-    domain: process.env.DOMAIN_SV,
+    channelId: process.env.FALLBACK_CHANNEL_ID,
+    locale: process.env.DEFAULT_LOCALE,
+    domain: process.env.BASE_URL,
     siteName: 'Ralph Fashion',
     themeSettings: {
       'header-theme': 'dark',
@@ -40,10 +40,5 @@ export default [
       'title-line-height': '1',
       'title-font-weight': '400'
     }
-  },
-  {
-    channelId: '2|en',
-    locale: 'en',
-    domain: process.env.DOMAIN_EN
   }
 ];
