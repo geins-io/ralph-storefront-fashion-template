@@ -59,7 +59,10 @@
         width: calc(100% - #{$default-site-width-spacing-tablet}* 2);
       }
       @include bp(laptop) {
-        width: calc(100% - #{$default-site-width-spacing-laptop}* 2);
+        width: calc(100% - 390px);
+      }
+      @include bp(desktop) {
+        width: calc(100% - 460px);
       }
     }
     #{$block}__children {
@@ -79,14 +82,14 @@
       grid-template-columns: repeat(4, 1fr);
       column-gap: rem-calc(40px);
       row-gap: rem-calc(40px);
-      @include bp(desktop) {
-        grid-template-columns: repeat(5, 1fr);
+      @include bp(laptop) {
+        grid-template-columns: repeat(4, 1fr);
       }
       @include bp(desktop) {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
       }
       @media screen and (min-width: $site-width) {
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(7, 1fr);
       }
     }
 
