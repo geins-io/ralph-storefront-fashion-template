@@ -83,7 +83,7 @@ export default {
 
   &__container {
     @include halign;
-    bottom: rem-calc(80);
+    top: rem-calc(40);
     @include bp(tablet) {
       bottom: auto;
       @include calign;

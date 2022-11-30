@@ -13,13 +13,14 @@
     .ca-icon-and-text__icon {
       transition: transform 150ms;
     }
-    &:hover {
+    &--hover {
       #{$block}__children {
         pointer-events: initial;
         margin-top: 0;
         opacity: 1;
       }
       > #{$block}__link {
+        text-decoration: underline;
         .ca-icon-and-text__icon {
           transform: rotate(-180deg);
         }
@@ -58,7 +59,10 @@
         width: calc(100% - #{$default-site-width-spacing-tablet}* 2);
       }
       @include bp(laptop) {
-        width: calc(100% - #{$default-site-width-spacing-laptop}* 2);
+        width: calc(100% - 390px);
+      }
+      @include bp(desktop) {
+        width: calc(100% - 460px);
       }
     }
     #{$block}__children {
@@ -78,24 +82,34 @@
       grid-template-columns: repeat(4, 1fr);
       column-gap: rem-calc(40px);
       row-gap: rem-calc(40px);
-      @include bp(desktop) {
-        grid-template-columns: repeat(5, 1fr);
+      @include bp(laptop) {
+        grid-template-columns: repeat(4, 1fr);
       }
       @include bp(desktop) {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
       }
       @media screen and (min-width: $site-width) {
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(7, 1fr);
       }
     }
 
     #{$block}__child-link {
       font-weight: $font-weight-bold;
       text-transform: uppercase;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     #{$block}__grand-children {
       margin: rem-calc(8) 0;
+    }
+
+    #{$block}__grand-child-link {
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 

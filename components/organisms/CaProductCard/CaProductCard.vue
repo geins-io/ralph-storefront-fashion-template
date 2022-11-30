@@ -170,7 +170,7 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 0 0 $px12;
-    margin: 1.6em 0 0;
+    margin: 0.3em 0 0;
   }
   &__price {
     font-size: $font-size-m;

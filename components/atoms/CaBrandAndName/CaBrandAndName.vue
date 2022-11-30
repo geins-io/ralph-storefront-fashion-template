@@ -50,11 +50,9 @@ export default {
 .ca-brand-and-name {
   font-size: rem-calc(11);
   position: relative;
-  margin: 0 3% 0 0;
+  margin: 0 5% 0 0;
   &__brand {
     text-transform: uppercase;
-    position: absolute;
-    top: -1.7em;
   }
   &__name {
     font-size: 1.5em;
