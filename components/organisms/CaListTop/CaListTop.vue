@@ -67,8 +67,6 @@ export default {
 
   background: $c-darkest-gray;
   margin: 0 0 rem-calc(50);
-  max-height: 35vh;
-  min-height: 35vh;
   overflow: hidden;
   position: relative;
 
@@ -83,12 +81,25 @@ export default {
 
   &__container {
     @include halign;
-    top: rem-calc(40);
+    top: 0;
+    margin-top: rem-calc(40);
+    margin-bottom: rem-calc(40);
+    position: static;
+    transform: translateX(0);
     @include bp(tablet) {
       bottom: auto;
       @include calign;
     }
   }
+
+  &__widget-area {
+    @include bp(phone-only) {
+      position: absolute;
+      width: 100%;
+      min-height: 35vh;
+    }
+  }
+
   &__text {
     width: 100%;
     @include bp(tablet) {
