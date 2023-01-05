@@ -12,7 +12,7 @@ import DirectoryNamedWebpackPlugin from './static/directory-named-webpack-resolv
 import localeSettings from './static/locales';
 import channelSettings from './static/channel-settings';
 const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
-const defaultLocale = process.env.DEFAULT_LOCALE
+const defaultLocale = process.env.DEFAULT_LOCALE;
 const currentChannelSettings = channelSettings.find(
   i => i.channelId === fallbackChannelId
 );
@@ -21,7 +21,6 @@ const currentThemeSettings = currentChannelSettings.themeSettings;
 const currentLocaleSettings = localeSettings.find(
   i => i.code === defaultLocale
 );
-
 
 const routePaths = {
   category: '/c',
@@ -420,6 +419,8 @@ export default async () => {
         }
       ],
       routePaths,
+      isMultiLanguage: false,
+      isCurrencySelector: false,
       /* ****************** */
       /* **** WIDGETS ***** */
       /* ****************** */
