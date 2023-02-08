@@ -427,7 +427,7 @@ export default async () => {
       bannerWidgetPrimaryColor: currentThemeSettings['primary-text-color'],
       bannerWidgetSecondaryColor: currentThemeSettings['inverse-text-color'],
       productListWidgetArrowIconName: 'chevron',
-      productListRowSize: 5,
+      productListRowSize: 4,
       widgetImageSizes: {
         full: '(min-width: 1360px) 1320px, 96vw',
         half: '(min-width: 1360px) 650px, (min-width: 768px) 47vw, 96vw',
