@@ -53,6 +53,32 @@
 </template>
 
 <script>
+/*
+  Renders the brands page.
+
+  apollo:
+    brands: The brands query.
+    errorPolicy: 'all' to prevent errors from being thrown.
+    result: If the brands query returns data, set isBrandsLoaded to true.
+    error: If the brands query returns an error, throw the error.
+  
+  data:
+    isBrandsLoaded: Boolean to check if the brands query has returned data.
+    brandsTree: The brands object.
+    isGroupFilter: Boolean to check if the group filter is active.
+    activeGroupFilter: The active group filter.
+  
+  computed:
+    sortedBrands: The brands sorted by alias.
+    getOneBrandPerCharacter: The brands sorted by alias and only one brand per character.
+
+  methods:
+    setGroupFilter: Sets the active group filter.
+
+  watch:
+    sortedBrands: If the brands query returns data, set the brandsTree to the getOneBrandPerCharacter.
+
+*/
 import brandsQuery from 'brands/brands.graphql';
 export default {
   name: 'BrandsPage',
@@ -152,59 +178,5 @@ export default {
 </script>
 
 <style lang="scss">
-.ca-brands-page {
-  &__filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: rem-calc(5);
-    margin-top: rem-calc(20);
-  }
-
-  &__filter-item {
-    font-family: $heading-font;
-    font-size: $font-size-l;
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
-
-    &.is-passive {
-      color: $c-text-secondary;
-    }
-
-    &.is-active {
-      text-decoration: underline;
-    }
-  }
-
-  &__group-label {
-    font-family: $heading-font;
-    font-size: $font-size-xxl;
-    font-weight: $font-weight-bold;
-    line-height: 1em;
-  }
-
-  &__group-item {
-    display: flex;
-    gap: rem-calc(20);
-    padding-top: rem-calc(20);
-    margin-top: rem-calc(20);
-    border-top: $border-light;
-
-    &[aria-hidden='true'] {
-      display: none;
-    }
-  }
-
-  &__list {
-    width: 100%;
-    column-count: 1;
-
-    @include bp(tablet) {
-      column-count: 3;
-    }
-
-    @include bp(desktop) {
-      column-count: 4;
-    }
-  }
-}
+@import './styles/pages/brands-page';
 </style>

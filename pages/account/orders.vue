@@ -32,6 +32,25 @@
 </template>
 
 <script>
+/*
+  Renders the orders page.
+
+  apollo:
+    getOrders: The orders query.
+
+  data:
+    orders: The orders object.
+    inProgressStatuses: The statuses that are considered in progress.
+    historyStatuses: The statuses that are considered history.
+  
+  computed:
+    ordersInProgress: The orders that are in progress.
+    orderHistory: The orders that are in history.
+
+  methods:
+    mapStatus: Maps the status to the correct status.
+    splitOrders: Splits the orders into in progress and history.
+*/
 import getOrdersQuery from 'user/orders.graphql';
 export default {
   middleware: 'authenticated',
@@ -104,46 +123,5 @@ export default {
 </script>
 
 <style lang="scss">
-.ca-orders-page {
-  &__title {
-    font-size: $font-size-m;
-    font-weight: $font-weight-bold;
-    margin: 0 0 $px10;
-    @include bp(laptop) {
-      font-size: $font-size-l;
-    }
-  }
-  &__spinner.ca-spinner {
-    margin: 48px auto;
-    width: 40px;
-    height: 40px;
-    border-color: var(--accent-color, $c-accent-color);
-  }
-  &__empty {
-    font-size: $font-size-l;
-    text-align: center;
-    color: $c-text-secondary;
-    margin: 55px auto;
-  }
-  &__history {
-    &:not(:first-child) {
-      margin: $px16 0 0;
-    }
-    @include bp(laptop) {
-      &:not(:first-child) {
-        margin: $px24 0 0;
-      }
-    }
-  }
-  &__order {
-    &:not(:first-child) {
-      margin: $px10 0 0;
-    }
-    @include bp(laptop) {
-      &:not(:first-child) {
-        margin: $px16 0 0;
-      }
-    }
-  }
-}
+@import './styles/pages/orders-page';
 </style>

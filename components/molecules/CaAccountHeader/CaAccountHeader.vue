@@ -17,11 +17,11 @@
       <NuxtLink
         v-for="(item, index) in navItems"
         :key="index"
-        :to="localePath(item.path)"
+        :to="$getPath(item.path)"
         class="ca-account-header__nav-item"
         :class="{
           'ca-account-header__nav-item--current':
-            localePath(item.path) === $route.path
+            $getPath(item.path) === $route.path
         }"
       >
         {{ item.name }}
@@ -30,8 +30,13 @@
   </div>
 </template>
 <script>
-// @group Molecules
-// @vuese
+/*
+  CaAccountHeader is a reusable component that displays a title, a log out button and a navigation menu.
+  It receives two props:
+  - title: a string representing the title
+  - navItems: an array of objects representing the navigation items
+  It also dispatches the 'auth/logout' action when the log out button is clicked.
+*/
 export default {
   name: 'CaAccountHeader',
   mixins: [],
@@ -52,71 +57,11 @@ export default {
   methods: {
     async logout() {
       await this.$store.dispatch('auth/logout');
-      this.$router.push({ path: '/' });
+      this.$router.push({ path: this.$getPath('index') });
     }
   }
 };
 </script>
 <style lang="scss">
-.ca-account-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  &__title {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-xl;
-    @include bp(tablet) {
-      font-size: $font-size-xxl;
-    }
-  }
-  &__log-out {
-    line-height: 1;
-  }
-  &__nav {
-    width: 100%;
-    margin: $px20 0 $px24;
-    display: flex;
-    @include bp(tablet) {
-      margin: $px16 0 $px24;
-    }
-  }
-  &__nav-item {
-    display: inline-block;
-    padding: $px10 rem-calc(15px);
-    margin: 0 $px20 0 0;
-    background: $c-lightest-gray;
-    font-size: $font-size-m;
-    border-radius: $default-radius;
-    border: 1px solid transparent;
-    transition: background 150ms ease, border 150ms ease;
-    &:hover {
-      background: $c-light-gray;
-    }
-    @include bp(tablet) {
-      padding: rem-calc(14px) rem-calc(25px);
-      font-size: $font-size-l;
-    }
-    &--current {
-      border-bottom: 1px solid $c-darkest-gray;
-      background: $c-light-gray;
-      position: relative;
-      font-weight: $font-weight-bold;
-      color: $c-text-primary;
-      &::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 8px solid $c-darkest-gray;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%, 100%);
-      }
-    }
-  }
-}
+@import 'molecules/ca-account-header';
 </style>

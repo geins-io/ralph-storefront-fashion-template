@@ -12,8 +12,6 @@ const baseColors = {
 export default [
   {
     channelId: process.env.FALLBACK_CHANNEL_ID,
-    locale: process.env.DEFAULT_LOCALE,
-    domain: process.env.BASE_URL,
     siteName: 'Ralph Fashion',
     themeSettings: {
       'header-theme': 'dark',

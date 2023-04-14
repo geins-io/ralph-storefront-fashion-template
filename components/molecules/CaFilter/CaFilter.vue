@@ -18,10 +18,17 @@
   </div>
 </template>
 <script>
+/*
+  CaFilter is a reusable component that displays a title and a list of values.
+  It receives four props:
+  - title: a string representing the title
+  - values: an array of objects representing the values
+  - selection: an array of objects representing the selected values
+  - type: a string representing the type of filter ('multi' or 'range')
+  It emits an event when the selection changes:
+  - selectionchange: an array of objects representing the new selection
+*/
 import SlideUpDown from 'vue-slide-up-down';
-
-// @group Molecules
-// @vuese
 export default {
   name: 'CaFilter',
   components: { SlideUpDown },
@@ -82,40 +89,6 @@ export default {
   methods: {}
 };
 </script>
-<style lang="scss" scoped>
-.ca-filter {
-  $block: &;
-  position: relative;
-  &__title {
-    padding: 0px 43px 0px 15px;
-    line-height: 38px;
-    height: 40px;
-    border: $border-light;
-    background: $c-lightest-gray;
-    transition: border-color 200ms ease;
-    cursor: pointer;
-    position: relative;
-  }
-  &__arrow {
-    @include valign;
-    right: 14px;
-    font-size: 16px;
-  }
-  &__values {
-    border: $border-light;
-    position: absolute;
-    margin-top: 2px;
-    z-index: 15;
-    background: $c-lightest-gray;
-    overflow: hidden;
-    width: 100%;
-    padding: $px12;
-  }
-
-  &--chosen & {
-    &__title {
-      font-weight: $font-weight-bold;
-    }
-  }
-}
+<style lang="scss">
+@import 'molecules/ca-filter';
 </style>

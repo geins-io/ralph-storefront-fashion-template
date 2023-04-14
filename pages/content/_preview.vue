@@ -7,6 +7,9 @@
 </template>
 
 <script>
+/*
+  Renders a widget area preview page.
+*/
 import { mapState } from 'vuex';
 export default {
   middleware: 'authenticated',
@@ -23,16 +26,18 @@ export default {
         if (this.$store.getters['auth/authenticated']) {
           await this.$store.dispatch('auth/logout');
         }
+        // remove cart for new spoofed user
+        this.$store.dispatch('cart/reset');
         this.auth.client.setTokenData({
           token: this.$route.query.loginToken,
           maxAge: 3600
         });
         this.$store.dispatch('auth/update', {
-          username: 'preview-user@carismar.com',
+          username: 'preview-user@geins.io',
           rememberUser: false
         });
         if (this.$route.query.redirect) {
-          this.$router.push('/');
+          this.$router.push(this.$getPath('index'));
         } else {
           this.isAuthenticated = true;
         }
@@ -42,6 +47,6 @@ export default {
   methods: {},
   meta: {
     pageType: 'Preview Page'
-  },
+  }
 };
 </script>

@@ -52,6 +52,26 @@
 </template>
 
 <script>
+/*
+  Renders the reset password page.
+
+  apollo:
+    commitReset: The commit reset mutation.
+
+  data:
+    loading: Boolean that indicates if the page is loading.
+    password: The password.
+    passwordConfirm: The password confirmation.
+    resetKey: The reset key.
+    currentFeedback: The current feedback object.
+    feedback: The feedback object.
+  
+  methods:
+    commitReset: Commits the reset.
+    resetFields: Resets the fields.
+    showFeedback: Shows the feedback.
+    checkValid: Checks if the fields are valid.
+*/
 import commitResetMutation from 'user/pw-reset-commit.graphql';
 export default {
   name: 'ResetPasswordPage',
@@ -110,14 +130,22 @@ export default {
           })
           .then(result => {
             this.loading = false;
+
             if (result.errors) {
               this.showFeedback(this.feedback.error);
-            } else if (result.data.commitReset) {
+              return;
+            }
+
+            if (result.data.commitReset) {
               this.resetFields();
               this.showFeedback(this.feedback.passwordChanged);
-            } else {
-              this.showFeedback(this.feedback.resetKeyNotValid);
+              setTimeout(() => {
+                window.location.replace(this.$getPath('/?action=login'));
+              }, 1000);
+              return;
             }
+            // wrong key uuid
+            this.showFeedback(this.feedback.resetKeyNotValid);
           })
           .catch(error => {
             // pass the error response to the error component
@@ -156,24 +184,5 @@ export default {
 </script>
 
 <style lang="scss">
-.ca-reset-password {
-  text-align: center;
-  width: rem-calc(400px);
-  max-width: 100%;
-  margin: rem-calc(30px) auto rem-calc(80px);
-  @include bp(tablet) {
-    margin: rem-calc(60px) auto rem-calc(130px);
-  }
-  &__title {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-xl;
-  }
-  &__text {
-    font-size: $font-size-m;
-    margin: $px10 0 $px16;
-  }
-  &__button {
-    margin: $px16 0 0;
-  }
-}
+@import 'organisms/ca-reset-password';
 </style>

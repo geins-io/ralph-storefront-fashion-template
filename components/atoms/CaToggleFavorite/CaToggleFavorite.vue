@@ -2,16 +2,20 @@
   <CaIconButton
     class="ca-toggle-favorite"
     :class="{
-      'ca-toggle-favorite--active': $store.getters.isFavorite(prodAlias)
+      'ca-toggle-favorite--active': isFavorite
     }"
     :aria-label="ariaLabel"
     icon-name="heart"
-    @clicked="$store.commit('toggleFavorite', prodAlias)"
+    @clicked="toggleFavorite"
   />
 </template>
 <script>
-// @group Molecules
-// @vuese
+/*
+  CaToggleFavorite is a reusable component that displays a button to toggle a product as favorite.
+  It receives two props:
+  - prodAlias: a string representing the product alias (deprecated)
+  - prodId: a number representing the product id (use this!)
+*/
 export default {
   name: 'CaToggleFavorite',
   mixins: [],
@@ -19,33 +23,38 @@ export default {
     prodAlias: {
       type: String,
       required: true
+    },
+    prodId: {
+      type: Number,
+      required: true
     }
   },
   data: () => ({}),
   computed: {
+    isFavorite() {
+      return (
+        this.$store.getters.isFavorite(this.prodId) ||
+        this.$store.getters.isFavorite(this.prodAlias)
+      );
+    },
     ariaLabel() {
-      return this.$store.getters.isFavorite(this.prodAlias)
+      return this.isFavorite
         ? this.$t('REMOVE_FAVORITE')
         : this.$t('ADD_FAVORITE');
     }
   },
   watch: {},
   mounted() {},
-  methods: {}
+  methods: {
+    toggleFavorite() {
+      const favorites = this.$store.state.favorites;
+      const isAliases = favorites.length && typeof favorites[0] === 'string';
+      const newFavorite = isAliases ? this.prodAlias : this.prodId;
+      this.$store.commit('toggleFavorite', newFavorite);
+    }
+  }
 };
 </script>
 <style lang="scss">
-.ca-toggle-favorite {
-  width: rem-calc(40px);
-  height: rem-calc(40px);
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: rem-calc(22px);
-  color: $c-text-secondary;
-  transition: all 150ms ease;
-  &--active {
-    color: var(--accent-color, $c-accent-color);
-  }
-}
+@import 'atoms/ca-toggle-favorite';
 </style>

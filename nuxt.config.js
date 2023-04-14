@@ -9,18 +9,15 @@ import {
 } from '@apollo/client/core';
 import fetch from 'cross-fetch';
 import DirectoryNamedWebpackPlugin from './static/directory-named-webpack-resolve';
-import localeSettings from './static/locales';
 import channelSettings from './static/channel-settings';
+
 const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
-const defaultLocale = process.env.DEFAULT_LOCALE;
+const fallbackMarketAlias = process.env.FALLBACK_MARKET_ALIAS;
+
 const currentChannelSettings = channelSettings.find(
   i => i.channelId === fallbackChannelId
 );
 const currentThemeSettings = currentChannelSettings.themeSettings;
-
-const currentLocaleSettings = localeSettings.find(
-  i => i.code === defaultLocale
-);
 
 const routePaths = {
   category: '/c',
@@ -31,6 +28,57 @@ const routePaths = {
   list: '/l',
   all: '/allt'
 };
+
+// Set the domain settings and market settings based on if env-variable DOMAINS exists
+// Default settings for multi market / multi language
+// TODO: All this should come from channelSettings when we have a way to get channel settings from api
+let domainSettings = {
+  differentDomains: false,
+  strategy: 'prefix'
+};
+let domainUrls = null;
+
+// Default settings for market for publicRuntimeConfig
+let marketSettings = {
+  isMultiLanguage: true,
+  marketInPath: true
+};
+
+if (process.env.DOMAINS) {
+  const domains = process.env.DOMAINS.split(',');
+
+  domainUrls = domains
+    ?.map(domain => {
+      const domainArr = domain?.split('|');
+      return {
+        [domainArr[0]]: domainArr[1] || ''
+      };
+    })
+    .reduce((result, item) => {
+      const key = Object.keys(item)[0];
+      result[key] = item[key];
+      return result;
+    }, {});
+
+  // If using DOMAINS, turn off multilang and marketInPath
+  marketSettings = {
+    isMultiLanguage: false,
+    marketInPath: false
+  };
+
+  // If site should have only language prefix and no market prefix, remove the following declaration
+  domainSettings = {
+    differentDomains: false,
+    strategy: 'no_prefix'
+  };
+
+  if (domains.length > 1) {
+    // If more than one domain, set diffrentDomains to true
+    domainSettings = {
+      differentDomains: true
+    };
+  }
+}
 
 const imageSizesFile = './static/ImageSize.csv';
 
@@ -72,11 +120,11 @@ async function getImageSizes() {
 }
 export default async () => {
   const imageSizes = await getImageSizes();
-
+  // Get default meta
   const defaultMetaQuery = await apolloClient.query({
     query: gql`
       query listPageInfo {
-        listPageInfo(alias: "frontpage", channelId: "${fallbackChannelId}") {
+        listPageInfo(alias: "frontpage", channelId: "${fallbackChannelId}", marketId: "${fallbackMarketAlias}") {
           meta {
             description
             title
@@ -91,6 +139,45 @@ export default async () => {
     }
   });
   const defaultMeta = await defaultMetaQuery.data.listPageInfo.meta;
+
+  // Get fallback markets
+  const getMarketsQuery = await apolloClient.query({
+    query: gql`
+      query channel {
+        channel(channelId: "${fallbackChannelId}") {
+          defaultMarketId
+          markets {
+            id
+            defaultLanguageId
+            alias
+            virtual
+            onlyDisplayInCheckout
+            groupKey
+            allowedLanguages {
+              id
+              name
+              code
+            }
+            country {
+              name
+              code
+            }
+            currency {
+              name
+              code
+            }
+          }
+        }
+      }
+    `,
+    context: {
+      headers: {
+        'X-ApiKey': process.env.API_KEY
+      }
+    }
+  });
+  const markets = await getMarketsQuery.data.channel.markets;
+
   return {
     // Leaving this here for reference when building a store front for a client that requires Nosto
     // head: {
@@ -144,6 +231,9 @@ export default async () => {
       { src: '~/plugins/persistedState.js', mode: 'client' },
       { src: '~/plugins/set-css-variables.js', mode: 'client' },
       {
+        src: '~/node_modules/@ralph/ralph-ui/plugins/get-path.js'
+      },
+      {
         src: '~/node_modules/@ralph/ralph-ui/plugins/broadcastChannel.js',
         mode: 'client'
       },
@@ -165,6 +255,14 @@ export default async () => {
      ** Nuxt.js dev-modules
      */
     buildModules: [
+      // Doc: https://www.npmjs.com/package/@nuxtjs/router
+      [
+        '@nuxtjs/router',
+        {
+          path: 'node_modules/@ralph/ralph-ui/plugins',
+          keepDefaultRouter: true
+        }
+      ],
       // Doc: https://github.com/nuxt-community/eslint-module
       '@nuxtjs/eslint-module',
       // Doc: https://github.com/nuxt-community/stylelint-module
@@ -190,16 +288,42 @@ export default async () => {
               iso: 'en-US',
               file: 'en-US.js',
               name: 'English',
-              flag: 'gb',
-              channelId: '2|en'
+              domain: domainUrls?.en || '' // Only matters if diffrentDomains are used
             },
             {
-              code: currentLocaleSettings.code,
-              iso: currentLocaleSettings.iso,
-              file: currentLocaleSettings.file,
-              name: currentLocaleSettings.name,
-              flag: currentLocaleSettings.flag,
-              channelId: fallbackChannelId
+              code: 'sv',
+              iso: 'sv-SE',
+              file: 'sv-SE.js',
+              name: 'Swedish',
+              domain: domainUrls?.sv || '' // Only matters if diffrentDomains are used
+            },
+            {
+              code: 'nb',
+              iso: 'nb-NO',
+              file: 'nb-NO.js',
+              name: 'Norsk',
+              domain: domainUrls?.nb || '' // Only matters if diffrentDomains are used
+            },
+            {
+              code: 'nn',
+              iso: 'nn-NO',
+              file: 'nb-NO.js',
+              name: 'Norsk',
+              domain: domainUrls?.nn || '' // Only matters if diffrentDomains are used
+            },
+            {
+              code: 'da',
+              iso: 'da-DK',
+              file: 'da-DK.js',
+              name: 'Dansk',
+              domain: domainUrls?.da || '' // Only matters if diffrentDomains are used
+            },
+            {
+              code: 'fi',
+              iso: 'fi-FI',
+              file: 'fi-FI.js',
+              name: 'Finska',
+              domain: domainUrls?.fi || '' // Only matters if diffrentDomains are used
             }
           ],
           langDir: 'languages/',
@@ -209,34 +333,52 @@ export default async () => {
             fallbackLocale: process.env.DEFAULT_LOCALE
           },
           detectBrowserLanguage: false,
-          differentDomains: false,
           parsePages: false,
           pages: {
             'checkout/index': {
               sv: '/kassan',
-              en: '/checkout'
+              en: '/checkout',
+              da: '/kassen',
+              fi: '/kassa',
+              nb: '/kassen'
             },
             'account/orders': {
               sv: '/mina-sidor/ordrar',
-              en: '/my-account/orders'
+              en: '/my-account/orders',
+              da: '/min-konto/bestillinger',
+              fi: '/tilini/tilaukset',
+              nb: '/min-konto/bestillinger'
             },
             'account/settings': {
               sv: '/mina-sidor/installningar',
-              en: '/my-account/settings'
+              en: '/my-account/settings',
+              da: '/min-konto/indstillinger',
+              fi: '/tilini/asetukset',
+              nb: '/min-konto/innstillinger'
             },
             'account/balance': {
               sv: '/mina-sidor/saldo',
-              en: '/my-account/balance'
+              en: '/my-account/balance',
+              da: '/min-konto/saldo',
+              fi: '/tilini/saldo',
+              nb: '/min-konto/saldo'
             },
             'favorites/index': {
               sv: '/favoriter',
-              en: '/favorites'
+              en: '/favorites',
+              da: '/favoritter',
+              fi: '/suosikkeja',
+              nb: '/favoritter'
             },
             'brands/index': {
               sv: '/varumarken',
-              en: '/brands'
+              en: '/brands',
+              da: '/varemaerker',
+              fi: '/tavaramerkkeja',
+              nb: '/varemerker'
             }
-          }
+          },
+          ...domainSettings
         }
       ],
       // Doc: https://github.com/nuxt-community/style-resources-module
@@ -262,12 +404,6 @@ export default async () => {
     //   }
     // },
     pwa: {
-      // Default metadata. Doc: https://pwa.nuxtjs.org/meta/
-      meta: {
-        name: defaultMeta.title,
-        description: defaultMeta.description,
-        author: null
-      },
       manifest: {
         name: currentChannelSettings.siteName,
         short_name: currentChannelSettings.siteName,
@@ -283,7 +419,7 @@ export default async () => {
     },
     apollo: {
       clientConfigs: {
-        default: '~/plugins/apollo-config.js'
+        default: '~/node_modules/@ralph/ralph-ui/plugins/apollo-config.js'
       },
       includeNodeModules: true
     },
@@ -386,7 +522,12 @@ export default async () => {
       ),
       apiKey: process.env.API_KEY,
       apiEndpoint: process.env.API_ENDPOINT,
-      customerServiceEmail: 'info@carismar.io',
+      fallbackChannelId,
+      fallbackMarketAlias,
+      ...marketSettings,
+      useStartPage: false,
+      markets,
+      customerServiceEmail: 'info@geins.io',
       customerServicePhone: '+46 123 23 43 45',
       breakpoints: {
         tablet: 768,
@@ -419,8 +560,6 @@ export default async () => {
         }
       ],
       routePaths,
-      isMultiLanguage: false,
-      isCurrencySelector: false,
       /* ****************** */
       /* **** WIDGETS ***** */
       /* ****************** */
@@ -471,6 +610,8 @@ export default async () => {
         }
       },
       productShowRelated: true,
+      showProductReviewSection: false,
+      showStarsInProductReviewForm: true, // it requires showProductReviewSection to be true
       /* ****************** */
       /* ***** IMAGES ***** */
       /* ****************** */
@@ -486,9 +627,9 @@ export default async () => {
         entryCode: true,
         message: true,
         defaultPaymentId: 23,
-        defaultShippingId: null
+        defaultShippingId: null,
+        showMultipleMarkets: true
       },
-      showMultipleMarkets: true,
       /* ******************** */
       /* ******* CART ******* */
       /* ******************** */
@@ -503,6 +644,12 @@ export default async () => {
         gender: false, // If set to true, gender must be added to user.graphql
         country: false,
         priceLists: false // Set to true if using different price lists for different users
+      },
+      /* ******************** */
+      /* ******* GTM ******* */
+      /* ******************** */
+      gtm: {
+        isProductsKeyItems: false
       }
     },
     privateRuntimeConfig: {},

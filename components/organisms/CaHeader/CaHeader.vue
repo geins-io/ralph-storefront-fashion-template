@@ -18,7 +18,7 @@
           aria-label="Show search"
           @clicked="() => (searchOpened = !searchOpened)"
         />
-        <NuxtLink to="/">
+        <NuxtLink :to="$getPath('index')">
           <CaLogo
             class="ca-header__logo"
             :theme="theme"
@@ -63,6 +63,9 @@
   </header>
 </template>
 <script>
+/*
+  Header component for the site.
+*/
 export default {
   name: 'CaHeader',
   mixins: [],
@@ -97,108 +100,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.ca-header {
-  --header-bg: #{$c-lightest-gray};
-  --header-text: #{$c-text-primary};
-
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
-  z-index: $z-index-header;
-  transform: translateY(0);
-  transition: transform 450ms ease, background-color 200ms ease 450ms,
-    mix-blend-mode 200ms ease 450ms;
-
-  &__bar {
-    background: var(--header-bg, #{$c-header-bg});
-    color: var(--header-text, #{$c-text-primary});
-    z-index: $z-index-header;
-    position: relative;
-    body[style='overflow: hidden;'] & {
-      padding-right: var(--scrollbar-width);
-    }
-  }
-  &__container {
-    height: $header-bar-height;
-    @include flex-valign;
-    justify-content: space-between;
-
-    @include bp(laptop) {
-      height: $header-bar-height-computer;
-    }
-  }
-
-  &__nav-toggle {
-    @include flex-valign;
-    font-size: rem-calc(24);
-    color: var(--header-text, #{$c-text-primary});
-    margin: 0 $px20 0 0;
-  }
-
-  &__search-toggle {
-    margin-right: auto;
-    font-size: rem-calc(24);
-    color: var(--header-text, #{$c-text-primary});
-    @include flex-valign;
-  }
-
-  &__logo {
-    width: rem-calc(120px);
-  }
-
-  &__main-nav {
-    margin: 0 0 0 2%;
-    @include bp(desktop) {
-      margin: 0 0 0 rem-calc(60);
-    }
-  }
-
-  &__search {
-    margin: 0 auto;
-  }
-
-  &__user-button {
-    font-size: rem-calc(24);
-    line-height: 1;
-    margin: 0 rem-calc(20) 0 auto;
-    color: var(--header-text, #{$c-text-primary});
-    @include bp(laptop) {
-      margin: 0 rem-calc(40) 0 rem-calc(10);
-    }
-  }
-
-  &__favorites.ca-favorites {
-    @include bp(laptop) {
-      margin: 0 0 0 auto;
-    }
-  }
-
-  &__nav-and-search {
-    display: flex;
-    align-items: center;
-  }
-  &--is-hidden {
-    transform: translateY(-100%);
-    @include bp(tablet-down) {
-      .ca-search--visible {
-        transform: translateY(-100%);
-      }
-    }
-  }
-  &--scrolled & {
-    &__bar {
-      box-shadow: $box-shadow;
-    }
-  }
-
-  &--dark {
-    --header-bg: #{$c-darkest-gray};
-    --header-text: #{$c-text-inverse};
-  }
-
-  .ca-notification-badge {
-    border: 1px solid var(--header-bg, #{$c-header-bg});
-  }
-}
+@import 'organisms/ca-header';
 </style>

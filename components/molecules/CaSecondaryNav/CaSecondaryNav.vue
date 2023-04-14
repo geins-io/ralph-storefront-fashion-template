@@ -17,40 +17,33 @@
       <NuxtLink
         v-else
         class="ca-secondary-nav__link"
-        :to="localePath('account-orders')"
+        :to="$getPath('account-orders')"
       >
         {{ $t('ACCOUNT_TITLE') }}
       </NuxtLink>
     </CaSecondaryNavItem>
     <CaSecondaryNavItem>
-      <NuxtLink class="ca-secondary-nav__link" :to="localePath('favorites')">
+      <NuxtLink class="ca-secondary-nav__link" :to="$getPath('favorites')">
         {{ $t('FAVORITES_LABEL') }} ({{ $store.state.favorites.length }})
       </NuxtLink>
     </CaSecondaryNavItem>
   </ul>
 </template>
 <script>
-// @group Molecules
-// @vuese
+/*
+  CaSecondaryNav is a reusable component that displays the links in the bottom of the mobile menu
+*/
 export default {
   name: 'CaSecondaryNav',
   mixins: [],
   props: {},
   data: () => ({}),
-  computed: {
-    availableLocales() {
-      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale);
-    }
-  },
+  computed: {},
   watch: {},
   mounted() {},
   methods: {}
 };
 </script>
 <style lang="scss">
-.ca-secondary-nav {
-  &__link {
-    color: $c-text-primary;
-  }
-}
+@import 'molecules/ca-secondary-nav';
 </style>

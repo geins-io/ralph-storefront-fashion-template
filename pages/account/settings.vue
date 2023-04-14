@@ -13,6 +13,12 @@
 </template>
 
 <script>
+/*
+  Renders the settings page.
+
+  apollo:
+    getUser: The user query.
+*/
 import getUserQuery from 'user/get.graphql';
 export default {
   middleware: 'authenticated',
@@ -59,12 +65,5 @@ export default {
 </script>
 
 <style lang="scss">
-.ca-settings-page {
-  &__spinner.ca-spinner {
-    margin: 48px auto;
-    width: 40px;
-    height: 40px;
-    border-color: var(--accent-color, $c-accent-color);
-  }
-}
+@import './styles/pages/settings-page';
 </style>

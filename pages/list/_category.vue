@@ -8,6 +8,14 @@
 </template>
 
 <script>
+/*
+  Renders the category page.
+  middleware: list-page-routing - handles the routing for the list pages
+  
+  computed:
+    currentAlias: The current alias of the category.
+    filtersVars: The variables for the filters query.
+*/
 import categoryInfoQuery from 'productlist/category-page.graphql';
 
 export default {
@@ -36,6 +44,6 @@ export default {
   methods: {},
   meta: {
     pageType: 'Category Page'
-  },
+  }
 };
 </script>

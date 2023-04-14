@@ -58,6 +58,7 @@
       <CaToggleFavorite
         class="ca-product-card__favorite"
         :prod-alias="product.alias"
+        :prod-id="product.productId"
       />
     </div>
     <CaSkeleton
@@ -101,10 +102,15 @@
   </component>
 </template>
 <script>
-import MixProductCard from 'MixProductCard';
+/*
+  CaProductCard is a reusable component that displays a product card.
+  It receives one prop:
+  - product: an object containing the product data
 
-// @group Organisms
-// @vuese
+  It emits an event when the product is clicked:
+  - productclick: an object containing the product data
+*/
+import MixProductCard from 'MixProductCard';
 export default {
   name: 'CaProductCard',
   mixins: [MixProductCard],
@@ -122,91 +128,6 @@ export default {
   methods: {}
 };
 </script>
-<style lang="scss" scoped>
-.ca-product-card {
-  position: relative;
-  &__image-wrap {
-    line-height: 0;
-    position: relative;
-  }
-
-  &__image {
-    transition: opacity 250ms ease;
-    opacity: 1;
-    &--has-second {
-      &:hover {
-        opacity: 0;
-      }
-    }
-
-    &--second-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-
-  ::v-deep .ca-product-card__image--second-image.ca-image--product::after {
-    display: none;
-  }
-
-  &__image-link {
-    display: block;
-  }
-  &__info {
-    padding: $px12 $px10 0;
-    display: block;
-    @include bp(tablet) {
-      padding: $px12 0 0;
-    }
-  }
-  &__info-top {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 0 $px12;
-    margin: 0.3em 0 0;
-  }
-  &__price {
-    font-size: $font-size-m;
-  }
-  &__campaigns {
-    position: absolute;
-    top: rem-calc(10);
-    left: rem-calc(10);
-    z-index: 2;
-    @include bp(tablet) {
-      top: rem-calc(20);
-      left: rem-calc(20);
-    }
-  }
-  &__colors {
-    text-transform: uppercase;
-    font-size: $font-size-xs;
-    margin: $px4 0 0;
-  }
-  &__stock-display {
-    font-size: $font-size-xs;
-  }
-
-  ::v-deep .ca-toggle-favorite {
-    width: 26px;
-    height: 26px;
-    top: auto;
-    right: rem-calc(8);
-    bottom: rem-calc(8);
-    @include bp(tablet) {
-      width: 36px;
-      height: 36px;
-      top: auto;
-      right: $px12;
-      bottom: $px12;
-    }
-  }
-}
+<style lang="scss">
+@import 'organisms/ca-product-card';
 </style>

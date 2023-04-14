@@ -19,6 +19,18 @@
 </template>
 
 <script>
+/*
+  Renders a content page.
+
+  apollo:
+    widgetArea: The widget area query.
+
+  methods:
+    onDataFetched: Called when the widget area data is fetched.
+
+  head(): Sets the page title and meta tags.
+
+*/
 import MixMetaReplacement from 'MixMetaReplacement';
 export default {
   name: 'ContentPage',
@@ -76,30 +88,5 @@ export default {
 </script>
 
 <style lang="scss">
-.ca-content-page {
-  &__container {
-    &--has-menu {
-      padding: rem-calc(15) 0;
-      .ca-container {
-        width: 100%;
-      }
-
-      @include bp(tablet) {
-        display: flex;
-        column-gap: $px32;
-        padding: rem-calc(30) 0;
-      }
-    }
-  }
-  &__sidebar {
-    @include bp(tablet) {
-      width: rem-calc(200);
-      flex-shrink: 0;
-    }
-    @include bp(laptop) {
-      width: rem-calc(300);
-      flex-shrink: 0;
-    }
-  }
-}
+@import './styles/pages/content-page';
 </style>

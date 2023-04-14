@@ -28,8 +28,18 @@
   </div>
 </template>
 <script>
-// @group Organisms
-// @vuese
+/*
+  A component that displays the top of a list page.
+
+  Props:
+    type: String
+      The type of list page
+    listInfo: Object
+      The list info object. Contains the name, description and subcategories of the list.
+
+  Used in:
+    - CaListPage
+*/
 export default {
   name: 'CaListTop',
   mixins: [],
@@ -58,91 +68,6 @@ export default {
   methods: {}
 };
 </script>
-<style lang="scss" scoped>
-.ca-list-top {
-  --title-text-color: #{$c-text-inverse};
-  --body-text-color: #{$c-text-inverse};
-  --primary-text-color: #{$c-text-inverse};
-  --secondary-text-color: #{$c-text-inverse};
-
-  background: $c-darkest-gray;
-  margin: 0 0 rem-calc(50);
-  overflow: hidden;
-  position: relative;
-
-  @include bp(tablet) {
-    max-height: unset;
-    min-height: 30vh;
-    overflow: visible;
-  }
-  @include bp(laptop) {
-    min-height: 50vh;
-  }
-
-  &__container {
-    @include halign;
-    top: 0;
-    margin-top: rem-calc(40);
-    margin-bottom: rem-calc(40);
-    position: static;
-    transform: translateX(0);
-    @include bp(tablet) {
-      bottom: auto;
-      @include calign;
-    }
-  }
-
-  &__widget-area {
-    @include bp(phone-only) {
-      position: absolute;
-      width: 100%;
-      min-height: 35vh;
-    }
-  }
-
-  &__text {
-    width: 100%;
-    @include bp(tablet) {
-      width: 60%;
-      max-width: 700px;
-    }
-  }
-  &__title {
-    font-size: rem-calc(36);
-    font-weight: $font-weight-bold;
-    margin: 0 0 $px4;
-    @include bp(tablet) {
-      font-size: rem-calc(62);
-      margin: 0 0 $px8;
-    }
-    @include bp(laptop) {
-      font-size: rem-calc(82);
-    }
-    &--skeleton {
-      margin: 0 auto $px8;
-      @include bp(tablet) {
-        margin: 0 0 $px8;
-      }
-    }
-  }
-
-  &__description {
-    &--skeleton {
-      @include bp(tablet-down) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  }
-  &__subcategories {
-    margin: $px20 -1.2rem 0 0;
-    max-width: 100%;
-    @include bp(laptop) {
-      margin: -$px8;
-      width: 40%;
-      max-width: 525px;
-    }
-  }
-}
+<style lang="scss">
+@import 'organisms/ca-list-top';
 </style>

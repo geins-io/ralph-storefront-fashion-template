@@ -8,6 +8,14 @@
 </template>
 
 <script>
+/*
+  Renders the account page.
+
+  middleware:
+    - authenticated
+
+*/
+
 import { mapState } from 'vuex';
 import getUserQuery from 'user/get.graphql';
 export default {
@@ -28,12 +36,14 @@ export default {
         if (this.$store.getters['auth/authenticated']) {
           await this.$store.dispatch('auth/logout');
         }
+        // remove cart for new spoofed user
+        this.$store.dispatch('cart/reset');
         this.auth.client.setTokenData({
           token: this.$route.query.loginToken,
           maxAge: 3600
         });
         this.$store.dispatch('auth/update', {
-          username: 'spoofed-user@carismar.com',
+          username: 'spoofed-user@geins.io',
           rememberUser: false
         });
         if (this.$config.customerTypesToggle) {
@@ -64,7 +74,7 @@ export default {
   created() {},
   mounted() {
     if (!this.$route.query.loginToken) {
-      this.$router.replace(this.localePath('account-orders'));
+      this.routeToAccount();
     }
   },
   meta: {
@@ -72,29 +82,12 @@ export default {
   },
   methods: {
     routeToAccount() {
-      this.$router.replace(this.localePath('account-orders'));
+      this.$router.replace(this.$getPath('account-orders'));
     }
   }
 };
 </script>
 
 <style lang="scss">
-.ca-account-page {
-  &__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 0 $px40;
-  }
-  &__title {
-    font-size: $font-size-xxl;
-    font-weight: $font-weight-bold;
-    margin: 0 0 $px40;
-  }
-  &__spinner.ca-spinner {
-    width: 60px;
-    height: 60px;
-    border-color: var(--accent-color, $c-accent-color);
-  }
-}
+@import './styles/pages/account-page';
 </style>
