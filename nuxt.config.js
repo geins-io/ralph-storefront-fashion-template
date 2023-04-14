@@ -10,13 +10,14 @@ import {
 import fetch from 'cross-fetch';
 import DirectoryNamedWebpackPlugin from './static/directory-named-webpack-resolve';
 import channelSettings from './static/channel-settings';
+
+const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
+const fallbackMarketAlias = process.env.FALLBACK_MARKET_ALIAS;
+
 const currentChannelSettings = channelSettings.find(
   i => i.channelId === fallbackChannelId
 );
 const currentThemeSettings = currentChannelSettings.themeSettings;
-
-const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
-const fallbackMarketAlias = process.env.FALLBACK_MARKET_ALIAS;
 
 const routePaths = {
   category: '/c',

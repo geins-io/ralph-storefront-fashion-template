@@ -37,7 +37,7 @@ export default {
     },
     themes() {
       const themeSettings = this.$config.channelSettings.find(
-        i => i.channelId === this.$store.state.channelId
+        i => i.channelId === this.$store.state.channel.id
       ).themeSettings;
       return {
         header: themeSettings['header-theme'],
