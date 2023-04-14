@@ -1,0 +1,114 @@
+$column-width: 48%;
+.ca-product-page {
+  &__section {
+    margin-bottom: $px20;
+    @include bp(laptop) {
+      align-items: flex-start;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $px56;
+    }
+  }
+  &__widget-section {
+    padding-bottom: $px56;
+  }
+  &__main {
+    margin: rem-calc(50) auto 0;
+    max-width: rem-calc(540);
+    position: relative;
+    @include bp(laptop) {
+      position: sticky;
+      top: $header-height-computer;
+      width: 44%;
+      z-index: 1;
+    }
+    @include bp(desktop) {
+      margin: rem-calc(60) auto 0;
+    }
+  }
+  &__main-top {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__gallery.ca-product-gallery {
+    @include bp(laptop) {
+      width: $column-width;
+      margin-right: 3%;
+    }
+  }
+  &__skeleton-main-slide {
+    @include bp(tablet-down) {
+      width: 69.5%;
+      margin: 0 auto;
+    }
+  }
+  &__price {
+    font-size: rem-calc(24);
+
+    @include bp(tablet) {
+      font-size: rem-calc(32) !important;
+    }
+  }
+  &__product-summary {
+    margin: $px20 0 $px32;
+  }
+  &__campaigns {
+    margin: 0 0 rem-calc(16);
+  }
+  &__variant-picker {
+    margin-bottom: $default-spacing;
+  }
+  &__quantity {
+    margin-bottom: $px16;
+  }
+  &__skeleton-button {
+    .ca-skeleton + & {
+      margin-top: $px32;
+    }
+  }
+  &__buy-button.ca-button {
+    margin-bottom: $px20;
+  }
+  &__stock-display {
+    font-size: $font-size-m;
+    margin: 0 0 $px20;
+  }
+  &__actions {
+    margin-bottom: $px24;
+  }
+  &__usps {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__usp.ca-icon-and-text {
+    padding: 0 $px4;
+    align-items: flex-start;
+    .ca-icon {
+      margin-top: 4px;
+      @include bp(tablet) {
+        margin-top: 2px;
+      }
+    }
+  }
+  &__specifications-box {
+    @include bp(laptop) {
+      width: $column-width;
+      background: $c-lightest-gray;
+      padding: 0 $px24 $px16;
+    }
+  }
+  &__specifications-title {
+    font-size: $font-size-l;
+    font-weight: $font-weight-bold;
+    padding: 1rem 0;
+  }
+
+  &__related {
+    margin: $px32 0 $px20;
+  }
+  &__related-title {
+    font-size: $font-size-l;
+    font-weight: $font-weight-bold;
+    margin: 0 0 $px20;
+  }
+}

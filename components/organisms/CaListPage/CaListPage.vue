@@ -82,10 +82,11 @@
   </div>
 </template>
 <script>
+/*
+  CaListPage is the main component for the product list pages.
+*/
 import MixListPage from 'MixListPage';
 
-// @group Organisms
-// @vuese
 export default {
   name: 'CaListPage',
   mixins: [MixListPage],
@@ -114,17 +115,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.ca-list-page {
-  &__image {
-    margin: 0 0 $px32 0;
-  }
-  &__widget-area {
-    margin: 0 0 $px32 0;
-  }
-  &__list {
-    @include bp(phone-only) {
-      margin: 0 rem-calc(-10);
-    }
-  }
-}
+@import 'organisms/ca-list-page';
 </style>

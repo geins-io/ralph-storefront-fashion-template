@@ -1,12 +1,17 @@
 # @ralph/ralph-storefront
 
-> E-commerce frontend by Carismar
+> E-commerce frontend by Geins
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
+
+# point to local version of Ralph UI for hot reload
+# run this command again to keep link whenever dependencies changed, for example after npm install
+# (`npm link` has to be runned in local Ralph UI repo first if never done before)
+$ npm run link-ralph
 
 # serve with hot reload at localhost:3000
 $ npm run dev
@@ -15,8 +20,10 @@ $ npm run dev
 $ npm run build
 $ npm run start
 
-# generate static project
-$ npm run generate
-```
+# override scss or full component from Ralph UI
+$ npm run ralph-ride
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+# create new component
+$ npm run ralph-create
+
+```

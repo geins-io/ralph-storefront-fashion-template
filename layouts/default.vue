@@ -16,6 +16,7 @@
     <LazyCaDisplayCart />
     <LazyCaAccountPanel />
     <LazyCaMenuPanel menu-location-id="main-mobile" />
+    <LazyCaMarketPanel v-if="$store.state.channel.markets.length > 1" />
     <LazyCaSnackbar />
     <LazyCaModal />
     <LazyCaAddedToCart />
@@ -27,6 +28,7 @@ import MixGlobalInit from 'MixGlobalInit';
 export default {
   name: 'CaDefaultLayout',
   mixins: [MixGlobalInit],
+  data: () => ({}),
   computed: {
     modifiers() {
       return {
@@ -42,37 +44,10 @@ export default {
         footer: themeSettings['footer-theme']
       };
     }
-  },
-  mounted() {}
+  }
+  // IMPORTANT NOTICE: If you decide to add a head() function here, you will overwrite default meta functionality that comes with MixGlobalInit from Ralph UI
 };
 </script>
 <style lang="scss">
-.ca-layout-default {
-  $block: &;
-  &__main {
-    padding-top: $header-height;
-    @include bp(laptop) {
-      padding-top: $header-height-computer;
-    }
-  }
-  &__loading {
-    @include halign;
-    position: fixed;
-    top: $header-bar-height + $top-bar-height + $px12;
-    z-index: $z-index-panel;
-    background: $c-darkest-gray;
-    padding: $px8;
-    width: rem-calc(36px);
-    height: rem-calc(36px);
-    border-radius: 50%;
-    @include bp(laptop) {
-      top: $header-height-computer;
-    }
-  }
-  &--loading {
-    #{$block}__main {
-      min-height: 100vh;
-    }
-  }
-}
+@import 'organisms/ca-layout-default';
 </style>

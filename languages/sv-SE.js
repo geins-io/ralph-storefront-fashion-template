@@ -44,9 +44,10 @@ export default {
   FILTERS_ACTIVE: 'aktivt filter | aktiva filter',
   SORT_TITLE: 'Sorterat på',
   SORT_LABEL_LATEST: 'Senast inkomna',
-  SORT_LABEL_BESTSELLERS: 'Bästsäljare',
-  SORT_LABEL_LOWEST_PRICE: 'Lägsta pris',
-  SORT_LABEL_HIGHEST_PRICE: 'Högsta pris',
+  SORT_LABEL_MOST_SOLD: 'Bästsäljare',
+  SORT_LABEL_PRICE: 'Lägsta pris',
+  SORT_LABEL_PRICE_DESC: 'Högsta pris',
+  SORT_LABEL_RELEVANCE: 'Relevans',
   CONTINUE_SHOPPING: 'Fortsätt shoppa',
   CHECKOUT: 'Kassan',
   CART: 'Varukorg',
@@ -310,5 +311,22 @@ export default {
   FOOTER_ABOUT_TITLE: 'Om verksamheten',
   FOOTER_ABOUT_TEXT:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbiphasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsumultricies eget pretium. Tincidunt metus, scelerisque leo ornareconsectetur mauris. Massa in id laoreet donec. Lorem ipsum dolor sitamet, consectetur adipiscing elit. Morbi phasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsum ultricies eget pretium. Tincidunt metus, scelerisque leo ornare consectetur mauris. Massa inid laoreet donec.',
-  CHOOSE: 'Välj'
+  CHOOSE: 'Välj',
+  CHOOSE_YOUR_COUNTRY: 'Välj land',
+  MARKET_PANEL_TITLE: 'Välj region',
+  MARKET_GROUP_SCANDINAVIA: 'Skandinavien',
+  MARKET_GROUP_EU: 'Europa',
+  REVIEW_WRITE: 'Skriv en recension',
+  REVIEW_IN_ACCEPTANCE: 'Tack! Din recension kommer att publiceras inom kort',
+  REVIEW_NEED_LOG_IN: 'Du måste logga in för att kunna skriva en recension',
+  REVIEW_NAME_PLACEHOLDER: 'Ditt namn',
+  REVIEW_COMMENT_PLACEHOLDER: 'Din recension',
+  SEND: 'Skicka',
+  FEEDBACK_ALL_INPUTS_REVIEW:
+    'Vänligen fyll i all nödvändig information för att skicka en recension',
+  PRODUCT_REVIEWS: 'Produktrecensioner',
+  REVIEW_WRITTEN_BY: 'Skriven av:',
+  REVIEWS_LIST_EMPTY: 'Denna produkt har inga recensioner ännu',
+  REVIEW_FEEDBACK_RATE_REQUIRED:
+    'Använd stjärnorna för att betygsätta produkten'
 };

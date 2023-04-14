@@ -8,6 +8,16 @@
 </template>
 
 <script>
+/*
+  Renders the search page.
+
+  middleware: list-page-routing - handles the routing for the list pages
+  
+  computed:
+    currentAlias: The current alias of the search.
+    filtersVars: The variables for the filters query.
+
+*/
 import categoryInfoQuery from 'productlist/category-page.graphql';
 
 export default {
@@ -15,7 +25,7 @@ export default {
   name: 'SearchListView',
   mixins: [],
   data: () => ({
-    infoQuery: categoryInfoQuery,
+    infoQuery: categoryInfoQuery
   }),
   computed: {
     currentAlias() {
@@ -28,13 +38,13 @@ export default {
         filter: {
           searchText: this.currentAlias
         }
-      }
-    },
+      };
+    }
   },
   mounted() {},
   methods: {},
   meta: {
     pageType: 'Search Page'
-  },
+  }
 };
 </script>

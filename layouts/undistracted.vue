@@ -15,23 +15,11 @@
 import MixGlobalInit from 'MixGlobalInit';
 export default {
   name: 'CaUndistractedLayout',
-  mixins: [MixGlobalInit]
+  mixins: [MixGlobalInit],
+  data: () => ({})
+  // IMPORTANT NOTICE: If you decide to add a head() function here, you will overwrite default meta functionality that comes with MixGlobalInit from Ralph UI
 };
 </script>
 <style lang="scss">
-.ca-layout-undistracted {
-  background: $c-light-gray;
-  min-height: 100vh;
-  &__main {
-    padding-top: rem-calc(15px);
-    @include bp(laptop) {
-      padding-top: $default-spacing * 2;
-    }
-  }
-  .ca-top-bar__usps {
-    @include bp(laptop) {
-      @include calign;
-    }
-  }
-}
+@import 'organisms/ca-layout-undistracted';
 </style>

@@ -14,6 +14,10 @@
   </div>
 </template>
 <script>
+/*
+  CaPrice is a reusable component that displays the price of the product.
+
+*/
 import MixPrice from 'MixPrice';
 export default {
   name: 'CaPrice',
@@ -21,31 +25,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.ca-price {
-  @include title;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  &__selling {
-    white-space: nowrap;
-  }
-  &__regular {
-    text-decoration: line-through;
-    color: $c-text-secondary;
-    margin-top: $px4;
-    font-size: 0.9em;
-    &.sale {
-      font-size: 1rem;
-    }
-  }
-  &__ex-vat {
-    margin-left: $px4;
-    color: $c-text-secondary;
-  }
-  &--sale & {
-    &__selling {
-      color: $c-sale;
-    }
-  }
-}
+@import 'atoms/ca-price';
 </style>

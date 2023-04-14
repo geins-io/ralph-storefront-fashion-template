@@ -50,20 +50,23 @@
     <CaCheckoutSection
       v-if="
         $store.getters['cart/totalQuantity'] &&
-          this.$config.showMultipleMarkets &&
-          markets &&
-          markets.length > 1
+          $config.checkout.showMultipleMarkets &&
+          selectableMarkets &&
+          selectableMarkets.length > 1
       "
       :loading="cartLoading"
     >
       <template #title>{{ $t('CHECKOUT_CHOOSE_COUNTRY') }}</template>
-      <CaCountrySelector :data="markets" @input="setMarketId($event)" />
+      <CaCountrySelector
+        :data="selectableMarkets"
+        @input="setCheckoutMarket($event)"
+      />
     </CaCheckoutSection>
 
     <CaCheckoutSection
       v-if="$store.getters['cart/totalQuantity'] > 0"
       :loading="shippingLoading"
-      :blocked="this.$config.showMultipleMarkets && !marketId"
+      :blocked="$config.checkout.showMultipleMarkets && !currentMarket"
     >
       <template #title>
         {{ $t('CHECKOUT_CHOOSE_SHIPPING') }}
@@ -73,6 +76,7 @@
         :shipping-data="checkout.shippingData"
         :zip="currentZip"
         :parent-loading="shippingLoading"
+        :data-is-set="udcDataSet"
         @init="initUDC"
         @changed="setUDCdata"
         @validation="udcValid = $event"
@@ -142,10 +146,25 @@
   </div>
 </template>
 <script>
+/* 
+  This component is the main checkout component. It holds the different sections of the checkout.
+  It also handles the different checkout steps and the different payment options.
+
+  The checkout is divided into 3 or 4 steps:
+  1. Cart
+  (2. Market/Country)
+  3. Shipping
+  4. Payment
+
+  The checkout has 4 different standard payment options:
+  1. Invoice
+  2. Klarna
+  3. Svea
+  4. Walley
+
+*/
+
 import MixCheckout from 'MixCheckout';
-// @group Organisms
-// @vuese
-// Holds the different sections of the checkout
 export default {
   name: 'CaCheckout',
   mixins: [MixCheckout],
@@ -162,87 +181,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.ca-checkout {
-  max-width: $checkout-width;
-  margin: 0 auto;
-  padding-bottom: $px32;
-  &__login {
-    margin: 0 auto rem-calc(-14);
-    text-decoration: underline;
-    display: table;
-  }
-  &__logout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  &__logout-button {
-    text-decoration: underline;
-  }
-  &__sub-heading {
-    font-size: $font-size-m;
-    font-weight: $font-weight-bold;
-    margin: 0 0 rem-calc(20);
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    &::before {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 100%;
-      @include valign;
-      background: $c-border-dark;
-      z-index: -2;
-    }
-    &--inner {
-      display: inline-block;
-      background: $c-white;
-      padding: $px4 rem-calc(26);
-    }
-    @include bp(laptop) {
-      font-size: $font-size-l;
-    }
-  }
-  &__payment-options {
-    margin: 0 0 rem-calc(20);
-  }
-  &__vat-toggle {
-    .ca-customer-type-toggle__toggles {
-      justify-content: center;
-      align-items: center;
-      height: 4rem;
-    }
-
-    .ca-customer-type-toggle__link {
-      display: flex;
-      align-items: center;
-      font-size: $font-size-xs;
-      @include bp(tablet) {
-        font-size: $font-size-s;
-      }
-      &:first-child {
-        margin-right: $px16;
-        @include bp(tablet) {
-          margin-right: $px32;
-        }
-      }
-      &::before {
-        content: '';
-        width: 20px;
-        height: 20px;
-        box-shadow: 0 0 0 1px $c-medium-gray;
-        border: 4px solid $c-white;
-        background: $c-white;
-        border-radius: 50%;
-        margin-right: $px10;
-      }
-      &--active {
-        &::before {
-          background: var(--accent-color, $c-accent-color);
-        }
-      }
-    }
-  }
-}
+@import 'organisms/ca-checkout';
 </style>

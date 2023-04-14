@@ -18,6 +18,14 @@
   </div>
 </template>
 <script>
+/*
+  CaBrandAndName is a reusable component that displays a brand name and a product name.
+  It receives four props:
+  - brand: a string representing the brand name
+  - brandAlias: a string representing the canconical for the brand. If provided the brand name will be linked
+  - name: a required string representing the product name
+  - nameTag: a string representing the HTML tag to use when rendering the product name (defaults to 'h2')
+*/
 export default {
   name: 'CaBrandAndName',
   mixins: [],
@@ -47,29 +55,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.ca-brand-and-name {
-  font-size: rem-calc(11);
-  position: relative;
-  margin: 0 5% 0 0;
-  &__brand {
-    text-transform: uppercase;
-  }
-  &__name {
-    font-size: 1.5em;
-  }
-  .ca-product-page__main & {
-    &__brand {
-      font-size: rem-calc(12);
-      @include bp(tablet) {
-        font-size: rem-calc(14);
-      }
-    }
-    &__name {
-      font-size: rem-calc(24);
-      @include bp(tablet) {
-        font-size: rem-calc(32);
-      }
-    }
-  }
-}
+@import 'atoms/ca-brand-and-name';
 </style>

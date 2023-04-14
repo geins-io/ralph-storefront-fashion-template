@@ -52,8 +52,11 @@
   </div>
 </template>
 <script>
-// @group Molecules
-// @vuese
+/*
+  CaProductAccordion is a reusable component that can be used to show all types of product information
+  It receives one prop:
+  - product: a required object representing the product
+*/
 export default {
   name: 'CaProductAccordion',
   mixins: [],
@@ -80,29 +83,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.ca-product-accordion {
-  border-top: $border-light;
-  margin: $px32 0 $default-spacing;
-
-  @include bp(laptop) {
-    margin: rem-calc(60) 0 0;
-    .ca-accordion-item__toggle {
-      font-size: $font-size-xxl;
-      padding: $px16 0;
-    }
-  }
-  @include bp(tablet-down) {
-    .ca-accordion-item__toggle {
-      padding: 1rem 0;
-      font-size: $font-size-xl;
-    }
-  }
-
-  &__item-content {
-    padding: $default-spacing / 2 0;
-    @include bp(laptop) {
-      padding: $px16 0;
-    }
-  }
-}
+@import 'molecules/ca-product-accordion';
 </style>
