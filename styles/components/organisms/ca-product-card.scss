@@ -24,11 +24,11 @@
       &:hover {
         opacity: 1;
       }
-    }
-  }
 
-  .ca-product-card__image--second-image.ca-image--product::after {
-    display: none;
+      &.ca-image--product::after {
+        display: none;
+      }
+    }
   }
 
   &__image-link {
@@ -47,8 +47,14 @@
     padding: 0 0 $px12;
     margin: 0.3em 0 0;
   }
-  &__price {
-    font-size: $font-size-m;
+  &__price.ca-price {
+    --font-size-regular: #{rem-calc(14)};
+    --font-size-selling: #{rem-calc(16)};
+
+    // @include bp(tablet) {
+    //   --font-size-regular: #{rem-calc(16)};
+    //   --font-size-selling: #{rem-calc(32)};
+    // }
   }
   &__campaigns {
     position: absolute;
@@ -69,7 +75,7 @@
     font-size: $font-size-xs;
   }
 
-  .ca-toggle-favorite {
+  &__favorite.ca-toggle-favorite {
     width: 26px;
     height: 26px;
     top: auto;

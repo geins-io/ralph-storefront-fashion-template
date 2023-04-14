@@ -42,11 +42,13 @@ $column-width: 48%;
       margin: 0 auto;
     }
   }
-  &__price {
-    font-size: rem-calc(24);
+  &__price.ca-price {
+    --font-size-regular: #{rem-calc(14)};
+    --font-size-selling: #{rem-calc(20)};
 
     @include bp(tablet) {
-      font-size: rem-calc(32) !important;
+      --font-size-regular: #{rem-calc(16)};
+      --font-size-selling: #{rem-calc(32)};
     }
   }
   &__product-summary {

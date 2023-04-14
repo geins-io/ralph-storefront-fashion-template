@@ -7,11 +7,7 @@
         menu-location-id="top-bar"
       />
       <div class="ca-top-bar__usp">{{ $t('USP_TEXT') }}</div>
-      <CaMarketSelectorButton
-        v-if="$store.state.channel.markets.length > 1"
-        v-show="!undistracted"
-        class="ca-top-bar__lang-switcher only-computer"
-      />
+      <CaMarketSelectorButton v-show="!undistracted" class="only-computer" />
     </CaContainer>
   </div>
 </template>

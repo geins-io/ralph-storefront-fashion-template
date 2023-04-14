@@ -37,8 +37,12 @@
   }
   &__price.ca-price {
     margin: rem-calc(8px) 0 0;
-    align-items: flex-start;
+    align-items: center;
     font-size: $font-size-m;
+    flex-direction: row;
+    .ca-price__regular {
+      margin: 0 0 0 $px8;
+    }
   }
 
   &__variant {
@@ -50,12 +54,11 @@
   &__info {
     position: relative;
     flex: 1;
-    margin-top: 1.6em;
   }
 
   &__remove {
     position: absolute;
-    top: rem-calc(-16);
+    top: rem-calc(4);
     right: 0;
     cursor: pointer;
   }
@@ -70,7 +73,7 @@
 
   &__stock-display {
     font-size: $font-size-xs;
-    margin: $px4 0 0;
+    margin: rem-calc(6) 0 0;
   }
 
   &__bottom {

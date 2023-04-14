@@ -314,6 +314,7 @@ export default {
   MARKET_PANEL_TITLE: 'Valitse alue',
   MARKET_GROUP_SCANDINAVIA: 'Scandinavia',
   MARKET_GROUP_EU: 'Euroopassa',
+  MARKET_GROUP_DEFAULT: 'Markets',
   REVIEW_WRITE: 'Kirjoita arvostelu',
   REVIEW_IN_ACCEPTANCE: 'Kiitos! Arvostelusi lisätään pian.',
   REVIEW_NEED_LOG_IN:

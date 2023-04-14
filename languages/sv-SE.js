@@ -316,6 +316,7 @@ export default {
   MARKET_PANEL_TITLE: 'Välj region',
   MARKET_GROUP_SCANDINAVIA: 'Skandinavien',
   MARKET_GROUP_EU: 'Europa',
+  MARKET_GROUP_DEFAULT: 'Marknader',
   REVIEW_WRITE: 'Skriv en recension',
   REVIEW_IN_ACCEPTANCE: 'Tack! Din recension kommer att publiceras inom kort',
   REVIEW_NEED_LOG_IN: 'Du måste logga in för att kunna skriva en recension',

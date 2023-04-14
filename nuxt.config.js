@@ -560,8 +560,6 @@ export default async () => {
         }
       ],
       routePaths,
-      isMultiLanguage: false,
-      isCurrencySelector: false,
       /* ****************** */
       /* **** WIDGETS ***** */
       /* ****************** */

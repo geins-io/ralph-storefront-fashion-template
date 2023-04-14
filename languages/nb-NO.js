@@ -317,6 +317,7 @@ export default {
   CHOOSE_YOUR_COUNTRY: 'Velg land',
   MARKET_PANEL_TITLE: 'Velg region',
   MARKET_GROUP_SCANDINAVIA: 'Skandinavia',
+  MARKET_GROUP_DEFAULT: 'Markeder',
   MARKET_GROUP_EU: 'Europa',
   REVIEW_WRITE: 'Skrive en omtale',
   REVIEW_IN_ACCEPTANCE:

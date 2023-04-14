@@ -318,6 +318,7 @@ export default {
   MARKET_PANEL_TITLE: 'Vælg region',
   MARKET_GROUP_SCANDINAVIA: 'Skandinavien',
   MARKET_GROUP_EU: 'Europa',
+  MARKET_GROUP_DEFAULT: 'Markeder',
   REVIEW_WRITE: 'Skrive en anmeldelse',
   REVIEW_IN_ACCEPTANCE:
     'Tak skal du have! Din anmeldelse vil blive tilføjet snart.',

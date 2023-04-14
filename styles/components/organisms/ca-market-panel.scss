@@ -1,0 +1,47 @@
+.ca-market-panel {
+  $block: &;
+
+  &__opt {
+    display: flex;
+  }
+
+  &__choice {
+    $elem: &;
+    height: rem-calc(60px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 $px24;
+    border-bottom: $border-light;
+    font-size: $font-size-m;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background-color: $c-lightest-gray;
+    }
+
+    &--chosen {
+      color: $c-black;
+      background-color: $c-lightest-gray;
+    }
+
+    &--disabled {
+      color: $c-text-secondary;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  }
+
+  &__flag {
+    margin-right: $px12;
+  }
+
+  &__currency {
+    margin-left: $px8;
+    font-size: $font-size-xs;
+  }
+
+  &__wrap {
+    padding: $px24;
+  }
+}
