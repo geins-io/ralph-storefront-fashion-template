@@ -14,7 +14,7 @@
       }
     }
 
-    &--second-image {
+    &--second-image.ca-image {
       position: absolute;
       top: 0;
       left: 0;
@@ -50,11 +50,6 @@
   &__price.ca-price {
     --font-size-regular: #{rem-calc(14)};
     --font-size-selling: #{rem-calc(16)};
-
-    // @include bp(tablet) {
-    //   --font-size-regular: #{rem-calc(16)};
-    //   --font-size-selling: #{rem-calc(32)};
-    // }
   }
   &__campaigns {
     position: absolute;
