@@ -231,7 +231,7 @@ export default async () => {
       { src: '~/plugins/persistedState.js', mode: 'client' },
       { src: '~/plugins/set-css-variables.js', mode: 'client' },
       {
-        src: '~/node_modules/@ralph/ralph-ui/plugins/get-path.js'
+        src: '~/node_modules/@ralph/ralph-ui/plugins/ralph.js'
       },
       {
         src: '~/node_modules/@ralph/ralph-ui/plugins/broadcastChannel.js',
@@ -498,7 +498,7 @@ export default async () => {
     },
     gtm: {
       id: process.env.GTM_ID,
-      debug: process.env.NODE_ENV !== 'production',
+      debug: process.env.RALPH_ENV !== 'prod',
       respectDoNotTrack: false,
       pageViewEventName: 'Page Impression',
       pageTracking: false
@@ -513,6 +513,7 @@ export default async () => {
       channelSettings,
       currentChannelSettings,
       currentThemeSettings,
+      ralphEnv: process.env.RALPH_ENV,
       baseUrl: process.env.BASE_URL,
       imageServer: process.env.IMAGE_SERVER,
       authEndpoint: process.env.AUTH_ENDPOINT,
