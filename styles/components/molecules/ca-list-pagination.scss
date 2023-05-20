@@ -1,15 +1,29 @@
 .ca-list-pagination {
-  --count-bar-active-color: #{$c-darkest-gray};
-  --count-bar-background-color: #{$c-medium-gray};
+  $block: &;
 
-  padding: $px32 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: $px32 0;
 
   &__button {
+    @include button;
+    @include button-secondary;
     overflow-anchor: none;
+
+    &--disabled {
+      @include button-disabled;
+    }
+
+    &--loading {
+      @include button-loading;
+    }
   }
+
+  &__button-spinner {
+    @include button-spinner;
+  }
+
   &__showing {
     margin-bottom: $px12;
   }

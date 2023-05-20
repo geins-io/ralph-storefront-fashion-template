@@ -22,12 +22,12 @@
 }
 
 @mixin button-secondary {
-  background-color: $c-button-secondary-bg;
-  color: $c-button-secondary-txt;
-  border: $button-secondary-border;
+  background: $c-button-ghost-bg;
+  color: $c-button-ghost-txt;
+  border: 1px solid $c-button-ghost-border;
 
   &:hover {
-    background-color: $c-button-secondary-bg-hover;
+    background: $c-button-ghost-bg-hover;
   }
 }
 
