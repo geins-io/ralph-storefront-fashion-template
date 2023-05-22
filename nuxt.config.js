@@ -11,6 +11,8 @@ import fetch from 'cross-fetch';
 import DirectoryNamedWebpackPlugin from './static/directory-named-webpack-resolve';
 import channelSettings from './static/channel-settings';
 
+const ralphEnv = process.env.RALPH_ENV || 'prod';
+
 const fallbackChannelId = process.env.FALLBACK_CHANNEL_ID;
 const fallbackMarketAlias = process.env.FALLBACK_MARKET_ALIAS;
 
@@ -498,7 +500,7 @@ export default async () => {
     },
     gtm: {
       id: process.env.GTM_ID,
-      debug: process.env.RALPH_ENV !== 'prod',
+      debug: ralphEnv !== 'prod',
       respectDoNotTrack: false,
       pageViewEventName: 'Page Impression',
       pageTracking: false
@@ -513,7 +515,7 @@ export default async () => {
       channelSettings,
       currentChannelSettings,
       currentThemeSettings,
-      ralphEnv: process.env.RALPH_ENV,
+      ralphEnv,
       baseUrl: process.env.BASE_URL,
       imageServer: process.env.IMAGE_SERVER,
       authEndpoint: process.env.AUTH_ENDPOINT,
