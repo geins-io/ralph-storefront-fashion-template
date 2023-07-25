@@ -9,12 +9,10 @@
     />
     <CaWidgetArea
       class="ca-list-page__widget-area"
-      :family="widgetAreaVars[0].family"
-      :area-name="widgetAreaVars[0].areaName"
+      family="Productlist"
+      area-name="The top part of the product list"
       :filters="widgetAreaFilters"
-      :is-parent-loaded="!isWidgetSmartQuery"
-      :loaded-data="widgetData.widgetArea_0"
-      @variables-change="isWidgetSmartQuery = true"
+      :list-page-url="currentPath"
     />
     <CaContainer>
       <CaListSettings
@@ -51,6 +49,7 @@
         :all-products-loaded="allProductsLoaded"
         :loading="$apollo.queries.products.loading"
         @loadprev="loadPrev"
+        @reset="resetCurrentPage"
       />
 
       <CaProductList
@@ -71,6 +70,7 @@
         :all-products-loaded="allProductsLoaded"
         :loading="$apollo.queries.products.loading"
         @loadmore="loadMore"
+        @reset="resetCurrentPage"
       />
     </CaContainer>
     <CaWidgetArea

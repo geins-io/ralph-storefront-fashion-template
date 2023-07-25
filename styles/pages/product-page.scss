@@ -8,6 +8,16 @@ $column-width: 48%;
       justify-content: space-between;
       margin-bottom: $px56;
     }
+
+    &-review {
+      display: flex;
+      flex-direction: column-reverse;
+
+      @include bp(laptop) {
+        display: grid;
+        grid-template-columns: $column-width $column-width;
+      }
+    }
   }
   &__widget-section {
     padding-bottom: $px56;

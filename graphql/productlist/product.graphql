@@ -14,7 +14,9 @@ fragment ListProduct on ProductType {
   unitPrice {
     ...Price
   }
-  images
+  productImages {
+    fileName
+  }
   discountCampaigns {
     ...Campaign
   }

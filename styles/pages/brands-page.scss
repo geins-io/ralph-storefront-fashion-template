@@ -1,4 +1,21 @@
 .ca-brands-page {
+  margin: rem-calc(30) 0;
+
+  @include bp(tablet) {
+    margin: rem-calc(50) 0;
+  }
+
+  &__title {
+    font-family: $heading-font;
+    font-size: rem-calc(36);
+    font-weight: $font-weight-bold;
+    margin: rem-calc(40) 0 rem-calc(20);
+    @include bp(tablet) {
+      font-size: rem-calc(62);
+      margin: rem-calc(40) 0 rem-calc(30);
+    }
+  }
+
   &__filter {
     display: flex;
     flex-wrap: wrap;
@@ -8,24 +25,32 @@
 
   &__filter-item {
     font-family: $heading-font;
-    font-size: $font-size-l;
+    font-size: $font-size-xl;
     font-weight: $font-weight-bold;
     text-transform: uppercase;
+    color: $c-text-primary;
 
-    &.is-passive {
+    &--passive {
       color: $c-text-secondary;
     }
 
-    &.is-active {
+    &--active {
       text-decoration: underline;
     }
   }
 
+  &__reset {
+    text-decoration: underline;
+    margin: rem-calc(10) 0 0;
+    color: $c-text-secondary;
+  }
+
   &__group-label {
     font-family: $heading-font;
-    font-size: $font-size-xxl;
+    font-size: $font-size-xxxl;
     font-weight: $font-weight-bold;
     line-height: 1em;
+    color: $c-text-primary;
   }
 
   &__group-item {
