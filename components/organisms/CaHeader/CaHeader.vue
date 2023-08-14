@@ -89,9 +89,6 @@ export default {
         'ca-header--dark': this.theme === 'dark',
         'ca-header--is-hidden': this.$store.state.headerHidden
       };
-    },
-    availableLocales() {
-      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale);
     }
   },
   watch: {},
