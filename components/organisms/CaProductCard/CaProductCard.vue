@@ -53,9 +53,9 @@
         />
       </NuxtLink>
       <CaCampaigns
-        v-if="product.discountCampaigns && product.discountCampaigns.length"
+        v-show="product.discountCampaigns && product.discountCampaigns.length"
         class="ca-product-card__campaigns"
-        :campaigns="product.discountCampaigns"
+        :campaigns="product.discountCampaigns || []"
       />
       <CaToggleFavorite
         class="ca-product-card__favorite"
