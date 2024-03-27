@@ -6,6 +6,14 @@
   text-overflow: ellipsis;
 }
 
+@mixin title($size: inherit) {
+  font-size: $size;
+  font-family: var(--title-font, $heading-font);
+  color: var(--title-text-color, $c-text-primary);
+  font-weight: var(--title-font-weight, $font-weight-normal);
+  line-height: var(--title-line-height, $body-line-height);
+}
+
 @mixin visually-hidden {
   border: 0;
   clip-path: inset(50%);

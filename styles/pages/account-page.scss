@@ -15,6 +15,6 @@
   &__spinner.ca-spinner {
     width: 60px;
     height: 60px;
-    border-color: $c-accent-color;
+    border-color: var(--accent-color, $c-accent-color);
   }
 }

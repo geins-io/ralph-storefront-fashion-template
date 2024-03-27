@@ -1,0 +1,37 @@
+.ca-newsletter {
+  &__feedback {
+    max-width: rem-calc(410px);
+    margin: 0 a0 $px16;
+  }
+
+  &__form {
+    position: relative;
+    margin: 0;
+    max-width: rem-calc(410px);
+  }
+
+  &__input {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  &__button.ca-button {
+    margin: $px20 0 0;
+  }
+  /* stylelint-disable selector-class-pattern */
+  .ca-input-text,
+  .ca-input-text__input {
+    background: var(--footer-background, $c-darkest-gray);
+    border: none;
+    padding: 0;
+
+    &::placeholder {
+      color: var(--footer-color, $c-text-inverse);
+    }
+  }
+
+  .ca-input-text {
+    border-bottom: 1px solid var(--footer-color, $c-text-inverse);
+  }
+  /* stylelint-enable selector-class-pattern */
+}

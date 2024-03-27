@@ -1,14 +1,13 @@
-$column-width: 48.2%;
-$minus-margin: calc(-1 * #{$default-spacing}/ 2);
+$column-width: 48%;
 
 .ca-product-page {
   &__section {
     margin-bottom: $px20;
 
     @include bp(laptop) {
+      align-items: flex-start;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
       margin-bottom: $px56;
     }
 
@@ -23,21 +22,36 @@ $minus-margin: calc(-1 * #{$default-spacing}/ 2);
     }
   }
 
+  &__widget-section {
+    padding-bottom: $px56;
+  }
+
   &__main {
+    margin: rem-calc(50) auto 0;
+    max-width: rem-calc(540);
     position: relative;
-    max-width: 500px;
-    margin: $px16 auto 0;
 
     @include bp(laptop) {
-      width: 40%;
-      margin: $px32 auto 0;
+      position: sticky;
+      top: $header-height-computer;
+      width: 44%;
+      z-index: 1;
     }
+
+    @include bp(desktop) {
+      margin: rem-calc(60) auto 0;
+    }
+  }
+
+  &__main-top {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__gallery.ca-product-gallery {
     @include bp(laptop) {
       width: $column-width;
-      margin-right: $px48;
+      margin-right: 3%;
     }
   }
 
@@ -48,12 +62,18 @@ $minus-margin: calc(-1 * #{$default-spacing}/ 2);
     }
   }
 
-  &__price {
-    margin: $px4 0 $px8;
+  &__price.ca-price {
+    --font-size-regular: #{rem-calc(14)};
+    --font-size-selling: #{rem-calc(20)};
+
+    @include bp(tablet) {
+      --font-size-regular: #{rem-calc(16)};
+      --font-size-selling: #{rem-calc(32)};
+    }
   }
 
   &__product-summary {
-    margin-bottom: $px16;
+    margin: $px20 0 $px32;
   }
 
   &__campaigns {
@@ -76,11 +96,11 @@ $minus-margin: calc(-1 * #{$default-spacing}/ 2);
 
   &__buy-button.ca-button {
     margin-bottom: $px20;
-    padding: 0.9em 2.15em;
   }
 
   &__stock-display {
     font-size: $font-size-m;
+    margin: 0 0 $px20;
   }
 
   &__actions {
@@ -90,32 +110,25 @@ $minus-margin: calc(-1 * #{$default-spacing}/ 2);
   &__usps {
     display: flex;
     justify-content: space-between;
-    border-top: $border-light;
-    padding: $px16 0 0;
   }
 
-  &__usp {
+  &__usp.ca-icon-and-text {
     padding: 0 $px4;
-    text-align: center;
+    align-items: flex-start;
 
     .ca-icon {
-      margin-bottom: $px4;
-    }
-  }
+      margin-top: 4px;
 
-  &__accordion {
-    margin: 0 $minus-margin $default-spacing;
-
-    @include bp(laptop) {
-      margin: 0;
-      width: $column-width;
+      @include bp(tablet) {
+        margin-top: 2px;
+      }
     }
   }
 
   &__specifications-box {
     @include bp(laptop) {
       width: $column-width;
-      background-color: $c-lightest-gray;
+      background: $c-lightest-gray;
       padding: 0 $px24 $px16;
     }
   }

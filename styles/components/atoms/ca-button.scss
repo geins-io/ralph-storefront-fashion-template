@@ -1,0 +1,95 @@
+$default-radius: 0 !default;
+
+.ca-button {
+  display: inline-block;
+  font-size: $font-size-m;
+  text-transform: uppercase;
+  padding: 0.9em 3.6em;
+  white-space: nowrap;
+  position: relative;
+  transition: background 150ms ease;
+  border-radius: $default-radius;
+
+  &__spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -10px;
+  }
+
+  // Colors
+  &--primary,
+  &--dark {
+    background: $c-button-dark-bg;
+    color: $c-button-dark-txt;
+    border: 1px solid $c-button-dark-border;
+
+    &:hover {
+      background: $c-button-dark-bg-hover;
+    }
+  }
+
+  &--secondary,
+  &--ghost {
+    background: $c-button-ghost-bg;
+    color: $c-button-ghost-txt;
+    border: 1px solid $c-button-ghost-border;
+
+    &:hover {
+      background: $c-button-ghost-bg-hover;
+    }
+  }
+
+  &--light {
+    background: $c-button-light-bg;
+    color: $c-button-light-txt;
+    border: 1px solid $c-button-light-border;
+
+    &:hover {
+      background: $c-button-light-bg-hover;
+    }
+  }
+
+  &--accent {
+    background: $c-button-accent-bg;
+    color: $c-button-accent-txt;
+    border: 1px solid $c-button-accent-border;
+
+    &:hover {
+      background: $c-button-accent-bg-hover;
+    }
+  }
+
+  // Sizes
+  &--s {
+    padding: 0.7em 2.5em;
+    font-size: $font-size-s;
+  }
+
+  &--l {
+    font-size: $font-size-m;
+    padding: 1em 4.2em;
+
+    @include bp(tablet) {
+      padding: 1.3em 5em;
+    }
+  }
+
+  // Types
+  &--full-width {
+    width: 100%;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    text-align: center;
+  }
+
+  &--disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  &--loading {
+    color: transparent;
+  }
+}

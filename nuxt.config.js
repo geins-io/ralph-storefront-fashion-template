@@ -384,8 +384,8 @@ export default async () => {
       breakpoints: {
         tablet: 768,
         laptop: 1024,
-        desktop: 1200,
-        desktopBig: 1440,
+        desktop: 1300,
+        desktopBig: 1500,
       },
       siteTopThreshold: 10,
       socialMediaLinks: [
@@ -400,7 +400,7 @@ export default async () => {
           link: 'https://www.instagram.com',
         },
       ],
-      customerTypesToggle: true,
+      customerTypesToggle: false,
       customerTypes: [
         {
           type: 'PERSON',
@@ -422,10 +422,12 @@ export default async () => {
       /* ****************** */
       /* **** WIDGETS ***** */
       /* ****************** */
-      bannerWidgetPrimaryColor: '#000000',
-      bannerWidgetSecondaryColor: '#FFFFFF',
+      bannerWidgetPrimaryColor:
+        currentChannelSettings.theme['primary-text-color'],
+      bannerWidgetSecondaryColor:
+        currentChannelSettings.theme['inverse-text-color'],
       productListWidgetArrowIconName: 'chevron',
-      productListRowSize: 5,
+      productListRowSize: 4,
       widgetImageSizes: {
         full: '(min-width: 1360px) 1320px, 96vw',
         half: '(min-width: 1360px) 650px, (min-width: 768px) 47vw, 96vw',
@@ -446,12 +448,12 @@ export default async () => {
       productListScrollSize: {
         phone: 2,
         tablet: 3,
-        laptop: 5,
-        desktop: 5,
-        desktopBig: 6,
+        laptop: 4,
+        desktop: 4,
+        desktopBig: 5,
       },
       showCategoryFilter: true,
-      showCategoryTreeViewFilter: true,
+      showCategoryTreeViewFilter: false,
       showBrandsFilter: true,
       showSkuFilter: true,
       showPriceFilter: true,
@@ -460,20 +462,20 @@ export default async () => {
       /* ****************** */
       /* **** PRODUCT ***** */
       /* ****************** */
-      productImageRatio: 1 / 1,
+      productImageRatio: 400 / 325,
       productStockFewLeftLimit: 6,
       productSchemaOptions: {
         productSkuLabelIsSize: true,
         productDescriptionField: 'text1',
-        schemaImageSize: '700f700', // Make sure this is a valid product image size
+        schemaImageSize: '1300f1611', // Make sure this is a valid product image size
         extraOfferProperties: {
           itemCondition: 'https://schema.org/NewCondition',
         },
       },
-      productShowRelated: false,
+      productShowRelated: true,
       showProductReviewSection: false,
-      showStarsInProductReviewForm: true,
-      preLoadedProductImageSizes: ['1000f1000'],
+      showStarsInProductReviewForm: true, // it requires showProductReviewSection to be true
+      preLoadedProductImageSizes: ['1300f1611'],
       /* ******************** */
       /* ***** CHECKOUT ***** */
       /* ******************** */

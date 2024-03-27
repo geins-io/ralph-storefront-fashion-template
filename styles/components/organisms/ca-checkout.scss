@@ -28,19 +28,20 @@
     text-align: center;
 
     &::before {
-      @include valign;
-
       content: '';
       display: block;
       height: 1px;
       width: 100%;
-      background-color: $c-border-dark;
+
+      @include valign;
+
+      background: $c-border-dark;
       z-index: -2;
     }
 
     &--inner {
       display: inline-block;
-      background-color: $c-white;
+      background: $c-white;
       padding: $px4 rem-calc(26);
     }
 
@@ -54,47 +55,47 @@
   }
 
   &__vat-toggle {
-    .ca-customer-type-toggle {
-      &__toggles {
-        justify-content: center;
-        align-items: center;
-        height: 4rem;
+    /* stylelint-disable selector-class-pattern */
+    .ca-customer-type-toggle__toggles {
+      justify-content: center;
+      align-items: center;
+      height: 4rem;
+    }
+
+    .ca-customer-type-toggle__link {
+      display: flex;
+      align-items: center;
+      font-size: $font-size-xs;
+
+      @include bp(tablet) {
+        font-size: $font-size-s;
       }
 
-      &__link {
-        display: flex;
-        align-items: center;
-        font-size: $font-size-xs;
+      &:first-child {
+        margin-right: $px16;
 
         @include bp(tablet) {
           font-size: $font-size-s;
         }
+      }
 
-        &:first-child {
-          margin-right: $px16;
+      &::before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        box-shadow: 0 0 0 1px $c-medium-gray;
+        border: 4px solid $c-white;
+        background: $c-white;
+        border-radius: 50%;
+        margin-right: $px10;
+      }
 
-          @include bp(tablet) {
-            margin-right: $px32;
-          }
-        }
-
+      &--active {
         &::before {
-          content: '';
-          width: 20px;
-          height: 20px;
-          box-shadow: 0 0 0 1px $c-medium-gray;
-          border: 4px solid $c-white;
-          background-color: $c-white;
-          border-radius: 50%;
-          margin-right: $px10;
-        }
-
-        &--active {
-          &::before {
-            background-color: $c-accent-color;
-          }
+          background: var(--accent-color, $c-accent-color);
         }
       }
     }
+    /* stylelint-enable selector-class-pattern */
   }
 }

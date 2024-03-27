@@ -1,25 +1,12 @@
 <template>
   <div class="ca-list-page" :class="modifier">
-    <CaContainer>
-      <CaBreadcrumbs v-if="listInfo" :current="breadcrumbsCurrent" />
-      <CaSkeleton v-else class="ca-breadcrumbs" width="30%" />
-      <CaListTop :type="type" :list-info="listInfo" />
-      <CaImage
-        v-if="listInfo && listInfo.primaryImage"
-        class="ca-list-page__image"
-        type="categoryheader"
-        :alt="listInfo.name"
-        :filename="listInfo.primaryImage"
-        :ratio="271 / 1280"
-        sizes="(min-width: 1360px) 1320px, 96vw"
-      />
-      <CaSkeleton
-        v-else-if="!listInfo"
-        class="ca-list-page__image"
-        :ratio="271 / 1280"
-        :radius="false"
-      />
-    </CaContainer>
+    <CaListTop
+      v-if="!hideListInfo"
+      :type="type"
+      :list-info="listInfo"
+      :breadcrumbs-current="breadcrumbsCurrent"
+      :widget-area-filters="widgetAreaFilters"
+    />
     <CaWidgetArea
       class="ca-list-page__widget-area"
       family="Productlist"
@@ -28,13 +15,15 @@
       :list-page-url="currentPath"
     />
     <CaContainer>
-      <CaListFilters
-        v-if="showControls && selection"
-        :filters="filters"
-        :selection="selection"
+      <CaListSettings
+        v-if="showControls"
+        :active-products="totalCount"
+        :active-filters="totalFiltersActive"
+        :current-sort="selection.sort"
+        @sortchange="sortChangeHandler"
       />
       <CaActiveFilters
-        v-if="showControls && selection && $store.getters.viewportComputer"
+        v-if="showControls && selection"
         :selection="selection"
         :selection-active="filterSelectionActive"
         @selectionchange="filterChangeHandler"
@@ -48,14 +37,6 @@
         :total-filters-active="totalFiltersActive"
         @selectionchange="filterChangeHandler"
         @reset="resetFilters"
-      />
-
-      <CaListSettings
-        v-if="showControls"
-        :active-products="totalCount"
-        :active-filters="totalFiltersActive"
-        :current-sort="selection.sort"
-        @sortchange="sortChangeHandler"
       />
 
       <CaListPagination
@@ -72,6 +53,7 @@
       />
 
       <CaProductList
+        class="ca-list-page__list"
         :skip="currentMinCount - 1"
         :page-size="pageSize"
         :products="productList"
@@ -94,9 +76,8 @@
     <CaWidgetArea
       class="ca-list-page__widget-area"
       family="Productlist"
-      area-name="The bottom part of the product list"
+      area-name="Below the product list"
       :filters="widgetAreaFilters"
-      :list-page-url="currentPath"
     />
   </div>
 </template>

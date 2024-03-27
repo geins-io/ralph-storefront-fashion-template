@@ -1,0 +1,7 @@
+.ca-widget-rich-text {
+  padding: 0 $px16;
+
+  @include bp(tablet) {
+    padding: 0;
+  }
+}

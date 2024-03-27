@@ -1,26 +1,24 @@
 .ca-footer {
+  --title-text-color: $c-text-inverse;
+
   margin-top: $default-spacing;
+  background: var(--footer-background, $c-darkest-gray);
+  color: var(--footer-color, $c-text-inverse);
 
   &__section {
     &--usps {
-      border-top: $border-light;
-      border-bottom: $border-light;
       padding: $px8 0;
     }
 
     &--newsletter {
-      background-color: $c-white;
-      padding: $px20 0;
+      padding: $px40 0;
 
       @include bp(tablet) {
-        padding: $px32 0;
+        padding: rem-calc(70) 0;
       }
     }
 
     &--content {
-      background-color: $c-white;
-      border-top: $border-light;
-      border-bottom: $border-light;
       padding: $px24 0 $px32;
     }
   }
@@ -54,25 +52,51 @@
   }
 
   &__newsletter {
-    padding: $px16 $px12;
-    text-align: center;
-    max-width: 500px;
-    margin: 0 auto;
-
-    @include bp(tablet) {
-      border: $border-light;
-      padding: $px20 $px48 $px24;
-    }
+    width: 100%;
+    max-width: rem-calc(460);
   }
 
   &__newsletter-title {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-xl;
-    margin: 0 0 $px8;
+    font-family: $body-font;
+    text-transform: uppercase;
+    font-size: $font-size-m;
+    margin: 0 0 $px20;
   }
 
   &__newsletter-text {
-    margin: 0 0 $px16;
+    @include title(rem-calc(36));
+
+    margin: 0 0 $px40;
+
+    @include bp(tablet) {
+      font-size: rem-calc(46);
+    }
+  }
+
+  &__about {
+    margin: rem-calc(50) 0 rem-calc(75);
+
+    @include bp(tablet) {
+      margin: rem-calc(100) 0 rem-calc(150);
+      width: 80%;
+      max-width: 1000px;
+    }
+
+    @include bp(laptop) {
+      width: 60%;
+    }
+  }
+
+  &__about-title {
+    @include title(rem-calc(36));
+
+    margin: 0 0 $px40;
+  }
+
+  &__about-text {
+    @include bp(tablet) {
+      column-count: 2;
+    }
   }
 
   &__content-holder {
@@ -86,7 +110,25 @@
     line-height: 1.6;
 
     @include bp(tablet) {
-      width: 25%;
+      width: 15%;
+    }
+
+    &--logo {
+      margin: rem-calc(60) auto 0;
+
+      @include bp(tablet) {
+        width: 55%;
+      }
+    }
+
+    &--menu {
+      @include bp(phone-only) {
+        margin: 0 rem-calc(-10);
+
+        &:first-child {
+          border-top: 1px solid var(--footer-color, $c-text-inverse);
+        }
+      }
     }
   }
 
@@ -132,10 +174,17 @@
     }
   }
 
+  &__main-logo {
+    width: rem-calc(250);
+
+    @include bp(tablet) {
+      margin-left: auto;
+    }
+  }
+
   &__bottom {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 
     @include bp(tablet) {
       justify-content: space-between;
@@ -150,13 +199,11 @@
     }
 
     &--copyright {
+      opacity: 0.8;
       width: 74%;
       padding: $px12 0;
-      margin: 0 auto;
       border-top: $border-light;
-      text-align: center;
       font-size: $font-size-xs;
-      color: $c-text-secondary;
 
       @include bp(tablet) {
         border: none;
@@ -190,7 +237,6 @@
   &__powered-by {
     display: flex;
     align-items: center;
-    justify-content: center;
     white-space: nowrap;
     padding: rem-calc(2) 0 0;
   }

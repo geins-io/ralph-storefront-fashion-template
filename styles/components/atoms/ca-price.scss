@@ -1,0 +1,33 @@
+.ca-price {
+  --font-size-selling: inherit;
+  --font-size-regular: 0.9em;
+
+  @include title;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  &__selling {
+    white-space: nowrap;
+    font-size: var(--font-size-selling);
+  }
+
+  &__regular {
+    text-decoration: line-through;
+    color: $c-text-secondary;
+    margin-top: $px4;
+    font-size: var(--font-size-regular);
+  }
+
+  &__ex-vat {
+    margin-left: $px4;
+    color: $c-text-secondary;
+  }
+
+  &--sale & {
+    &__selling {
+      color: $c-sale;
+    }
+  }
+}

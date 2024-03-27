@@ -322,10 +322,16 @@ export default {
   PAYMENT_PANEL_HEADING: 'Betalingsinformation',
   DELIVERY_PANEL_HEADING: 'Leverings information',
   RECOMMENDED_PRICE: 'Rec. Pris',
+  MULTIPLE_COLOURS: 'Flere farver',
+  FOOTER_ABOUT_TITLE: 'Om os',
+  FOOTER_ABOUT_TEXT:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbiphasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsumultricies eget pretium. Tincidunt metus, scelerisque leo ornareconsectetur mauris. Massa in id laoreet donec. Lorem ipsum dolor sitamet, consectetur adipiscing elit. Morbi phasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsum ultricies eget pretium. Tincidunt metus, scelerisque leo ornare consectetur mauris. Massa inid laoreet donec.',
+  CHOOSE: 'Vælg',
   CHOOSE_YOUR_COUNTRY: 'Vælg land',
   MARKET_PANEL_TITLE: 'Vælg region',
   MARKET_GROUP_SCANDINAVIA: 'Skandinavien',
   MARKET_GROUP_EU: 'Europa',
+  MARKET_GROUP_DEFAULT: 'Markeder',
   REVIEW_WRITE: 'Skrive en anmeldelse',
   REVIEW_IN_ACCEPTANCE:
     'Tak skal du have! Din anmeldelse vil blive tilføjet snart.',
