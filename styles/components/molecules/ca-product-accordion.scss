@@ -19,7 +19,7 @@
   }
   /* stylelint-enable selector-class-pattern */
   &__item-content {
-    padding: $default-spacing / 2 0;
+    padding: $default-spacing 0;
 
     @include bp(laptop) {
       padding: $px16 0;
