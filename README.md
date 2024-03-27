@@ -2,9 +2,9 @@
 
 [![geins](https://raw.githubusercontent.com/geins-io/resources/master/images/banners/repos/ralph.jpg)](https://www.geins.io)
 
-# Ralph Storefront - PWA Launchpad for Geins Commerce
+# Ralph Storefront - Fashion Template
 
-This is a [Nuxt.js](https://v2.nuxt.com/) storefront fully integrated with Geins Commerce.
+This is a [Ralph Storefront](https://github.com/geins-io/ralph-storefront) template, designed mainly to be used for a fashion type of store. It is built with [Nuxt.js](https://v2.nuxt.com/) and fully integrated with Geins Commerce.
 
 ## Pre-requisites
 
