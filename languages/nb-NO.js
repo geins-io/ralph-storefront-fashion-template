@@ -320,9 +320,15 @@ export default {
   PAYMENT_PANEL_HEADING: 'Betalingsinformation',
   DELIVERY_PANEL_HEADING: 'Leverings information',
   RECOMMENDED_PRICE: 'Rec. Pris',
+  MULTIPLE_COLOURS: 'Flere farver',
+  FOOTER_ABOUT_TITLE: 'Om os',
+  FOOTER_ABOUT_TEXT:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbiphasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsumultricies eget pretium. Tincidunt metus, scelerisque leo ornareconsectetur mauris. Massa in id laoreet donec. Lorem ipsum dolor sitamet, consectetur adipiscing elit. Morbi phasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsum ultricies eget pretium. Tincidunt metus, scelerisque leo ornare consectetur mauris. Massa inid laoreet donec.',
+  CHOOSE: 'Velg',
   CHOOSE_YOUR_COUNTRY: 'Velg land',
   MARKET_PANEL_TITLE: 'Velg region',
   MARKET_GROUP_SCANDINAVIA: 'Skandinavia',
+  MARKET_GROUP_DEFAULT: 'Markeder',
   MARKET_GROUP_EU: 'Europa',
   REVIEW_WRITE: 'Skrive en omtale',
   REVIEW_IN_ACCEPTANCE:

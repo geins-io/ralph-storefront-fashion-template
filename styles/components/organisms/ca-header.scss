@@ -1,13 +1,22 @@
+/* stylelint-disable no-descending-specificity */
 .ca-header {
+  --header-bg: #{$c-lightest-gray};
+  --header-text: #{$c-text-primary};
+
   position: fixed;
   width: 100%;
   left: 0;
   top: 0;
   z-index: $z-index-header;
-  border-bottom: $border-light;
+  transform: translateY(0);
+  transition:
+    transform 450ms ease,
+    background-color 200ms ease 450ms,
+    mix-blend-mode 200ms ease 450ms;
 
   &__bar {
-    background-color: $c-header-bg;
+    background: var(--header-bg, #{$c-header-bg});
+    color: var(--header-text, #{$c-text-primary});
     z-index: $z-index-header;
     position: relative;
 
@@ -24,7 +33,6 @@
     justify-content: space-between;
 
     @include bp(laptop) {
-      justify-content: flex-end;
       height: $header-bar-height-computer;
     }
   }
@@ -32,30 +40,82 @@
   &__nav-toggle {
     @include flex-valign;
 
-    margin-right: auto;
-    font-size: 28px;
+    font-size: rem-calc(24);
+    color: var(--header-text, #{$c-text-primary});
+    margin: 0 $px20 0 0;
   }
 
   &__search-toggle {
     margin-right: auto;
-    font-size: 23px;
+    font-size: rem-calc(24);
+    color: var(--header-text, #{$c-text-primary});
 
     @include flex-valign;
   }
 
   &__logo {
-    @include calign;
-
-    width: 120px;
+    width: rem-calc(120px);
   }
 
-  &--scrolled & {
-    &__nav-toggle {
-      margin-right: $px20;
+  &__main-nav {
+    margin: 0 0 0 2%;
+
+    @include bp(desktop) {
+      margin: 0 0 0 rem-calc(60);
     }
   }
 
+  &__search {
+    margin: 0 auto;
+  }
+
+  &__user-button {
+    font-size: rem-calc(24);
+    line-height: 1;
+    margin: 0 rem-calc(20) 0 auto;
+    color: var(--header-text, #{$c-text-primary});
+
+    @include bp(laptop) {
+      margin: 0 rem-calc(40) 0 rem-calc(10);
+    }
+  }
+
+  &__favorites.ca-favorites {
+    @include bp(laptop) {
+      margin: 0 0 0 auto;
+    }
+  }
+
+  &__nav-and-search {
+    display: flex;
+    align-items: center;
+  }
+
+  &--is-hidden {
+    transform: translateY(-100%);
+
+    @include bp(tablet-down) {
+      .ca-search {
+        &--visible {
+          transform: translateY(-100%);
+        }
+      }
+    }
+  }
+
+  &--scrolled & {
+    &__bar {
+      box-shadow: $box-shadow;
+    }
+  }
+
+  &--dark {
+    --header-bg: #{$c-darkest-gray};
+    --header-text: #{$c-text-inverse};
+  }
+
   .ca-notification-badge {
-    border: 1px solid $c-header-bg;
+    border: 1px solid var(--header-bg, #{$c-header-bg});
   }
 }
+/* stylelint-enable no-descending-specificity */

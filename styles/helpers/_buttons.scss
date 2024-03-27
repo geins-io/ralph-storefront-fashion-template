@@ -1,16 +1,12 @@
-$button-font-size: $font-size-m !default;
-$button-font-size-s: $font-size-s !default;
-$button-font-size-l: $font-size-l !default;
-$button-font-weight: $font-weight-normal !default;
-
 @mixin button {
   display: inline-block;
-  font-size: $button-font-size;
-  font-weight: $button-font-weight;
+  font-size: $font-size-m;
+  font-weight: $font-weight-bold;
   text-transform: uppercase;
   padding: 0.65em 2em;
   white-space: nowrap;
   position: relative;
+  border-radius: $default-radius;
   transition: background-color 150ms ease;
   cursor: pointer;
 }
@@ -26,12 +22,12 @@ $button-font-weight: $font-weight-normal !default;
 }
 
 @mixin button-secondary {
-  background-color: $c-button-secondary-bg;
-  color: $c-button-secondary-txt;
-  border: $button-secondary-border;
+  background: $c-button-ghost-bg;
+  color: $c-button-ghost-txt;
+  border: 1px solid $c-button-ghost-border;
 
   &:hover {
-    background-color: $c-button-secondary-bg-hover;
+    background: $c-button-ghost-bg-hover;
   }
 }
 

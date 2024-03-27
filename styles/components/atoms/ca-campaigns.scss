@@ -1,0 +1,27 @@
+.ca-campaigns {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: $px10;
+
+  &__item {
+    @include title($px10);
+
+    padding: rem-calc(4) $px16;
+    border: $border-dark;
+
+    @include bp(tablet) {
+      font-size: $px12;
+      padding: rem-calc(6) $px20;
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    margin: 0 0 $px8;
+  }
+
+  &--box {
+    background: $c-lightest-gray;
+    padding: $px12 $px16;
+  }
+}

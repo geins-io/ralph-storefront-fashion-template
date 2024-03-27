@@ -1,0 +1,7 @@
+.ca-footer-navigation-accordion {
+  @include bp(phone-only) {
+    &__list {
+      padding: 0 $px16 $px20;
+    }
+  }
+}

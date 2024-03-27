@@ -2,18 +2,19 @@
 
 // Theme colors
 $c-white: #fff;
+$c-lightest-gray: #fafafa;
+$c-light-gray: #fafafa;
+$c-medium-gray: #ededed;
+$c-dark-gray: #7e7e7e;
+$c-darkest-gray: #131313;
 $c-black: #000;
-$c-lightest-gray: #f8f8f8;
-$c-light-gray: #ececec;
-$c-medium-gray: #d8d8d8;
-$c-dark-gray: #adadad;
-$c-darkest-gray: #363636;
-$c-accent-color: $c-darkest-gray;
+$c-accent-color: #ffb802;
+$c-accent-color-secondary: #9baea5;
 
 // Theme text colors
-$c-text-primary: #222;
-$c-text-secondary: #878787;
-$c-text-inverse: #fff;
+$c-text-primary: $c-darkest-gray;
+$c-text-secondary: $c-dark-gray;
+$c-text-inverse: $c-white;
 
 // Overlay
 $c-overlay: rgb(0 0 0 / 30%);
@@ -32,33 +33,51 @@ $c-few-left: $c-oversellable;
 $c-static-stock: $c-in-stock;
 
 // Border colors
-$c-border-light: $c-light-gray;
-$c-border-dark: $c-medium-gray;
+$c-border-light: $c-medium-gray;
+$c-border-dark: $c-dark-gray;
 
 // Backgrounds
 $c-main-bg: $c-white;
 
 // Header
-$c-topbar-bg: $c-white;
+$c-topbar-bg: $c-darkest-gray;
 $c-header-bg: $c-white;
-$c-search-bg: $c-lightest-gray;
+$c-search-bg: $c-white;
 $c-cart-color: $c-text-primary;
 
 // Price
-$c-sale: rgb(177 0 29);
+$c-sale: $c-text-primary;
 
 // Buttons
 $c-button-primary-bg: $c-darkest-gray;
-$c-button-primary-bg-hover: color.adjust($c-button-primary-bg, $lightness: 3%);
-$c-button-primary-txt: $c-white;
+$c-button-primary-bg-hover: color.adjust($c-button-primary-bg, $lightness: 5%);
+$c-button-primary-txt: $c-text-inverse;
 $c-button-primary-border: transparent;
-$c-button-secondary-bg: transparent;
+$c-button-secondary-bg: $c-white;
 $c-button-secondary-bg-hover: color.adjust(
   $c-button-secondary-bg,
   $lightness: -3%
 );
 $c-button-secondary-txt: $c-text-primary;
 $c-button-secondary-border: $c-darkest-gray;
+
+// Theme buttons
+$c-button-dark-bg: $c-darkest-gray;
+$c-button-dark-bg-hover: color.adjust($c-button-dark-bg, $lightness: 5%);
+$c-button-dark-txt: $c-text-inverse;
+$c-button-dark-border: $c-darkest-gray;
+$c-button-ghost-bg: transparent;
+$c-button-ghost-bg-hover: rgb(0 0 0 / 5%);
+$c-button-ghost-txt: $c-text-primary;
+$c-button-ghost-border: $c-darkest-gray;
+$c-button-light-bg: $c-white;
+$c-button-light-bg-hover: color.adjust($c-button-light-bg, $lightness: -3%);
+$c-button-light-txt: $c-text-primary;
+$c-button-light-border: transparent;
+$c-button-accent-bg: $c-accent-color;
+$c-button-accent-bg-hover: color.adjust($c-button-accent-bg, $lightness: -3%);
+$c-button-accent-txt: $c-text-inverse;
+$c-button-accent-border: transparent;
 
 // Inputs
 $c-input-focused-border: $c-accent-color;
@@ -70,11 +89,11 @@ $c-input-checkbox-checked-border: $c-darkest-gray;
 $c-input-radio-checked-bg: $c-darkest-gray;
 
 // Content panel
-$c-content-panel-header-bg: $c-lightest-gray;
+$c-content-panel-header-bg: $c-white;
 $c-content-panel-header-txt: $c-text-primary;
 
 // Notification badge
-$c-notification-badge-bg: $c-dark-gray;
+$c-notification-badge-bg: $c-accent-color;
 $c-notification-badge-txt: $c-text-inverse;
 
 // Skeletons

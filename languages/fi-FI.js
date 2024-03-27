@@ -318,11 +318,16 @@ export default {
   NAVIGATION_ALL_IN: 'Näytä kaikki sisällä',
   NAVIGATION_GO_TO: 'Mene',
   RELATED_PRODUCTS: 'Liittyvät tuotteet',
+  MULTIPLE_COLOURS: 'Useita värejä',
+  FOOTER_ABOUT_TITLE: 'Tietoa meistä',
+  FOOTER_ABOUT_TEXT:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbiphasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsumultricies eget pretium. Tincidunt metus, scelerisque leo ornareconsectetur mauris. Massa in id laoreet donec. Lorem ipsum dolor sitamet, consectetur adipiscing elit. Morbi phasellus lectus orci sit. Vitae amet malesuada amet malesuada ipsum ultricies eget pretium. Tincidunt metus, scelerisque leo ornare consectetur mauris. Massa inid laoreet donec.',
   CHOOSE: 'Valita',
   CHOOSE_YOUR_COUNTRY: 'Valitse maa',
   MARKET_PANEL_TITLE: 'Valitse alue',
   MARKET_GROUP_SCANDINAVIA: 'Scandinavia',
   MARKET_GROUP_EU: 'Euroopassa',
+  MARKET_GROUP_DEFAULT: 'Markets',
   REVIEW_WRITE: 'Kirjoita arvostelu',
   REVIEW_IN_ACCEPTANCE: 'Kiitos! Arvostelusi lisätään pian.',
   REVIEW_NEED_LOG_IN:

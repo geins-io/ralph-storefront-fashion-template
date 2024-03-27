@@ -14,6 +14,11 @@
           class="ca-product-page__gallery"
           :images="productImages"
           :alt="product.brand.name + ' ' + product.name"
+          :campaigns="product.discountCampaigns"
+          thumbnail-mode="grid"
+          gallery-mode="plain"
+          main-image-sizes="(min-width: 2000px) 811px, 41vw"
+          thumbnail-sizes="(min-width: 2000px) 399px, 23vw"
           :preloaded-image="preloadedImage"
         />
         <div v-else class="ca-product-page__gallery ca-product-gallery">
@@ -30,29 +35,34 @@
           </div>
         </div>
         <div v-if="product" class="ca-product-page__main">
-          <LazyCaToggleFavorite
-            v-if="prodAlias"
-            :prod-alias="prodAlias"
-            :prod-id="product.productId"
-          />
-          <CaBrandAndName
-            :brand="product.brand.name"
-            :brand-alias="product.brand.canonicalUrl"
-            :name="product.name"
-            name-tag="h1"
-          />
-          <CaPrice class="ca-product-page__price" :price="product.unitPrice" />
+          <div class="ca-product-page__main-top">
+            <!-- <CaToggleFavorite :prod-alias="prodAlias" :prod-id="product.productId" /> -->
+            <CaBrandAndName
+              :brand="product.brand.name"
+              :brand-alias="product.brand.canonicalUrl"
+              :name="product.name"
+              name-tag="h1"
+            />
+            <CaPrice
+              class="ca-product-page__price"
+              :price="product.unitPrice"
+            />
+          </div>
 
           <LazyCaHtml
             v-if="product && product.texts.text1"
             class="ca-product-page__product-summary"
             :content="product.texts.text1"
           />
-          <LazyCaCampaigns
-            v-if="product.discountCampaigns && product.discountCampaigns.length"
-            class="ca-product-page__campaigns"
-            :campaigns="product.discountCampaigns"
-          />
+          <!-- <a
+            v-if="product && product.texts.text1"
+            class="ca-product-page__read-more only-computer"
+            href="#description-accordion-anchor"
+            @click.prevent="readMoreInAccordion"
+          >
+            {{ $t('READ_MORE') }}
+          </a> -->
+
           <LazyCaVariantPicker
             v-if="hasVariants"
             :variants="baseVariants"
@@ -65,7 +75,23 @@
             :type="baseVariantType === 'Color' ? 'color' : 'panel'"
             @replaceProduct="replaceProduct"
             @notify="notifyHandler"
-          />
+          >
+            <template #title>
+              <p class="ca-variant-picker__title">
+                {{
+                  baseVariantType === 'Color'
+                    ? $t('PICK_COLOR')
+                    : $t('PICK_VARIANT')
+                }}
+                <span
+                  v-if="baseVariantType === 'Color'"
+                  class="ca-variant-picker__current"
+                >
+                  {{ baseVariantLabel }}
+                </span>
+              </p>
+            </template>
+          </LazyCaVariantPicker>
 
           <LazyCaVariantPicker
             v-if="hasMultipleDimensions"
@@ -85,20 +111,22 @@
             type="display"
             @changeSku="skuChangeHandler"
             @notify="notifyHandler"
-          />
+          >
+            <template #title>
+              <p class="ca-variant-picker__title">
+                {{ $t('PICK_SKU') }}
+                <span class="ca-variant-picker__current">
+                  {{ chosenSkuLabel }}
+                </span>
+              </p>
+            </template>
+          </LazyCaVariantPicker>
 
-          <LazyCaNotifyPanel
-            :product="product"
-            :variant="currentNotifyVariant"
-          />
-
-          <CaProductQuantity
-            class="ca-product-page__quantity"
-            :quantity="quantity"
-            :max-quantity="currentStock.totalStock"
-            :threshold="stockThreshold"
-            @changed="onQuantityChange"
-            @thresholdReached="quantityThresholdHandler"
+          <CaStockDisplay
+            class="ca-product-page__stock-display"
+            :stock="currentStock"
+            :product-quantity="quantity"
+            :show-delivery-time="true"
           />
 
           <CaButton
@@ -114,43 +142,39 @@
             v-else
             class="ca-product-page__buy-button"
             type="full-width"
+            size="l"
             :loading="addToCartLoading"
             :disabled="outOfStock"
             @clicked="addToCartClick"
           >
             {{ $t('ADD_TO_CART') }}
           </CaButton>
-          <div class="ca-product-page__actions">
-            <CaStockDisplay
-              class="ca-product-page__stock-display"
-              :stock="currentStock"
-              :product-quantity="quantity"
-              :show-delivery-time="true"
-            />
-          </div>
           <div class="ca-product-page__usps">
             <CaIconAndText
               class="ca-product-page__usp"
               icon-name="check-circle"
-              icon-position="top"
             >
               {{ $t('USP_1') }}
             </CaIconAndText>
             <CaIconAndText
               class="ca-product-page__usp"
               icon-name="check-circle"
-              icon-position="top"
             >
               {{ $t('USP_2') }}
             </CaIconAndText>
             <CaIconAndText
               class="ca-product-page__usp"
               icon-name="check-circle"
-              icon-position="top"
             >
               {{ $t('USP_3') }}
             </CaIconAndText>
           </div>
+          <CaProductAccordion
+            v-if="product"
+            ref="accordion"
+            class="ca-product-page__accordion"
+            :product="product"
+          />
           <div
             v-if="$config.productShowRelated && relatedProductsRelated.length"
             class="ca-product-page__related"
@@ -179,34 +203,6 @@
           />
         </div>
       </section>
-      <section class="ca-product-page__section">
-        <CaProductAccordion
-          v-if="product"
-          class="ca-product-page__accordion"
-          :product="product"
-        />
-        <div class="ca-product-page__specifications-box only-computer">
-          <h2 class="ca-product-page__specifications-title">
-            {{ $t('PRODUCT_SPECIFICATION') }}
-          </h2>
-          <LazyCaSpecifications
-            v-if="product && product.parameterGroups !== null"
-            :specification-groups="product.parameterGroups"
-          />
-          <p v-else>
-            {{ $t('NO_PRODUCT_SPECIFICATION') }}
-          </p>
-        </div>
-      </section>
-      <section
-        v-if="$config.showProductReviewSection"
-        class="ca-product-page__section-review"
-      >
-        <client-only>
-          <LazyCaReviewsList :product-alias="prodAlias" />
-          <LazyCaReviewForm :product-alias="prodAlias" />
-        </client-only>
-      </section>
     </CaContainer>
     <section class="ca-product-page__widget-section">
       <CaWidgetArea
@@ -217,6 +213,11 @@
         :filters="widgetAreaFilters"
       />
     </section>
+    <LazyCaNotifyPanel
+      v-if="product"
+      :product="product"
+      :variant="currentNotifyVariant"
+    />
   </div>
 </template>
 
@@ -235,7 +236,12 @@ export default {
   mixins: [MixProductPage],
   data: () => ({}),
   computed: {},
-  methods: {},
+  watch: {},
+  methods: {
+    readMoreInAccordion() {
+      this.$refs.accordion.openAccordion('description');
+    },
+  },
   meta: {
     pageType: 'Product Page',
   },

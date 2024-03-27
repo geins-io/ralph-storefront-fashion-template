@@ -1,0 +1,66 @@
+.ca-list-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 0 $default-spacing;
+  margin-top: $px20;
+  border-bottom: $border-light;
+
+  @include bp(laptop) {
+    margin: $px40 0 $px10;
+  }
+
+  &__filter-toggle {
+    display: flex;
+    align-items: center;
+    font-size: $font-size-m;
+
+    .ca-icon {
+      color: $c-text-primary;
+      font-size: rem-calc(20);
+    }
+  }
+
+  &__icon-text {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__filter-button-wrap {
+    display: flex;
+  }
+
+  &__active-filters {
+    margin: 0 0 0 rem-calc(6px);
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  /* stylelint-disable selector-class-pattern */
+  &__sort-select.ca-input-select {
+    width: 100%;
+    min-width: rem-calc(130);
+
+    .ca-input-select__selected,
+    .ca-input-select__select {
+      border: none;
+      color: $c-text-primary;
+      padding: 0 rem-calc(17) 0 rem-calc(5);
+    }
+
+    .ca-input-select__select-wrap {
+      border: none;
+    }
+
+    .ca-input-select__arrow {
+      font-size: rem-calc(10);
+      right: rem-calc(5);
+      padding-bottom: rem-calc(3);
+    }
+  }
+  /* stylelint-enable selector-class-pattern */
+}

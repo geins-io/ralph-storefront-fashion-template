@@ -10,6 +10,10 @@
         <CaImage
           v-if="product.productImages && product.productImages.length > 0"
           class="ca-product-card__image"
+          :class="{
+            'ca-product-card__image--has-second':
+              product.productImages.length > 1,
+          }"
           type="product"
           :size-array="
             $config.imageSizes.product.filter(
@@ -30,7 +34,28 @@
           :src="require('~/assets/placeholders/product-image-square.png')"
           :alt="product.brand.name + ' ' + product.name"
         />
+        <CaImage
+          v-if="product.productImages && product.productImages.length > 1"
+          class="ca-product-card__image ca-product-card__image--second-image"
+          type="product"
+          :size-array="
+            $config.imageSizes.product.filter(
+              (item) =>
+                parseInt(item.descriptor) < 1150 &&
+                parseInt(item.descriptor) > 186,
+            )
+          "
+          :ratio="$config.productImageRatio"
+          :filename="product.productImages[1].fileName"
+          :alt="product.brand.name + ' ' + product.name"
+          sizes="(min-width: 1360px) 248px, (min-width: 1024px) 18.23vw, (min-width: 768px) 30.73vw, 48vw"
+        />
       </CaClickable>
+      <CaCampaigns
+        v-show="product.discountCampaigns && product.discountCampaigns.length"
+        class="ca-product-card__campaigns"
+        :campaigns="product.discountCampaigns || []"
+      />
       <CaToggleFavorite
         class="ca-product-card__favorite"
         :prod-alias="product.alias"
@@ -51,48 +76,34 @@
         :href="product.canonicalUrl"
         @clicked="productClickHandler"
       >
-        <CaBrandAndName
-          :brand="product.brand.name"
-          :name="product.name"
-          name-tag="h2"
-        />
+        <div class="ca-product-card__info-top">
+          <CaBrandAndName
+            :brand="product.brand.name"
+            :name="product.name"
+            name-tag="h2"
+          />
 
-        <CaPrice class="ca-product-card__price" :price="product.unitPrice" />
-        <CaCampaigns
-          v-show="product.discountCampaigns && product.discountCampaigns.length"
-          class="ca-product-card__campaigns"
-          :campaigns="product.discountCampaigns || []"
-        />
+          <CaPrice class="ca-product-card__price" :price="product.unitPrice" />
+        </div>
+
         <CaStockDisplay
           class="ca-product-card__stock-display"
           :stock="product.totalStock"
         />
+        <div v-if="hasColorVariants" class="ca-product-card__colors">
+          {{ $t('MULTIPLE_COLOURS') }}
+        </div>
       </CaClickable>
       <div v-else>
-        <CaSkeleton class="ca-brand-and-name__brand" width="30%" />
-        <CaSkeleton class="ca-brand-and-name__name" width="70%" />
-        <CaSkeleton class="ca-product-card__price" width="50%" />
-        <CaSkeleton class="ca-product-card__stock-display" width="40%" />
+        <div class="ca-product-card__info-top">
+          <div>
+            <CaSkeleton width="30%" />
+            <CaSkeleton width="70%" />
+          </div>
+
+          <CaSkeleton class="ca-product-card__price" width="20%" />
+        </div>
       </div>
-      <CaButton
-        v-if="productPopulated"
-        class="ca-product-card__buy-button"
-        type="full-width"
-        :loading="addToCartLoading"
-        @clicked="addToCartClick"
-      >
-        {{
-          skuId && product.totalStock.totalStock > 0
-            ? $t('ADD')
-            : $t('READ_MORE')
-        }}
-      </CaButton>
-      <CaSkeleton
-        v-else
-        class="ca-product-card__buy-button"
-        width="100%"
-        height="43px"
-      />
     </div>
   </component>
 </template>
@@ -107,7 +118,13 @@ export default {
   mixins: [MixProductCard],
   props: {},
   data: () => ({}),
-  computed: {},
+  computed: {
+    hasColorVariants() {
+      return !!this.product?.variantDimensions?.find(
+        (i) => i.dimension === 'Color',
+      );
+    },
+  },
   watch: {},
   created() {},
   methods: {},
