@@ -17,6 +17,9 @@
           :campaigns="product.discountCampaigns"
           thumbnail-mode="grid"
           gallery-mode="plain"
+          main-image-sizes="(min-width: 2000px) 811px, 41vw"
+          thumbnail-sizes="(min-width: 2000px) 399px, 23vw"
+          :preloaded-image="preloadedImage"
         />
         <div v-else class="ca-product-page__gallery ca-product-gallery">
           <div class="ca-product-gallery__slider">
@@ -46,7 +49,7 @@
             />
           </div>
 
-          <CaHtml
+          <LazyCaHtml
             v-if="product && product.texts.text1"
             class="ca-product-page__product-summary"
             :content="product.texts.text1"
@@ -60,7 +63,7 @@
             {{ $t('READ_MORE') }}
           </a> -->
 
-          <CaVariantPicker
+          <LazyCaVariantPicker
             v-if="hasVariants"
             :variants="baseVariants"
             :variants-data="variantPickerData"
@@ -73,7 +76,7 @@
             @replaceProduct="replaceProduct"
             @notify="notifyHandler"
           >
-            <template v-slot:title>
+            <template #title>
               <p class="ca-variant-picker__title">
                 {{
                   baseVariantType === 'Color'
@@ -88,36 +91,36 @@
                 </span>
               </p>
             </template>
-          </CaVariantPicker>
+          </LazyCaVariantPicker>
 
-          <CaVariantPicker
+          <LazyCaVariantPicker
             v-if="hasMultipleDimensions"
             :variants="secondDimensionVariants"
             :variants-data="variantPickerData"
-            :title="$t('PICK_SIZE')"
+            :title="$t('PICK_VARIANT')"
             type="panel"
             @replaceProduct="replaceProduct"
             @notify="notifyHandler"
           />
 
-          <CaVariantPicker
+          <LazyCaVariantPicker
             v-if="hasSkuVariants"
             :variants="skuVariants"
             :variants-data="variantPickerData"
-            :title="$t('SKU_LABEL')"
+            :title="$t('PICK_SKU')"
             type="display"
-            @changeSku="sizeChangeHandler"
+            @changeSku="skuChangeHandler"
             @notify="notifyHandler"
           >
-            <template v-slot:title>
+            <template #title>
               <p class="ca-variant-picker__title">
-                {{ $t('PICK_SIZE') }}
+                {{ $t('PICK_SKU') }}
                 <span class="ca-variant-picker__current">
                   {{ chosenSkuLabel }}
                 </span>
               </p>
             </template>
-          </CaVariantPicker>
+          </LazyCaVariantPicker>
 
           <CaStockDisplay
             class="ca-product-page__stock-display"
@@ -179,7 +182,7 @@
             <h3 class="ca-product-page__related-title">
               {{ $t('RELATED_PRODUCTS') }}
             </h3>
-            <CaQuickAddProducts
+            <LazyCaQuickAddProducts
               class="ca-product-page__related-products"
               :products="relatedProductsRelated"
             />
@@ -223,36 +226,25 @@
   Renders product page.
 
   @mixin MixProductPage - handles product page logic
-  @mixin MixAddToCart - handles add to cart logic
-  @mixin MixVariantHandler - handles variant logic
-
-  events:
-    - replaceProduct - replaces product with new one
-    - notify - notifies user about product
-    - changeSku - changes sku
-    - changed - quantity changed
-    - thresholdReached - quantity threshold reached
-    - clicked - add to cart clicked
 
 */
-import MixAddToCart from 'MixAddToCart';
-import MixVariantHandler from 'MixVariantHandler';
+
 import MixProductPage from 'MixProductPage';
 
 export default {
   name: 'ProductPage',
-  mixins: [MixProductPage, MixAddToCart, MixVariantHandler],
+  mixins: [MixProductPage],
   data: () => ({}),
   computed: {},
   watch: {},
   methods: {
     readMoreInAccordion() {
       this.$refs.accordion.openAccordion('description');
-    }
+    },
   },
   meta: {
-    pageType: 'Product Page'
-  }
+    pageType: 'Product Page',
+  },
 };
 </script>
 

@@ -5,6 +5,7 @@
 
   &__title {
     @include title($font-size-xxl);
+
     border-bottom: $border-light;
     padding: 0 0 rem-calc(6);
     margin: 0 0 $px24;

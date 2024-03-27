@@ -80,7 +80,8 @@ export default {
     'Tilausta ei voitu luoda, koska käyttäjäsi on estetty Klarnassa.',
   GO_BACK: 'Mene takaisin',
   PICK_COLOR: 'Valitse väri',
-  PICK_SIZE: 'Valitse koko',
+  PICK_SKU: 'Valitse koko',
+  PICK_VARIANT: 'Valitse variantti',
   STOCK_STATUS_IN_STOCK: 'Varastossa',
   STOCK_STATUS_OUT_OF_STOCK: 'Loppu varastosta',
   STOCK_STATUS_FEW_LEFT: 'Vain {quantity} jäljellä',
@@ -201,6 +202,8 @@ export default {
   FEEDBACK_REQUIRED_FIELD: 'Tämä kenttä on pakollinen',
   FEEDBACK_PERSONAL_ID_NOT_VALID:
     'Sinun on syötettävä voimassa oleva sosiaaliturvatunnus',
+  FEEDBACK_ORGANIZATION_ID_NOT_VALID:
+    'Sinun on syötettävä voimassa oleva organisaationumero',
   LABEL_FIRST_NAME: 'Etunimi',
   LABEL_LAST_NAME: 'Sukunimi',
   LABEL_PHONE_NUMBER: 'Puhelinnumero',
@@ -299,6 +302,8 @@ export default {
   CART_SUMMARY_REGULAR_PRICE: 'Normaalihinta',
   CART_SUMMARY_LEFT_TO_FREE_SHIPPING: 'Jäljellä ilmainen toimitus',
   CART_SUMMARY_VAT: 'arvonlisävero',
+  CART_SUMMARY_TOTAL_EX_BALANCE: 'Yhteensä ennen saldoa',
+  CART_SUMMARY_BALANCE: 'Saldoa',
   FREE_SHIPPING: 'Ilmainen toimitus',
   SWEDEN: ' Sverige',
   BREADCRUMBS_HOME: 'Etusivu',
@@ -335,5 +340,5 @@ export default {
   PRODUCT_REVIEWS: 'Tuotearvostelut',
   REVIEW_WRITTEN_BY: 'Kirjoittanut:',
   REVIEWS_LIST_EMPTY: 'Tällä tuotteella ei ole vielä yhtään arvostelua.',
-  REVIEW_FEEDBACK_RATE_REQUIRED: 'Käytä tähtiä tuotteen arvioimiseen'
+  REVIEW_FEEDBACK_RATE_REQUIRED: 'Käytä tähtiä tuotteen arvioimiseen',
 };

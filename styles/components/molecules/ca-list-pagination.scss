@@ -9,6 +9,7 @@
   &__button {
     @include button;
     @include button-secondary;
+
     overflow-anchor: none;
 
     &--disabled {

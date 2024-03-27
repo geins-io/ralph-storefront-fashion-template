@@ -34,20 +34,20 @@ export default {
     // Current category or brand
     current: {
       type: Object,
-      required: true
+      required: true,
     },
     // Name of product, if on product page
     productName: {
       type: String,
-      default: ''
+      default: '',
     },
     gender: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data: () => ({
-    parents: []
+    parents: [],
   }),
   computed: {
     isParentCategory() {
@@ -61,7 +61,7 @@ export default {
     },
     modifiers() {
       return {
-        'ca-breadcrumbs--product': this.productName
+        'ca-breadcrumbs--product': this.productName,
       };
     },
     // Creates the schema for the breadcrumbs
@@ -77,9 +77,9 @@ export default {
             '@type': 'ListItem',
             position,
             name: this.$t('BREADCRUMBS_HOME'),
-            item: this.$config.baseUrl + '/'
-          }
-        ]
+            item: this.$config.baseUrl + '/',
+          },
+        ],
       };
       if (this.parents.length) {
         // Add dynamic category parents
@@ -89,7 +89,7 @@ export default {
             '@type': 'ListItem',
             position,
             name: this.parents[i].name,
-            item: this.$config.baseUrl + this.parents[i].canonicalUrl
+            item: this.$config.baseUrl + this.parents[i].canonicalUrl,
           });
         }
       }
@@ -99,7 +99,7 @@ export default {
       const current = {
         '@type': 'ListItem',
         position,
-        name: this.current.name
+        name: this.current.name,
       };
       if (this.productName) {
         current.item = this.$config.baseUrl + this.current.canonical;
@@ -112,13 +112,13 @@ export default {
         jsonld.itemListElement.push({
           '@type': 'ListItem',
           position,
-          name: this.productName
+          name: this.productName,
         });
       }
 
       return jsonld;
     },
-    ...mapState(['categoryTree'])
+    ...mapState(['categoryTree']),
   },
   watch: {},
   created() {
@@ -139,10 +139,10 @@ export default {
     // Sets all parents for current category, if category
     // @arg alias (String)
     setParent(alias) {
-      const current = this.categoryTree.find(i => i.alias === alias);
+      const current = this.categoryTree.find((i) => i.alias === alias);
       if (current?.parentCategoryId > 0) {
         const parent = this.categoryTree.find(
-          i => i.categoryId === current.parentCategoryId
+          (i) => i.categoryId === current.parentCategoryId,
         );
         this.parents.push(parent);
         this.setParent(parent.alias);
@@ -151,15 +151,15 @@ export default {
     // Sets default "parent" for current parent, if no category
     // @arg alias (String)
     setDefaultParent(alias) {
-      const current = this.categoryTree.find(i => i.alias === alias);
+      const current = this.categoryTree.find((i) => i.alias === alias);
       if (!current?.parentCategoryId) {
         const parent = this.categoryTree.find(
-          i => i.categoryId === current.categoryId
+          (i) => i.categoryId === current.categoryId,
         );
         this.parents.push(parent);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

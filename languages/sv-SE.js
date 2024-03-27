@@ -80,7 +80,7 @@ export default {
     'Kunde inte skapa order då din användare är blockerad hos Klarna',
   GO_BACK: 'Gå tillbaka',
   PICK_COLOR: 'Välj färg',
-  PICK_SIZE: 'Välj storlek',
+  PICK_SKU: 'Välj storlek',
   PICK_VARIANT: 'Välj variant',
   STOCK_STATUS_IN_STOCK: '+5 i lager',
   STOCK_STATUS_OUT_OF_STOCK: 'Slut i lager',
@@ -203,6 +203,8 @@ export default {
     'Något gick tyvärr fel. Försök gärna igen och kontakta kundtjänst om problemet kvarstår.',
   FEEDBACK_REQUIRED_FIELD: 'Detta fält är obligatoriskt',
   FEEDBACK_PERSONAL_ID_NOT_VALID: 'Du måste ange ett giltigt personnummer',
+  FEEDBACK_ORGANIZATION_ID_NOT_VALID:
+    'Du måste ange ett giltigt organisationsnummer',
   LABEL_FIRST_NAME: 'Förnamn',
   LABEL_LAST_NAME: 'Efternamn',
   LABEL_PHONE_NUMBER: 'Telefonnummer',
@@ -300,6 +302,8 @@ export default {
   CART_SUMMARY_REGULAR_PRICE: 'Ordinarie pris',
   CART_SUMMARY_LEFT_TO_FREE_SHIPPING: 'kvar till fri frakt',
   CART_SUMMARY_VAT: 'Moms',
+  CART_SUMMARY_TOTAL_EX_BALANCE: 'Totalt innan saldo',
+  CART_SUMMARY_BALANCE: 'Saldo',
   FREE_SHIPPING: 'Fri frakt',
   SWEDEN: 'Sverige',
   BREADCRUMBS_HOME: 'Hem',
@@ -337,5 +341,5 @@ export default {
   REVIEW_WRITTEN_BY: 'Skriven av:',
   REVIEWS_LIST_EMPTY: 'Denna produkt har inga recensioner ännu',
   REVIEW_FEEDBACK_RATE_REQUIRED:
-    'Använd stjärnorna för att betygsätta produkten'
+    'Använd stjärnorna för att betygsätta produkten',
 };

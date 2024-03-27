@@ -2,6 +2,7 @@
   &__container {
     &--has-menu {
       padding: rem-calc(15) 0;
+
       .ca-container {
         width: 100%;
       }
@@ -13,11 +14,13 @@
       }
     }
   }
+
   &__sidebar {
     @include bp(tablet) {
       width: rem-calc(200);
       flex-shrink: 0;
     }
+
     @include bp(laptop) {
       width: rem-calc(300);
       flex-shrink: 0;

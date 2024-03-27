@@ -3,24 +3,30 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+
   &__title {
     font-weight: $font-weight-bold;
     font-size: $font-size-xl;
+
     @include bp(tablet) {
       font-size: $font-size-xxl;
     }
   }
+
   &__log-out {
     line-height: 1;
   }
+
   &__nav {
     width: 100%;
     margin: $px20 0 $px24;
     display: flex;
+
     @include bp(tablet) {
       margin: $px16 0 $px24;
     }
   }
+
   &__nav-item {
     display: inline-block;
     padding: $px10 rem-calc(15px);
@@ -30,19 +36,23 @@
     border-radius: $default-radius;
     border: 1px solid transparent;
     transition: background 150ms ease, border 150ms ease;
+
     &:hover {
       background: $c-light-gray;
     }
+
     @include bp(tablet) {
       padding: rem-calc(14px) rem-calc(25px);
       font-size: $font-size-l;
     }
+
     &--current {
       border-bottom: 1px solid $c-darkest-gray;
       background: $c-light-gray;
       position: relative;
       font-weight: $font-weight-bold;
       color: $c-text-primary;
+
       &::after {
         content: '';
         display: block;

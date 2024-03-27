@@ -1,10 +1,13 @@
 .ca-widget-banner {
   $block: &;
+
   font-size: 1rem;
+
   &__content {
     text-align: center;
     max-width: rem-calc(500);
   }
+
   &__text1 {
     @include title(2.8em);
     & + #{$block}__button {
@@ -34,6 +37,7 @@
 
   &__video {
     position: absolute;
+
     &--playing {
       position: static;
     }
@@ -63,12 +67,15 @@
   &--full {
     #{$block}__content {
       @include calign;
+
       width: 92%;
       padding: 0 2%;
+
       @include bp(tablet) {
         width: 50%;
       }
     }
+
     @include bp(tablet) {
       font-size: 1.7vw;
     }
@@ -99,6 +106,7 @@
   &--on-image {
     #{$block}__content {
       @include calign;
+
       width: 92%;
       padding: 0 2%;
 
@@ -110,6 +118,7 @@
       @include bp(tablet) {
         font-size: 1.6vw;
       }
+
       @include bp(desktop) {
         font-size: 1.2rem;
       }
@@ -118,6 +127,7 @@
       @include bp(tablet) {
         font-size: 1.5vw;
       }
+
       @include bp(desktop) {
         font-size: 1.1rem;
       }
@@ -126,10 +136,12 @@
       @include bp(tablet) {
         font-size: 1.4vw;
       }
+
       @include bp(desktop) {
         font-size: 1rem;
       }
     }
+    /* stylelint-disable selector-class-pattern */
     .ca-widget-container--design-default & {
       #{$block}__content {
         top: auto;
@@ -141,12 +153,14 @@
         max-width: 80%;
       }
     }
+    /* stylelint-enable selector-class-pattern */
   }
 
   &--below-image {
     #{$block}__content {
       padding: 1.33em 0;
       text-align: left;
+
       @include bp(phone-only) {
         padding: 1.33em $px10;
       }

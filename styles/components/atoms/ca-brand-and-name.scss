@@ -2,25 +2,32 @@
   font-size: rem-calc(11);
   position: relative;
   margin: 0 5% 0 0;
+
   &__brand {
     text-transform: uppercase;
     margin: 0 0 0.3em;
   }
+
   &__name {
     font-size: 1.5em;
   }
+  /* stylelint-disable selector-class-pattern */
   .ca-product-page__main & {
     &__brand {
       font-size: rem-calc(12);
+
       @include bp(tablet) {
         font-size: rem-calc(14);
       }
     }
+
     &__name {
       font-size: rem-calc(24);
+
       @include bp(tablet) {
         font-size: rem-calc(32);
       }
     }
   }
+  /* stylelint-enable selector-class-pattern */
 }

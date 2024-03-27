@@ -205,6 +205,8 @@ export default {
     'We are sorry, but something went wrong. Please try again and contact our customer service if the problem persists.',
   FEEDBACK_REQUIRED_FIELD: 'This field is required',
   FEEDBACK_PERSONAL_ID_NOT_VALID: 'You have to enter a valid personal ID',
+  FEEDBACK_ORGANIZATION_ID_NOT_VALID:
+    'You have to enter a valid organization ID',
   LABEL_FIRST_NAME: 'First name',
   LABEL_LAST_NAME: 'Last name',
   LABEL_PHONE_NUMBER: 'Phone number',
@@ -303,6 +305,8 @@ export default {
   CART_SUMMARY_REGULAR_PRICE: 'Regular price',
   CART_SUMMARY_LEFT_TO_FREE_SHIPPING: 'left to free shipping',
   CART_SUMMARY_VAT: 'VAT',
+  CART_SUMMARY_TOTAL_EX_BALANCE: 'Total before balance',
+  CART_SUMMARY_BALANCE: 'Balance',
   FREE_SHIPPING: 'Free shipping',
   SWEDEN: 'Sweden',
   BREADCRUMBS_HOME: 'Home',
@@ -336,5 +340,5 @@ export default {
   PRODUCT_REVIEWS: 'Product reviews',
   REVIEW_WRITTEN_BY: 'Written by:',
   REVIEWS_LIST_EMPTY: 'This product doesn´t have any reviews yet',
-  REVIEW_FEEDBACK_RATE_REQUIRED: 'Please use stars to rate the product'
+  REVIEW_FEEDBACK_RATE_REQUIRED: 'Please use stars to rate the product',
 };

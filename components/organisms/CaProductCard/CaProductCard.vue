@@ -1,26 +1,25 @@
 <template>
   <component :is="baseTag" class="ca-product-card">
     <div v-if="productPopulated" class="ca-product-card__image-wrap">
-      <NuxtLink
+      <CaClickable
         class="ca-product-card__image-link"
-        tabindex="-1"
-        :to="product.canonicalUrl"
+        :href="product.canonicalUrl"
         :data-alias="product.alias"
-        @click.native="productClickHandler"
+        @clicked="productClickHandler"
       >
         <CaImage
           v-if="product.productImages && product.productImages.length > 0"
           class="ca-product-card__image"
           :class="{
             'ca-product-card__image--has-second':
-              product.productImages.length > 1
+              product.productImages.length > 1,
           }"
           type="product"
           :size-array="
             $config.imageSizes.product.filter(
-              item =>
+              (item) =>
                 parseInt(item.descriptor) < 1150 &&
-                parseInt(item.descriptor) > 186
+                parseInt(item.descriptor) > 186,
             )
           "
           :ratio="$config.productImageRatio"
@@ -41,9 +40,9 @@
           type="product"
           :size-array="
             $config.imageSizes.product.filter(
-              item =>
+              (item) =>
                 parseInt(item.descriptor) < 1150 &&
-                parseInt(item.descriptor) > 186
+                parseInt(item.descriptor) > 186,
             )
           "
           :ratio="$config.productImageRatio"
@@ -51,7 +50,7 @@
           :alt="product.brand.name + ' ' + product.name"
           sizes="(min-width: 1360px) 248px, (min-width: 1024px) 18.23vw, (min-width: 768px) 30.73vw, 48vw"
         />
-      </NuxtLink>
+      </CaClickable>
       <CaCampaigns
         v-show="product.discountCampaigns && product.discountCampaigns.length"
         class="ca-product-card__campaigns"
@@ -71,10 +70,11 @@
     />
 
     <div class="ca-product-card__info">
-      <NuxtLink
+      <CaClickable
         v-if="productPopulated"
-        :to="product.canonicalUrl"
-        @click.native="productClickHandler"
+        tabindex="-1"
+        :href="product.canonicalUrl"
+        @clicked="productClickHandler"
       >
         <div class="ca-product-card__info-top">
           <CaBrandAndName
@@ -93,7 +93,7 @@
         <div v-if="hasColorVariants" class="ca-product-card__colors">
           {{ $t('MULTIPLE_COLOURS') }}
         </div>
-      </NuxtLink>
+      </CaClickable>
       <div v-else>
         <div class="ca-product-card__info-top">
           <div>
@@ -109,12 +109,8 @@
 </template>
 <script>
 /*
-  CaProductCard is a reusable component that displays a product card.
-  It receives one prop:
-  - product: an object containing the product data
-
-  It emits an event when the product is clicked:
-  - productclick: an object containing the product data
+  This product is the main component for displaying a product card. 
+  To understand more about this component, please read the documentation for the MixProductCard in Ralph UI
 */
 import MixProductCard from 'MixProductCard';
 export default {
@@ -125,13 +121,13 @@ export default {
   computed: {
     hasColorVariants() {
       return !!this.product?.variantDimensions?.find(
-        i => i.dimension === 'Color'
+        (i) => i.dimension === 'Color',
       );
-    }
+    },
   },
   watch: {},
   created() {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss">

@@ -2,13 +2,16 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
   &__choice {
     margin: $px4 0;
     position: relative;
     outline: none;
+
     &:not(:last-child) {
       margin-right: $px20;
     }
+
     &::before {
       content: '';
       width: rem-calc(56px);
@@ -16,25 +19,32 @@
       display: block;
       border: 1px solid transparent;
       transition: border-color 200ms ease;
+
       @include calign;
+
       border-radius: 50%;
     }
+
     &:hover::before,
     &:focus::before {
       border-color: $c-border-dark;
     }
+    /* stylelint-disable selector-class-pattern */
     &--chosen {
       &::before,
       &:focus::before,
       &:hover::before {
         border-color: #000;
       }
+
       .ca-color-icon--big {
         border: 1px solid $c-darkest-gray;
       }
     }
+
     &--disabled {
       opacity: 0.2;
+
       &::after {
         content: '';
         display: block;
@@ -47,9 +57,11 @@
         transform: translate(-50%, -50%) rotate(45deg);
       }
     }
+
     .ca-color-icon--big {
       width: rem-calc(44px);
       height: rem-calc(44px);
     }
+    /* stylelint-enable selector-class-pattern */
   }
 }

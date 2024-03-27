@@ -1,12 +1,13 @@
+@use 'sass:color';
+
 // Theme colors
-$c-white: #ffffff;
+$c-white: #fff;
 $c-lightest-gray: #fafafa;
 $c-light-gray: #fafafa;
 $c-medium-gray: #ededed;
 $c-dark-gray: #7e7e7e;
 $c-darkest-gray: #131313;
-$c-black: #000000;
-
+$c-black: #000;
 $c-accent-color: #ffb802;
 $c-accent-color-secondary: #9baea5;
 
@@ -16,7 +17,7 @@ $c-text-secondary: $c-dark-gray;
 $c-text-inverse: $c-white;
 
 // Overlay
-$c-overlay: rgba(0, 0, 0, 0.3);
+$c-overlay: rgb(0 0 0 / 30%);
 
 // Feedback/Support
 $c-success: #428363;
@@ -25,7 +26,7 @@ $c-ok: #f2c03f;
 $c-info: $c-accent-color;
 
 // Stock statuses
-$c-in-stock: #00aa55;
+$c-in-stock: #0a5;
 $c-out-of-stock: #d10a0a;
 $c-oversellable: #fab300;
 $c-few-left: $c-oversellable;
@@ -49,46 +50,43 @@ $c-sale: $c-text-primary;
 
 // Buttons
 $c-button-primary-bg: $c-darkest-gray;
-$c-button-primary-bg-hover: lighten($c-button-primary-bg, 5%);
+$c-button-primary-bg-hover: color.adjust($c-button-primary-bg, $lightness: 5%);
 $c-button-primary-txt: $c-text-inverse;
 $c-button-primary-border: transparent;
-
 $c-button-secondary-bg: $c-white;
-$c-button-secondary-bg-hover: darken($c-button-secondary-bg, 3%);
+$c-button-secondary-bg-hover: color.adjust(
+  $c-button-secondary-bg,
+  $lightness: -3%
+);
 $c-button-secondary-txt: $c-text-primary;
 $c-button-secondary-border: $c-darkest-gray;
 
 // Theme buttons
 $c-button-dark-bg: $c-darkest-gray;
-$c-button-dark-bg-hover: lighten($c-button-dark-bg, 5%);
+$c-button-dark-bg-hover: color.adjust($c-button-dark-bg, $lightness: 5%);
 $c-button-dark-txt: $c-text-inverse;
 $c-button-dark-border: $c-darkest-gray;
-
 $c-button-ghost-bg: transparent;
-$c-button-ghost-bg-hover: rgba(0, 0, 0, 0.05);
+$c-button-ghost-bg-hover: rgb(0 0 0 / 5%);
 $c-button-ghost-txt: $c-text-primary;
 $c-button-ghost-border: $c-darkest-gray;
-
 $c-button-light-bg: $c-white;
-$c-button-light-bg-hover: darken($c-button-light-bg, 3%);
+$c-button-light-bg-hover: color.adjust($c-button-light-bg, $lightness: -3%);
 $c-button-light-txt: $c-text-primary;
 $c-button-light-border: transparent;
-
 $c-button-accent-bg: $c-accent-color;
-$c-button-accent-bg-hover: lighten($c-button-accent-bg, 3%);
+$c-button-accent-bg-hover: color.adjust($c-button-accent-bg, $lightness: -3%);
 $c-button-accent-txt: $c-text-inverse;
 $c-button-accent-border: transparent;
 
 // Inputs
 $c-input-focused-border: $c-accent-color;
 $c-input-background: $c-white;
-
 $c-input-checkbox-text: $c-text-secondary;
 $c-input-checkbox-bg: $c-white;
-$c-input-checkbox-checked-bg: $c-white;
-$c-input-checkbox-checked-border: $c-dark-gray;
-
-$c-input-radio-checked-bg: $c-dark-gray;
+$c-input-checkbox-checked-bg: $c-darkest-gray;
+$c-input-checkbox-checked-border: $c-darkest-gray;
+$c-input-radio-checked-bg: $c-darkest-gray;
 
 // Content panel
 $c-content-panel-header-bg: $c-white;

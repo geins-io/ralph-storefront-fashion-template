@@ -2,9 +2,11 @@
   &__image {
     margin: 0 0 $px32 0;
   }
+
   &__widget-area {
     margin: 0 0 $px32 0;
   }
+
   &__list {
     @include bp(phone-only) {
       margin: 0 rem-calc(-10);

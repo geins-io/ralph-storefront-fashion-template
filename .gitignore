@@ -96,3 +96,6 @@ sw.*
 
 # vscode
 .vscode/
+
+# npx link config
+/link.config.json

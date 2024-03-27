@@ -1,4 +1,5 @@
 $default-radius: 0 !default;
+
 .ca-button {
   display: inline-block;
   font-size: $font-size-m;
@@ -8,6 +9,7 @@ $default-radius: 0 !default;
   position: relative;
   transition: background 150ms ease;
   border-radius: $default-radius;
+
   &__spinner {
     position: absolute;
     top: 50%;
@@ -15,21 +17,25 @@ $default-radius: 0 !default;
     margin-top: -10px;
     margin-left: -10px;
   }
+
   // Colors
   &--primary,
   &--dark {
     background: $c-button-dark-bg;
     color: $c-button-dark-txt;
     border: 1px solid $c-button-dark-border;
+
     &:hover {
       background: $c-button-dark-bg-hover;
     }
   }
+
   &--secondary,
   &--ghost {
     background: $c-button-ghost-bg;
     color: $c-button-ghost-txt;
     border: 1px solid $c-button-ghost-border;
+
     &:hover {
       background: $c-button-ghost-bg-hover;
     }
@@ -39,6 +45,7 @@ $default-radius: 0 !default;
     background: $c-button-light-bg;
     color: $c-button-light-txt;
     border: 1px solid $c-button-light-border;
+
     &:hover {
       background: $c-button-light-bg-hover;
     }
@@ -48,6 +55,7 @@ $default-radius: 0 !default;
     background: $c-button-accent-bg;
     color: $c-button-accent-txt;
     border: 1px solid $c-button-accent-border;
+
     &:hover {
       background: $c-button-accent-bg-hover;
     }
@@ -58,13 +66,16 @@ $default-radius: 0 !default;
     padding: 0.7em 2.5em;
     font-size: $font-size-s;
   }
+
   &--l {
     font-size: $font-size-m;
     padding: 1em 4.2em;
+
     @include bp(tablet) {
       padding: 1.3em 5em;
     }
   }
+
   // Types
   &--full-width {
     width: 100%;
@@ -72,10 +83,12 @@ $default-radius: 0 !default;
     padding-right: 0.7em;
     text-align: center;
   }
+
   &--disabled {
     opacity: 0.3;
     pointer-events: none;
   }
+
   &--loading {
     color: transparent;
   }

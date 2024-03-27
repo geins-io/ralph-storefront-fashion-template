@@ -47,7 +47,7 @@
         :min-count="currentMinCount"
         :max-count="currentMaxCount"
         :all-products-loaded="allProductsLoaded"
-        :loading="$apollo.queries.products.loading"
+        :loading="prevPageLoading"
         @loadprev="loadPrev"
         @reset="resetCurrentPage"
       />
@@ -68,7 +68,7 @@
         :min-count="currentMinCount"
         :max-count="currentMaxCount"
         :all-products-loaded="allProductsLoaded"
-        :loading="$apollo.queries.products.loading"
+        :loading="nextPageLoading"
         @loadmore="loadMore"
         @reset="resetCurrentPage"
       />
@@ -84,6 +84,7 @@
 <script>
 /*
   CaListPage is the main component for the product list pages.
+  Please refer to the documentation of MixListPage in Ralph UI for more info.
 */
 import MixListPage from 'MixListPage';
 
@@ -95,7 +96,7 @@ export default {
   computed: {},
   watch: {},
   created() {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss">

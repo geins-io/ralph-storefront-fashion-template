@@ -3,7 +3,6 @@
     <CaWidgetArea
       family="Frontpage"
       area-name="The front page area"
-      :fetch-products-only-client-side="true"
       @dataFetched="$store.dispatch('loading/end')"
     />
   </div>
@@ -18,9 +17,7 @@ export default {
   data: () => ({}),
   methods: {},
   meta: {
-    pageType: 'Front Page'
-  }
+    pageType: 'Front Page',
+  },
 };
 </script>
-
-<style lang="scss"></style>

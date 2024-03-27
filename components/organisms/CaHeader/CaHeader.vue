@@ -1,8 +1,8 @@
 <template>
   <header class="ca-header" :class="modifiers">
-    <CaGlobalMessage v-if="$store.state.ancientBrowser">
+    <LazyCaGlobalMessage v-if="$store.state.ancientBrowser">
       {{ $t('ANCIENT_BROWSER_MESSAGE') }}
-    </CaGlobalMessage>
+    </LazyCaGlobalMessage>
     <CaTopBar />
     <div class="ca-header__bar">
       <CaContainer class="ca-header__container" design="none">
@@ -64,7 +64,7 @@
 </template>
 <script>
 /*
-  Header component for the site.
+  The main header component for the site.
 */
 export default {
   name: 'CaHeader',
@@ -72,28 +72,28 @@ export default {
   props: {
     theme: {
       type: String,
-      default: 'light'
-    }
+      default: 'light',
+    },
   },
   data: () => ({
     searchOpened: false,
     accountInfo: {
       name: 'account',
-      frame: 'login'
-    }
+      frame: 'login',
+    },
   }),
   computed: {
     modifiers() {
       return {
         'ca-header--scrolled': !this.$store.getters.siteIsAtTop,
         'ca-header--dark': this.theme === 'dark',
-        'ca-header--is-hidden': this.$store.state.headerHidden
+        'ca-header--is-hidden': this.$store.state.headerHidden,
       };
-    }
+    },
   },
   watch: {},
   mounted() {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss">

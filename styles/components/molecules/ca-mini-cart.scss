@@ -18,6 +18,7 @@
 
   &__value {
     @include title(rem-calc(16));
+
     color: var(--header-text, #{$c-cart-color});
     font-weight: $font-weight-bold;
     margin-left: $px12;

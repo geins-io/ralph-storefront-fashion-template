@@ -1,11 +1,15 @@
 .ca-panel-navigation {
   $block: &;
+
   &__link {
     display: block;
+
     @include title($font-size-m);
+
     padding: $px16;
     border-bottom: $border-light;
   }
+  /* stylelint-disable selector-class-pattern */
   &__parent {
     &.ca-accordion-item {
       .ca-accordion-item__toggle {
@@ -14,35 +18,43 @@
         padding: $px16;
         display: block;
         border-bottom: $border-light;
+
         @include title($font-size-m);
       }
+
       .ca-accordion-item__icon-wrap.ca-icon-and-text {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         .ca-icon {
           font-size: rem-calc(20px);
         }
       }
     }
   }
+
   &__children {
     padding: $px12 0;
     border-bottom: $border-light;
   }
+
   &__child-link {
     display: block;
     font-size: $font-size-s;
     font-weight: $font-weight-normal;
     padding: rem-calc(8px) rem-calc(16px) rem-calc(8px) rem-calc(26px);
   }
+
   &__child-parent {
     &.ca-accordion-item {
       .ca-accordion-item__toggle {
         @include title($font-size-m);
+
         padding: rem-calc(8px) rem-calc(16px) rem-calc(8px) rem-calc(26px);
         border-bottom: none;
       }
+
       .ca-accordion-item__icon-wrap.ca-icon-and-text {
         .ca-icon {
           font-size: rem-calc(18px);
@@ -50,6 +62,7 @@
       }
     }
   }
+
   &__child-item {
     &:last-child {
       .ca-accordion-item__content {
@@ -57,10 +70,12 @@
       }
     }
   }
+  /* stylelint-enable selector-class-pattern */
   &__grand-children {
     padding: $px10 0;
     border-bottom: $border-light;
   }
+
   &__grand-child-link {
     display: block;
     font-size: $font-size-s;
@@ -71,6 +86,7 @@
     border-color: var(--accent-color, $c-accent-color);
     width: 30px;
     height: 30px;
+
     @include calign;
   }
 }

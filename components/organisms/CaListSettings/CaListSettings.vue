@@ -4,7 +4,7 @@
       class="ca-list-settings__filter-toggle"
       @clicked="
         $store.commit('contentpanel/open', {
-          name: 'filters'
+          name: 'filters',
         })
       "
     >
@@ -56,18 +56,18 @@ export default {
   props: {
     activeProducts: {
       type: Number,
-      required: true
+      required: true,
     },
     activeFilters: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   data: () => ({}),
   computed: {},
   watch: {},
   mounted() {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss">

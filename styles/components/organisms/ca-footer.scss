@@ -1,5 +1,6 @@
 .ca-footer {
   --title-text-color: $c-text-inverse;
+
   margin-top: $default-spacing;
   background: var(--footer-background, $c-darkest-gray);
   color: var(--footer-color, $c-text-inverse);
@@ -8,17 +9,17 @@
     &--usps {
       padding: $px8 0;
     }
+
     &--newsletter {
       padding: $px40 0;
+
       @include bp(tablet) {
         padding: rem-calc(70) 0;
       }
     }
+
     &--content {
       padding: $px24 0 $px32;
-    }
-
-    &--bottom {
     }
   }
 
@@ -26,6 +27,7 @@
     display: flex;
     text-align: center;
     justify-content: space-around;
+
     @include bp(tablet) {
       justify-content: center;
     }
@@ -33,13 +35,18 @@
 
   &__usp {
     padding: 0 $px4;
+
     @include bp(tablet) {
       padding: 0 $px32;
     }
-    .ca-icon-and-text__icon {
-      margin-bottom: $px4;
-      @include bp(tablet) {
-        margin-bottom: 0;
+
+    .ca-icon-and-text {
+      &__icon {
+        margin-bottom: $px4;
+
+        @include bp(tablet) {
+          margin-bottom: 0;
+        }
       }
     }
   }
@@ -58,7 +65,9 @@
 
   &__newsletter-text {
     @include title(rem-calc(36));
+
     margin: 0 0 $px40;
+
     @include bp(tablet) {
       font-size: rem-calc(46);
     }
@@ -66,11 +75,13 @@
 
   &__about {
     margin: rem-calc(50) 0 rem-calc(75);
+
     @include bp(tablet) {
       margin: rem-calc(100) 0 rem-calc(150);
       width: 80%;
       max-width: 1000px;
     }
+
     @include bp(laptop) {
       width: 60%;
     }
@@ -78,6 +89,7 @@
 
   &__about-title {
     @include title(rem-calc(36));
+
     margin: 0 0 $px40;
   }
 
@@ -96,18 +108,23 @@
   &__column {
     margin-bottom: $px20;
     line-height: 1.6;
+
     @include bp(tablet) {
       width: 15%;
     }
+
     &--logo {
       margin: rem-calc(60) auto 0;
+
       @include bp(tablet) {
         width: 55%;
       }
     }
+
     &--menu {
       @include bp(phone-only) {
         margin: 0 rem-calc(-10);
+
         &:first-child {
           border-top: 1px solid var(--footer-color, $c-text-inverse);
         }
@@ -119,9 +136,11 @@
     font-size: $font-size-l;
     margin-bottom: $px12;
     font-weight: $font-weight-bold;
+
     &:not(:first-child) {
       margin-top: $px20;
     }
+
     @include bp(tablet) {
       font-size: $font-size-xl;
     }
@@ -149,6 +168,7 @@
 
   &__social-item {
     font-size: 30px;
+
     &:not(:last-child) {
       margin-right: $px20;
     }
@@ -156,6 +176,7 @@
 
   &__main-logo {
     width: rem-calc(250);
+
     @include bp(tablet) {
       margin-left: auto;
     }
@@ -164,6 +185,7 @@
   &__bottom {
     display: flex;
     flex-wrap: wrap;
+
     @include bp(tablet) {
       justify-content: space-between;
     }
@@ -175,12 +197,14 @@
       justify-content: space-between;
       margin: $px20 0;
     }
+
     &--copyright {
       opacity: 0.8;
       width: 74%;
       padding: $px12 0;
       border-top: $border-light;
       font-size: $font-size-xs;
+
       @include bp(tablet) {
         border: none;
         text-align: right;
@@ -199,9 +223,11 @@
     height: 15px;
     width: auto;
     padding: 0 $px4;
+
     @include bp(tablet) {
       height: 20px;
       padding: 0 $px16;
+
       &--first {
         padding-left: 0;
       }

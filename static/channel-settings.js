@@ -7,7 +7,7 @@ const baseColors = {
   secondaryAccent: '#9baea5',
   primaryText: '#131313',
   secondaryText: '#7e7e7e',
-  inverseText: '#ffffff'
+  inverseText: '#ffffff',
 };
 export default [
   {
@@ -36,7 +36,7 @@ export default [
       'title-font': '"Tinos", serif',
       'title-text-color': baseColors.primaryText,
       'title-line-height': '1',
-      'title-font-weight': '400'
-    }
-  }
+      'title-font-weight': '400',
+    },
+  },
 ];

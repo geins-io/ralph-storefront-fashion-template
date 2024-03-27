@@ -1,60 +1,79 @@
 .ca-product-gallery {
   $block: &;
   $grid-gap: rem-calc(15);
+  $minus-margin: calc(-1 * #{$default-spacing}/ 2);
+  $minus-margin-tablet: calc(-1 * #{$default-site-width-spacing-tablet}/ 2);
+
   --slider-item-width: 100%;
-  margin: 0 -#{$default-site-width-spacing/2};
+
+  margin: 0 $minus-margin;
+
   @include bp(tablet) {
     --slider-item-width: 66%;
-    margin: 0 -#{$default-site-width-spacing-tablet/2};
+
+    margin: 0 $minus-margin-tablet;
   }
+
   @include bp(laptop) {
     --slider-item-width: 100%;
+
     margin: 0;
   }
+
   &__main {
     position: relative;
   }
+
   &__slider {
     height: auto;
     position: relative;
+
     @include bp(laptop) {
       width: 100%;
       margin: 0 0 rem-calc(20);
     }
   }
+
   &__slide-overlay {
     display: none;
+
     @include bp(laptop) {
       display: block;
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.1);
+      inset: 0;
+      background: rgb(0 0 0 / 10%);
+
       @include flex-calign;
+
       color: $c-text-inverse;
       font-size: 20px;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 200ms ease, font-size 200ms ease;
+      transition:
+        opacity 200ms ease,
+        font-size 200ms ease;
     }
   }
+  /* stylelint-disable selector-class-pattern */
   &__slide {
     padding: 0;
     opacity: 0.6;
     transition: opacity 200ms ease;
     cursor: pointer;
     position: relative;
+
     @include bp(laptop) {
       opacity: 1;
     }
+
     &.ca-slide--current {
       opacity: 1;
     }
+
     .ca-slider__lane--resetting & {
       transition: none;
     }
+
     &:hover {
       #{$block}__slide-overlay {
         opacity: 1;
@@ -63,31 +82,36 @@
     }
   }
 
-  &__image {
-  }
   .ca-slider-dots {
     position: absolute;
     margin-top: rem-calc(-50);
   }
+
   &__nav {
     --slider-item-width: calc(100% / 6);
+
     margin: 0 rem-calc(-10);
   }
+
   &__nav-image {
     cursor: pointer;
   }
+
   &__nav-slide {
     padding: 0 rem-calc(10px);
+
     & > * {
       border: 2px solid transparent;
       transition: border-color 200ms ease;
     }
+
     &--current {
       & > * {
         border: 2px solid $c-border-light;
       }
     }
   }
+
   &__thumbnails {
     margin-top: $grid-gap;
 
@@ -101,19 +125,24 @@
   &__thumbnail-container {
     width: 100%;
   }
+
   &__campaigns {
     left: rem-calc(15);
     top: rem-calc(15);
     position: absolute;
+
     .ca-campaigns__item {
       font-size: $font-size-m;
     }
+
     @include bp(tablet) {
       left: 19%;
     }
+
     @include bp(laptop) {
       left: rem-calc(30);
       top: rem-calc(30);
     }
   }
+  /* stylelint-enable selector-class-pattern */
 }

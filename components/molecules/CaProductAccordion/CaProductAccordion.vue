@@ -63,8 +63,8 @@ export default {
   props: {
     product: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data: () => ({}),
   computed: {},
@@ -78,8 +78,8 @@ export default {
       if (anchor) {
         anchor.scrollIntoView({ behavior: 'smooth' });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

@@ -2,16 +2,11 @@
   <div class="ca-checkout-confirm-page">
     <CaContainer>
       <CaCheckoutHeader :title="$t('ORDER_CONFIRM_TITLE')" />
-      <CaCheckoutSection :bottom-arrow="false">
+      <CaCheckoutSection :loading="loading" :bottom-arrow="false">
         <CaCheckoutExternal
-          v-if="$route.query.kid || $route.query.sid"
-          :type="$route.query.sid ? 'SVEA' : 'KLARNA'"
-          :confirm="true"
-        />
-        <CaCheckoutExternal
-          v-if="$route.query.wid"
-          :type="'WALLEY'"
-          :confirm="true"
+          v-if="$route.query.kid || $route.query.sid || $route.query.wid"
+          :type="type"
+          :data="confirmSnippet"
         />
         <div v-else class="ca-checkout-confirm">
           <CaIcon class="ca-checkout-confirm__icon" name="check-circle" />
@@ -34,7 +29,7 @@
           </p>
         </div>
       </CaCheckoutSection>
-      <CaCheckoutSection :bottom-arrow="false">
+      <CaCheckoutSection :loading="loading" :bottom-arrow="false">
         <template #title>
           {{ $t('ORDER_SUMMARY_TITLE') }}
         </template>
@@ -59,15 +54,15 @@
 import MixConfirmPage from 'MixConfirmPage';
 export default {
   name: 'CheckoutConfirmPage',
-  layout: 'undistracted',
   mixins: [MixConfirmPage],
+  layout: 'undistracted',
   data: () => ({}),
   computed: {},
   mounted() {},
   methods: {},
   meta: {
-    pageType: 'Confirm Page'
-  }
+    pageType: 'Confirm Page',
+  },
 };
 </script>
 

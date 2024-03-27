@@ -78,8 +78,9 @@ export default {
   KLARNA_FAIL_BLOCKED:
     'Kunne ikke oprette ordre, da din bruger er blokeret hos Klarna',
   GO_BACK: 'Gå tilbage',
-  PICK_COLOR: 'Vælg farve',
-  PICK_SIZE: 'Velg størrelse',
+  PICK_COLOR: 'Velg farve',
+  PICK_SKU: 'Velg størrelse',
+  PICK_VARIANT: 'Velg variant',
   STOCK_STATUS_IN_STOCK: 'På lager',
   STOCK_STATUS_OUT_OF_STOCK: 'Udsolgt',
   STOCK_STATUS_FEW_LEFT: 'Kun {quantity} på lager',
@@ -202,6 +203,8 @@ export default {
     'Desværre gik der noget galt. Prøv venligst igen og kontakt kundeservice, hvis problemet fortsætter.',
   FEEDBACK_REQUIRED_FIELD: 'Dette felt er obligatorisk',
   FEEDBACK_PERSONAL_ID_NOT_VALID: 'Du skal indtaste et gyldigt personnummer',
+  FEEDBACK_ORGANIZATION_ID_NOT_VALID:
+    'Du skal indtaste et gyldigt organisationsnummer',
   LABEL_FIRST_NAME: 'Fornavn',
   LABEL_LAST_NAME: 'Efternavn',
   LABEL_PHONE_NUMBER: 'Telefonnummer',
@@ -295,6 +298,8 @@ export default {
   CART_SUMMARY_REGULAR_PRICE: 'Normal pris',
   CART_SUMMARY_LEFT_TO_FREE_SHIPPING: 'Tilbage indtil fri fragt',
   CART_SUMMARY_VAT: 'Moms',
+  CART_SUMMARY_TOTAL_EX_BALANCE: 'Sum før saldo',
+  CART_SUMMARY_BALANCE: 'Saldo',
   FREE_SHIPPING: 'Fri fragt',
   SWEDEN: 'Sverige',
   BREADCRUMBS_HOME: 'Hjem',
@@ -338,5 +343,5 @@ export default {
   REVIEW_WRITTEN_BY: 'Skrevet av:',
   REVIEWS_LIST_EMPTY: 'Dette produktet har ingen anmeldelser ennå.',
   REVIEW_FEEDBACK_RATE_REQUIRED:
-    'Vennligst bruk stjerner for å rangere produktet'
+    'Vennligst bruk stjerner for å rangere produktet',
 };

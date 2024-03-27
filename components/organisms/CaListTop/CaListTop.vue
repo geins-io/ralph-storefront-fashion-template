@@ -15,8 +15,8 @@
         <CaReadMore
           v-if="
             listInfo &&
-              !!listInfo.primaryDescription &&
-              !listInfo.hideDescription
+            !!listInfo.primaryDescription &&
+            !listInfo.hideDescription
           "
           class="ca-list-top__description"
           :max-height="$store.getters.viewportComputer ? 90 : 50"
@@ -46,26 +46,26 @@ export default {
   props: {
     type: {
       type: String,
-      required: true
+      required: true,
     },
     listInfo: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     breadcrumbsCurrent: {
       type: Object,
-      required: true
+      required: true,
     },
     widgetAreaFilters: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   data: () => ({}),
   computed: {},
   watch: {},
   mounted() {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss">

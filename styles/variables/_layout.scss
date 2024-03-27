@@ -12,7 +12,7 @@ $input-border-radius: $default-radius;
 $focus-border: 3px $c-ok;
 
 // Box shadow
-$box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.2);
+$box-shadow: 0 0 15px -5px rgb(0 0 0 / 20%);
 
 // Z-index
 $z-index-cookie-consent: 100;
@@ -38,7 +38,6 @@ $search-input-height: rem-calc(40px);
 $header-bar-height: rem-calc(60px);
 $header-bar-height-computer: rem-calc(80px);
 $header-navigation-height-computer: rem-calc(80);
-
 $header-height: $top-bar-height + $header-bar-height;
 $header-height-computer: $top-bar-height-computer + $header-bar-height-computer;
 

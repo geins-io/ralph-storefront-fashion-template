@@ -10,6 +10,7 @@
     font-size: rem-calc(36);
     font-weight: $font-weight-bold;
     margin: rem-calc(40) 0 rem-calc(20);
+
     @include bp(tablet) {
       font-size: rem-calc(62);
       margin: rem-calc(40) 0 rem-calc(30);

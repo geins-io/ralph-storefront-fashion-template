@@ -1,5 +1,6 @@
 .ca-product-card {
   position: relative;
+
   &__image-wrap {
     line-height: 0;
     position: relative;
@@ -8,6 +9,7 @@
   &__image {
     transition: opacity 250ms ease;
     opacity: 1;
+
     &--has-second {
       &:hover {
         opacity: 0;
@@ -25,8 +27,10 @@
         opacity: 1;
       }
 
-      &.ca-image--product::after {
-        display: none;
+      &.ca-image {
+        &--product::after {
+          display: none;
+        }
       }
     }
   }
@@ -34,38 +38,46 @@
   &__image-link {
     display: block;
   }
+
   &__info {
     padding: $px12 $px10 0;
     display: block;
+
     @include bp(tablet) {
       padding: $px12 0 0;
     }
   }
+
   &__info-top {
     display: flex;
     justify-content: space-between;
     padding: 0 0 $px12;
     margin: 0.3em 0 0;
   }
+
   &__price.ca-price {
     --font-size-regular: #{rem-calc(14)};
     --font-size-selling: #{rem-calc(16)};
   }
+
   &__campaigns {
     position: absolute;
     top: rem-calc(10);
     left: rem-calc(10);
     z-index: 2;
+
     @include bp(tablet) {
       top: rem-calc(20);
       left: rem-calc(20);
     }
   }
+
   &__colors {
     text-transform: uppercase;
     font-size: $font-size-xs;
     margin: $px4 0 0;
   }
+
   &__stock-display {
     font-size: $font-size-xs;
   }
@@ -76,6 +88,7 @@
     top: auto;
     right: rem-calc(8);
     bottom: rem-calc(8);
+
     @include bp(tablet) {
       width: 36px;
       height: 36px;

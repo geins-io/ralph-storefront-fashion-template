@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: rem-calc(-6px) rem-calc(-6px) rem-calc(40px);
+
   &__filter {
     padding: rem-calc(6px) rem-calc(10px);
     background: $c-medium-gray;
@@ -10,10 +11,12 @@
     align-items: center;
     margin: rem-calc(6px);
   }
+
   &__remove {
     line-height: 0;
     margin: 0 0 0 rem-calc(7px);
   }
+
   &__reset {
     text-decoration: underline;
     text-align: left;

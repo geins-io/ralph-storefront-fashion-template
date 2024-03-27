@@ -3,12 +3,12 @@
 
   @include bp(phone-only) {
     padding: $px20 0;
+
     &__list {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      column-gap: $px20;
-      row-gap: $px20;
+      gap: $px20 $px20;
       background-color: $c-medium-gray;
       padding: $px16;
     }
@@ -23,11 +23,13 @@
 
     &__link {
       white-space: nowrap;
+
       &.nuxt-link-exact-active {
         text-decoration: underline;
       }
     }
   }
+
   @include bp(tablet) {
     &__list {
       border: $border-light;
@@ -47,7 +49,9 @@
       display: flex;
       justify-content: space-between;
       padding: $px16;
+
       @include title($font-size-l);
+
       &.nuxt-link-exact-active {
         #{$block}__link-icon {
           opacity: 1;

@@ -8,15 +8,18 @@
     <client-only>
       <transition name="fade">
         <div v-if="globalLoading" class="ca-layout-default__loading">
-          <CaSpinner class="ca-layout-default__spinner" />
+          <LazyCaSpinner class="ca-layout-default__spinner" />
         </div>
       </transition>
     </client-only>
-    <CaCookieConsent />
+    <LazyCaCookieConsent />
     <LazyCaDisplayCart />
     <LazyCaAccountPanel />
     <LazyCaMenuPanel menu-location-id="main-mobile" />
-    <LazyCaMarketPanel mode="advanced" />
+    <LazyCaMarketPanel
+      v-if="$store.state.channel.markets.length > 1"
+      mode="advanced"
+    />
     <LazyCaSnackbar />
     <LazyCaModal />
     <LazyCaAddedToCart />
@@ -32,16 +35,16 @@ export default {
   computed: {
     modifiers() {
       return {
-        'ca-layout-default--loading': this.$store.state.loading.loading
+        'ca-layout-default--loading': this.$store.state.loading.loading,
       };
     },
     themes() {
       const themeSettings = this.$config.channelSettings.find(
-        i => i.channelId === this.$store.state.channel.id
-      ).themeSettings;
+        (i) => i.channelId === this.$store.state.channel.id,
+      ).theme;
       return {
         header: themeSettings['header-theme'],
-        footer: themeSettings['footer-theme']
+        footer: themeSettings['footer-theme'],
       };
     },
     pageTypeClass() {
@@ -53,11 +56,11 @@ export default {
     },
     isPdp() {
       return this.$route?.name?.includes('pdp');
-    }
-  }
+    },
+  },
   // IMPORTANT NOTICE: If you decide to add a head() function here, you will overwrite default meta functionality that comes with MixGlobalInit from Ralph UI
 };
 </script>
 <style lang="scss">
-@import 'organisms/ca-layout-default';
+@import './styles/layouts/default-layout';
 </style>

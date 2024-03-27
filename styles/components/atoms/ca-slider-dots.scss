@@ -1,18 +1,23 @@
 .ca-slider-dots {
   $block: &;
+
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+
   &__dot {
     margin: 0 4px;
+
     @include bp(tablet) {
       margin: 0 4px;
     }
+
     &--hidden {
       display: none;
     }
   }
+
   &__trigger {
     width: $px12;
     height: $px12;
@@ -21,6 +26,7 @@
     padding: 0;
     transition: background-color 200ms ease;
     text-indent: -100000px;
+
     &--current {
       background-color: #505050;
     }

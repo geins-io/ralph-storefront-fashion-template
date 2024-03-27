@@ -133,18 +133,18 @@ export default {
   props: {
     theme: {
       type: String,
-      default: 'dark'
-    }
+      default: 'dark',
+    },
   },
   data: () => ({}),
   computed: {
     uspLogoPlacement() {
       return this.$store.getters.viewport === 'phone' ? 'top' : 'left';
-    }
+    },
   },
   watch: {},
   mounted() {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss">

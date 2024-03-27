@@ -8,7 +8,7 @@
               'header-site-at-top':
                 !$store.state.headerHidden && $store.getters.siteIsAtTop,
               'header-visible':
-                !$store.state.headerHidden && !$store.getters.siteIsAtTop
+                !$store.state.headerHidden && !$store.getters.siteIsAtTop,
             }"
             class="ca-content-panel__header"
           >
@@ -31,7 +31,7 @@
           </header>
           <section ref="content" class="ca-content-panel__body">
             <!-- The main content of the content panel. This content will be scrollable when overflowing -->
-            <slot></slot>
+            <slot />
           </section>
           <footer class="ca-content-panel__footer">
             <!-- The content panel footer -->
@@ -42,7 +42,9 @@
                 class="ca-content-panel__close-button"
                 @click="close"
               >
-                <CaIconAndText icon-name="x">{{ $t('CLOSE') }}</CaIconAndText>
+                <CaIconAndText icon-name="x">
+                  {{ $t('CLOSE') }}
+                </CaIconAndText>
               </button>
             </slot>
           </footer>
@@ -59,7 +61,6 @@
 <script>
 import { mapState } from 'vuex';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import eventbus from '@ralph/ralph-ui/plugins/eventbus.js';
 
 // @group Molecules
 // @vuese
@@ -73,36 +74,36 @@ export default {
     // The name id of the content panel. Used in trigger call to open panel
     name: {
       type: String,
-      required: true
+      required: true,
     },
     // Title to be displayed in the header of the content panel
     title: {
       // ''
       type: String,
-      default: ''
+      default: '',
     },
     // Direction from which to enter from on smaller screens (< 768)
     enterFrom: {
       // 'bottom', 'left', 'right'
       type: String,
-      default: 'right'
+      default: 'right',
     },
     // Direction from which to enter from on larger screens (>= 768). Defaults to `enterFrom` if not set
     enterFromTabletUp: {
       // 'right', 'left'
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data: () => ({
-    opened: false
+    opened: false,
   }),
   computed: {
     modifiers() {
       return {
         'ca-content-panel--left': this.currentEnterFrom === 'left',
         'ca-content-panel--right': this.currentEnterFrom === 'right',
-        'ca-content-panel--bottom': this.currentEnterFrom === 'bottom'
+        'ca-content-panel--bottom': this.currentEnterFrom === 'bottom',
       };
     },
     currentEnterFromTabletUp() {
@@ -116,7 +117,7 @@ export default {
     transitionName() {
       return 'pop-from-' + this.currentEnterFrom;
     },
-    ...mapState(['contentpanel'])
+    ...mapState(['contentpanel']),
   },
   watch: {
     'contentpanel.current'(newVal) {
@@ -126,7 +127,7 @@ export default {
         enableBodyScroll(this.$refs.content);
         this.opened = false;
       }
-    }
+    },
   },
   mounted() {
     if (this.contentpanel.current === this.name) {
@@ -157,20 +158,16 @@ export default {
       }
     },
     activateEventbusListeners() {
-      eventbus.$on('close-content-panel', () => {
+      this.$ralphBus.$on('close-content-panel', () => {
         this.close();
       });
-      eventbus.$on('route-change', route => {
-        if (route.to.path !== route.from.path) {
-          this.close();
-        }
-      });
+      this.$ralphBus.$on('route-change', this.close);
     },
     deactivateEventbusListeners() {
-      eventbus.$off('route-change');
-      eventbus.$off('close-content-panel');
-    }
-  }
+      this.$ralphBus.$off('route-change');
+      this.$ralphBus.$off('close-content-panel');
+    },
+  },
 };
 </script>
 <style lang="scss">

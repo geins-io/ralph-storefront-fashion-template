@@ -19,18 +19,18 @@ export default {
   props: {
     textColor: {
       type: Number,
-      default: 0
+      default: 0,
     },
     belowImage: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data: () => ({}),
   computed: {},
   watch: {},
   mounted() {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss">

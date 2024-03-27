@@ -1,48 +1,58 @@
 .ca-cart-product {
   $block: &;
+
   display: flex;
 
   &__image {
     width: 60px;
     margin-right: $px12;
+
     @include bp(tablet) {
       width: 90px;
     }
   }
+
   &__price-group {
     margin: rem-calc(5px) 0 0;
   }
+
   &__price-group-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
   }
+
   &__price-group-quantity {
     white-space: nowrap;
     flex-shrink: 0;
     font-weight: $font-weight-bold;
   }
+
   &__price-group-spacer {
     height: 1px;
     width: 100%;
     background: $c-border-light;
     margin: 0 $px16;
   }
+
   &__price-group-price.ca-price {
     flex-shrink: 0;
     font-size: $font-size-s;
     flex-direction: row;
     column-gap: $px4;
   }
+
   &__price.ca-price {
     margin: rem-calc(8px) 0 0;
     align-items: center;
     font-size: $font-size-m;
     flex-direction: row;
+    /* stylelint-disable selector-class-pattern */
     .ca-price__regular {
       margin: 0 0 0 $px8;
     }
+    /* stylelint-enable selector-class-pattern */
   }
 
   &__variant {
@@ -66,9 +76,11 @@
   &__campaigns.ca-campaigns {
     margin: $px4 0 $px8;
     display: block;
+    /* stylelint-disable selector-class-pattern */
     .ca-campaigns__item {
       display: inline-block;
     }
+    /* stylelint-enable selector-class-pattern */
   }
 
   &__stock-display {
@@ -82,13 +94,16 @@
     align-items: center;
     margin-top: $px12;
   }
+
   &__static-quantity {
     font-size: $font-size-s;
     color: $c-text-secondary;
   }
+
   &__total {
     @include title($font-size-m);
   }
+
   &--display {
     #{$block}__bottom {
       margin-top: $px12;
